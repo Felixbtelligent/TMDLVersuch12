@@ -2553,7 +2553,7 @@ createOrReplace
 
 			column ACTUAL_CONFIRMED_DELIVERY_DATE
 				dataType: dateTime
-				formatstring: Short Date
+				formatstring: Long Date
 				lineageTag: abce4efd-846a-4146-b67b-7a4f689315b4
 				summarizeBy: none
 				sourceColumn: ACTUAL_CONFIRMED_DELIVERY_DATE
