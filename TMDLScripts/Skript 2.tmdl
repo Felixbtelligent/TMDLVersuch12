@@ -4,7 +4,7 @@ createOrReplace
 		lineageTag: 82ebaae5-9edf-427e-925a-f93e56f66426
 
 		column DIM_PLANT
-			dataType: string
+			dataType: text
 			lineageTag: 8b57aa86-6503-4cbf-99e3-5efbe3f848af
 			summarizeBy: none
 			sourceColumn: DIM_PLANT
