@@ -1,0 +1,42 @@
+table 'Time Intelligence'
+	lineageTag: f355f14f-8acd-4c0e-a124-4eca558d3c55
+
+	calculationGroup
+		precedence: 1
+
+		calculationItem YTD =
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    DATESYTD ( 'CalendarTable'[Date] )
+				)
+
+		calculationItem QTD =
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    DATESQTD ( 'CalendarTable'[Date] )
+				)
+
+		calculationItem MTD =
+				CALCULATE (
+				    SELECTEDMEASURE (),
+				    DATESMTD ( 'CalendarTable'[Date] )
+				)
+
+		calculationItem Current = SELECTEDMEASURE()
+
+	column 'Show as'
+		dataType: string
+		lineageTag: b1415733-dded-4a59-ad65-bf67fe5ab241
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		formatString: 0
+		lineageTag: f0b42746-753b-493e-9204-522cfb04ef51
+		summarizeBy: none
+		sourceColumn: Ordinal
+

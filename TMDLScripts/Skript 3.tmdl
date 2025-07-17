@@ -1,0 +1,26 @@
+createOrReplace
+
+	table Zeitansicht
+		lineageTag: 414b63c8-a3c7-4c97-91a8-9d44008a6970
+
+		column Ansicht
+			lineageTag: 59cf7275-c2d3-4863-941e-f510049dca93
+			summarizeBy: none
+			isNameInferred
+			sourceColumn: [Ansicht]
+
+			annotation SummarizationSetBy = Automatic
+
+		partition Zeitansicht = calculated
+			mode: import
+			source = ```
+					DATATABLE("Ansicht", STRING, { 
+					    {"last 24 weeks"}, 
+					    {"last 12 months"}, 
+					    {"last 3 years"}
+					})
+					
+					```
+
+		annotation PBI_Id = 4b3f6bbaab5248768474884c8c621ee1
+

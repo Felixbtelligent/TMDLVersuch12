@@ -1,0 +1,73 @@
+model Model
+	culture: de-DE
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: de-DE
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+/// Fehler in Abfragen, die am 23.04.2025 16:31:53 geladen wurden.
+queryGroup 'Abfragefehler: 23 04 2025 16:31:53'
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.145.1105.0 (25.07)+decbc46fce458c5b8d5109d6f32a743f2ac949c8
+
+annotation PBI_QueryOrder = ["Holidays","DIM_CUSTOMER","DIM_PLANT","DIM_PRODCUT","Explanation","Report Mapping","Blending_QANDOTD (2)","FACT_SALES_DELIVERY","Fehler in FACT_SALES_DELIVERY","HolidayTable","Reason Codes","Data Definition"]
+
+annotation PBI_ProTooling = ["DevMode","TMDLView_Desktop"]
+
+annotation __TEdtr = 1
+
+ref table Tabelle
+ref table DateTableTemplate_a4ab7c29-af10-4829-913d-49c469f01297
+ref table Holidays
+ref table LocalDateTable_585f579d-d56f-4f3e-bf4d-a4080a5c912e
+ref table DIM_PLANT
+ref table DIM_PRODCUT
+ref table LocalDateTable_26ee9370-3193-4dcc-b949-111a0f8f00bd
+ref table Selections
+ref table MinQualityParameter
+ref table _Measures
+ref table 'SortTable first confirmation'
+ref table MaxQualityParameter
+ref table DIM_CUSTOMER
+ref table 'SortTable requested date'
+ref table FACT_SALES_DELIVERY
+ref table LocalDateTable_870a2145-aef4-46ec-b676-39ea4d4ddfb3
+ref table LocalDateTable_b841aad5-5a26-4363-bbe3-782eb06dbf64
+ref table LocalDateTable_cd53e518-fd27-4d57-a873-b36eb83e240c
+ref table LocalDateTable_9402d676-9761-4925-b017-600ab6835415
+ref table LocalDateTable_b30d1d15-cd75-4fbc-ad10-3f3e497b9208
+ref table LocalDateTable_3f947b56-85c8-406d-af5f-5cbc26506d2b
+ref table LocalDateTable_60f75317-a09e-4dee-83c9-7b8ab921f006
+ref table LocalDateTable_0b3b5801-5056-4506-b84c-464fead7e5a2
+ref table SelectionTable
+ref table LocalDateTable_48630aa0-6b7b-4e53-b77a-2dc1a9d40f68
+ref table LocalDateTable_1e9d8d69-12cb-4fc1-9cec-f95502b23c44
+ref table LocalDateTable_2a20c57a-4cd5-42a0-bf2a-46ce514112d7
+ref table CalendarTable
+ref table LocalDateTable_77f58261-dd81-44e4-91bc-0ecc3a6f524c
+ref table LocalDateTable_7882cfe7-3c8f-4db7-97c8-ee2d6acdd764
+ref table LocalDateTable_f5c972d9-4838-4ec1-94be-ff5e738c5a00
+ref table LocalDateTable_2eb20253-0ddf-4019-8d77-22a73f02727d
+ref table LocalDateTable_aeea913f-e23b-4857-a82a-38a820aa77cc
+ref table HolidayTable
+ref table LocalDateTable_d5e47eb2-26a1-4c49-91d6-c662ee034043
+ref table LocalDateTable_4470e98c-1d7a-4128-8c57-3be61f7b9487
+ref table LocalDateTable_f7ff3216-bfc9-4daa-a7ba-4ab71b4276d8
+ref table 'Reason Codes'
+ref table LocalDateTable_cbaa8fe6-8739-4a05-8e3d-751401c72aa3
+ref table LocalDateTable_5db2d1c9-1310-4ee9-b21e-7f988f09252a
+ref table 'Data Definition'
+ref table Zeitansicht
+ref table 'Time Intelligence'
+
+ref role Unbenannt
+ref role Test
+
+ref cultureInfo de-DE
+

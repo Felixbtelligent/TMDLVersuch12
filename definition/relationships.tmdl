@@ -1,0 +1,143 @@
+relationship dcb631b3-6d1d-411d-9c04-31d92b6111d6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Holidays.Days
+	toColumn: LocalDateTable_585f579d-d56f-4f3e-bf4d-a4080a5c912e.Date
+
+relationship 79fab313-d736-490f-9b67-872d708fb8f4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DIM_PRODCUT.CREATED_ON
+	toColumn: LocalDateTable_26ee9370-3193-4dcc-b949-111a0f8f00bd.Date
+
+relationship 1c15bec5-1e77-41f7-8beb-4102c7e44c25
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_SALES_DELIVERY.CALCULATED_ACTUAL_GOODS_ISSUE_DATE
+	toColumn: LocalDateTable_870a2145-aef4-46ec-b676-39ea4d4ddfb3.Date
+
+relationship f5327dea-6d42-42ba-8326-f699bcb98ec8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_SALES_DELIVERY.CALCULATED_WORKDAY_ACTUAL_GOODS_ISSUE_DATE
+	toColumn: LocalDateTable_b841aad5-5a26-4363-bbe3-782eb06dbf64.Date
+
+relationship 3d93fbb7-e1db-451f-a6b3-656195b5b8f7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_SALES_DELIVERY.MIN_ACTUAL_GOODS_ISSUE_DATE
+	toColumn: LocalDateTable_cd53e518-fd27-4d57-a873-b36eb83e240c.Date
+
+relationship c2849d45-edaf-49ac-adab-e8614969b258
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_SALES_DELIVERY.PLANNED_GOODS_ISSUE_DATE
+	toColumn: LocalDateTable_9402d676-9761-4925-b017-600ab6835415.Date
+
+relationship 937d132a-eda1-414c-8a63-dd55506079b8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_SALES_DELIVERY.ORDER_DATE
+	toColumn: LocalDateTable_b30d1d15-cd75-4fbc-ad10-3f3e497b9208.Date
+
+relationship def5edd0-ee30-4e33-9150-eb2aa6d84c6f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_SALES_DELIVERY.ACTUAL_GOODS_ISSUE_DATE_2
+	toColumn: LocalDateTable_3f947b56-85c8-406d-af5f-5cbc26506d2b.Date
+
+relationship e7dce33b-5582-4f8a-bc63-d68f028803bb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_SALES_DELIVERY.FIRST_CONFIRMED_DELIVERY_DATE
+	toColumn: LocalDateTable_60f75317-a09e-4dee-83c9-7b8ab921f006.Date
+
+relationship 263be63b-f738-4e8e-a3fe-8e7f06e2203b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_SALES_DELIVERY.REQUESTED_DELIVERY_DATE
+	toColumn: LocalDateTable_0b3b5801-5056-4506-b84c-464fead7e5a2.Date
+
+relationship 3dc738bf-88e1-487d-85e5-d2b1a39b1575
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_SALES_DELIVERY.ACTUAL_CONFIRMED_DELIVERY_DATE
+	toColumn: LocalDateTable_48630aa0-6b7b-4e53-b77a-2dc1a9d40f68.Date
+
+relationship 8758c2e9-fd4e-faf0-1a38-0bf71a41e3d9
+	fromColumn: FACT_SALES_DELIVERY.CUSTOMER_KEY
+	toColumn: DIM_CUSTOMER.CUSTOMER_KEY
+
+relationship 950db104-2f13-4d3a-aff4-799475726478
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_SALES_DELIVERY.Min_Actual_Goods_Issue_Date_Item_Column
+	toColumn: LocalDateTable_1e9d8d69-12cb-4fc1-9cec-f95502b23c44.Date
+
+relationship 02585959-7fc1-41d4-b0eb-b90b53f656bb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_SALES_DELIVERY.ACTUAL_GOODS_ISSUE_DATE_SOURCE
+	toColumn: LocalDateTable_2a20c57a-4cd5-42a0-bf2a-46ce514112d7.Date
+
+relationship 0513f100-11df-4416-b245-d07823eb66af
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_SALES_DELIVERY.ActualGoodsIssueDate
+	toColumn: LocalDateTable_77f58261-dd81-44e4-91bc-0ecc3a6f524c.Date
+
+relationship 46677026-bd85-6bed-ccdc-c347b086f0c7
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: FACT_SALES_DELIVERY.SITECODE
+	toColumn: DIM_PLANT.SITECODE
+
+relationship ca9b71ee-ca0e-4025-afc2-d97d83eb306d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_SALES_DELIVERY.DOCUMENTDATE_DELIVERY
+	toColumn: LocalDateTable_7882cfe7-3c8f-4db7-97c8-ee2d6acdd764.Date
+
+relationship 8effa650-96f8-4939-9508-6cd59d79a361
+	joinOnDateBehavior: datePartOnly
+	fromColumn: CalendarTable.Date
+	toColumn: LocalDateTable_f5c972d9-4838-4ec1-94be-ff5e738c5a00.Date
+
+relationship 894a9c73-64fd-4ae2-84dc-c91de588bb21
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_SALES_DELIVERY.'Test Actual Goods Issue Date'
+	toColumn: LocalDateTable_2eb20253-0ddf-4019-8d77-22a73f02727d.Date
+
+relationship 16c2be95-eb7d-4775-8a2c-d5086fe842aa
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_SALES_DELIVERY.'Actual Goods Issue Date'
+	toColumn: LocalDateTable_aeea913f-e23b-4857-a82a-38a820aa77cc.Date
+
+relationship AutoDetected_d62292fb-625e-4b0a-8007-27fc793351df
+	fromColumn: FACT_SALES_DELIVERY.PRODUCT_KEY
+	toColumn: DIM_PRODCUT.PRODUCT_KEY
+
+relationship 4fbb3b92-21a3-4cd0-9344-29bc9fdfa0c3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: HolidayTable.HolidayDate
+	toColumn: LocalDateTable_d5e47eb2-26a1-4c49-91d6-c662ee034043.Date
+
+relationship 0d1ef152-1496-4c3b-a57e-3c83ed70be14
+	joinOnDateBehavior: datePartOnly
+	fromColumn: HolidayTable.FILE_TS
+	toColumn: LocalDateTable_4470e98c-1d7a-4128-8c57-3be61f7b9487.Date
+
+relationship fc205093-cdbf-4379-b9e5-e8be2215e6d6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: HolidayTable.METADATA_DATE
+	toColumn: LocalDateTable_f7ff3216-bfc9-4daa-a7ba-4ab71b4276d8.Date
+
+relationship 6161f794-0b37-470a-ac73-77981a768812
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Reason Codes'.FILE_TS
+	toColumn: LocalDateTable_cbaa8fe6-8739-4a05-8e3d-751401c72aa3.Date
+
+relationship 2eb53bf8-635d-42bb-ae06-ad1c89ebf762
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Reason Codes'.METADATA_DATE
+	toColumn: LocalDateTable_5db2d1c9-1310-4ee9-b21e-7f988f09252a.Date
+
+relationship 0813b693-526d-4934-297f-fafac4f8dd22
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: 'Reason Codes'.REASON_CODE_ID
+	toColumn: FACT_SALES_DELIVERY.REASON_CODE
+
+relationship 35853b2d-1ca6-c87e-3174-382bf82f9567
+	fromColumn: FACT_SALES_DELIVERY.'Sort Order first confirmed'
+	toColumn: 'SortTable first confirmation'.'Sort Order'
+
+relationship df15b922-675f-6315-7ce5-ba0c6693112d
+	fromColumn: FACT_SALES_DELIVERY.'Sort Order cust req'
+	toColumn: 'SortTable requested date'.'Sort Order'
+

@@ -1,0 +1,18 @@
+table MinQualityParameter
+	lineageTag: 05b1b779-e316-41ab-9acd-4a72038dda15
+
+	column Value
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 9139a294-2f40-4f9f-8397-aaf5fa07efb4
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MinQualityParameter = calculated
+		mode: import
+		source = GENERATESERIES(0, 1, 0.01)
+
+	annotation PBI_Id = b211ffa9105b4cbe95508fca25db2f81
+

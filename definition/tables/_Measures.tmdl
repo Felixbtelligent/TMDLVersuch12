@@ -1,0 +1,1046 @@
+table _Measures
+	lineageTag: 3de17018-8260-4d8a-95a3-718e46bc7c4e
+
+	measure 'Order items PY' = CALCULATE([Number of order items], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		formatString: 0
+		lineageTag: 17e3b2fc-cc6d-49a5-af8d-1dc3a562eeb6
+
+	measure 'Delivery items PY' = CALCULATE([Number of Delivery items], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		formatString: 0
+		lineageTag: 1c11d35a-c656-4296-ba0d-4935cd836f77
+
+	measure 'OTIF Failures PY' = CALCULATE([OTIF Failures], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		formatString: 0
+		lineageTag: d14b8bd1-678c-4c2e-b7de-5400eddd4ab6
+
+	measure 'OTIF abs PY' = CALCULATE([OTIF abs], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		formatString: 0
+		lineageTag: d403804f-bb0d-48ac-9568-aa102abd36f7
+
+	measure 'OTIF Failures % PY' = CALCULATE([OTIF Failures %], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		lineageTag: c423ad1a-69ed-4758-8e1e-622e86c40d69
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'OTIF % PY' = CALCULATE([OTIF %], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 8cc39fe4-a3d6-4802-9c22-98420555d34d
+
+	measure 'Order items Vergleich Pfeil test' = ```
+			
+			var up_arrow = UNICHAR(129137)
+			var down_arrow = UNICHAR(129139)
+			var thisyear = [Number of order items]
+			var LY = [Order items PY]
+			var difpercentage = DIVIDE([Number of order items],[Order items PY])-1
+			
+			Return
+			IF(
+			    difpercentage < 0, 
+			    down_arrow & FORMAT(difpercentage, "0%") & " | PY "& [Order items PY],
+			    up_arrow & FORMAT(difpercentage, "0%")& " | PY "& [Order items PY]
+			)
+			```
+		lineageTag: cf2c1f38-b718-4f02-85a4-91ae2a99b1a5
+
+	measure 'Delivery items Vergleich Pfeil' = ```
+			
+			var up_arrow = UNICHAR(129137)
+			var down_arrow = UNICHAR(129139)
+			var thisyear = [Number of Delivery items]
+			var LY = [Delivery items PY]
+			var difpercentage = DIVIDE([Number of Delivery items],[Delivery items PY])-1
+			
+			Return
+			IF(
+			    difpercentage < 0, 
+			    down_arrow & FORMAT(difpercentage, "0%") & " | PY "& [Delivery items PY],
+			    up_arrow & FORMAT(difpercentage, "0%")& " | PY "& [Delivery items PY]
+			)
+			```
+		lineageTag: 464765e4-2f4f-4c04-8689-10276f4fbe68
+
+	measure 'OTIF Failures Vergleich Pfeil' = ```
+			
+			var up_arrow = UNICHAR(129137)
+			var down_arrow = UNICHAR(129139)
+			var thisyear = [OTIF Failures]
+			var LY = [OTIF Failures PY]
+			var difpercentage = DIVIDE([OTIF Failures],[OTIF Failures PY])-1
+			
+			Return
+			IF(
+			    difpercentage < 0, 
+			    down_arrow & FORMAT(difpercentage, "0%") & " | PY "& [OTIF Failures PY],
+			    up_arrow & FORMAT(difpercentage, "0%")& " | PY "& [OTIF Failures PY]
+			)
+			```
+		lineageTag: 1ef4f9bd-26ff-4f77-8d0c-4039ebba7a7f
+
+	measure 'OTIF abs Vergleich Pfeil' = ```
+			
+			var up_arrow = UNICHAR(129137)
+			var down_arrow = UNICHAR(129139)
+			var thisyear = [OTIF abs]
+			var LY = [OTIF abs PY]
+			var difpercentage = DIVIDE([OTIF abs],[OTIF abs PY])-1
+			
+			Return
+			IF(
+			    difpercentage < 0, 
+			    down_arrow & FORMAT(difpercentage, "0%") & " | PY "& [OTIF abs PY],
+			    up_arrow & FORMAT(difpercentage, "0%")& " | PY "& [OTIF abs PY]
+			)
+			```
+		lineageTag: 3b17787a-c8a4-4fdc-bd57-b70436fcda54
+
+	measure 'OTIF % Vergleich Pfeil' = ```
+			
+			var up_arrow = UNICHAR(129137)
+			var down_arrow = UNICHAR(129139)
+			var thisyear = [OTIF %]
+			var LY = [OTIF % PY]
+			var difpercentage = DIVIDE([OTIF %],[OTIF % PY])-1
+			
+			Return
+			IF(
+			    difpercentage < 0, 
+			    down_arrow & FORMAT(difpercentage, "0%") & " | PY "& FORMAT([OTIF % PY], "0.00%"),
+			    up_arrow & FORMAT(difpercentage, "0%")& " | PY "& FORMAT([OTIF % PY], "0.00%")
+			)
+			```
+		lineageTag: 83c3a8d7-cbfb-40c4-a53e-7e506d9b5aad
+
+	measure 'OTIF Failures % Vergleich Pfeil' = ```
+			
+			var up_arrow = UNICHAR(129137)
+			var down_arrow = UNICHAR(129139)
+			var thisyear = [OTIF Failures %]
+			var LY = [OTIF Failures % PY]
+			var difpercentage = DIVIDE([OTIF Failures %],[OTIF Failures % PY])-1
+			
+			Return
+			IF(
+			    difpercentage < 0, 
+			    down_arrow & FORMAT(difpercentage, "0%") & " | PY "& FORMAT([OTIF Failures % PY], "0.00%"),
+			    up_arrow & FORMAT(difpercentage, "0%")& " | PY "& FORMAT([OTIF Failures % PY], "0.00%")
+			)
+			```
+		lineageTag: 84d798fd-b68c-4b14-bffd-e5d1d4f89b7f
+
+	measure 'Delayed Order items PY' = CALCULATE([Number of delayed order items], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		formatString: #,0
+		lineageTag: 5cbbc2a7-62e3-451e-818f-173222090145
+
+	measure 'Delayed Order items Vergleich Pfeil' = ```
+			
+			var up_arrow = UNICHAR(129137)
+			var down_arrow = UNICHAR(129139)
+			var thisyear = [Number of delayed order items]
+			var LY = [Delayed Order items PY]
+			var difpercentage = DIVIDE([Number of delayed order items],[Delayed Order items PY])-1
+			
+			Return
+			IF(
+			    difpercentage < 0, 
+			    down_arrow & FORMAT(difpercentage, "0%") & " | PY "& [Delayed Order items PY],
+			    up_arrow & FORMAT(difpercentage, "0%")& " | PY "& [Delayed Order items PY]
+			)
+			```
+		lineageTag: 1bbaaddd-f1b2-4362-9a79-ee9611475119
+
+	measure 'On time Order items PY' = CALCULATE([on time Order items], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		formatString: 0
+		lineageTag: a10c0b33-c380-41dd-9563-63affd3d1dc9
+
+	measure 'On Time Order items Vergleich Pfeil' = ```
+			
+			var up_arrow = UNICHAR(129137)
+			var down_arrow = UNICHAR(129139)
+			var thisyear = [on time Order items]
+			var LY = [On time Order items PY]
+			var difpercentage = DIVIDE([on time Order items],[On time Order items PY])-1
+			
+			Return
+			IF(
+			    difpercentage < 0, 
+			    down_arrow & FORMAT(difpercentage, "0%") & " | PY "& [On time Order items PY],
+			    up_arrow & FORMAT(difpercentage, "0%")& " | PY "& [On time Order items PY]
+			)
+			```
+		lineageTag: f08871c4-37fe-45fb-baaf-97640345108d
+
+	measure 'OTD % PY' = CALCULATE([OTD %], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		formatString: 0
+		lineageTag: a86a1385-4fea-4def-95ee-db14425bd760
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'OTD % Vergleich Pfeil' = ```
+			
+			var up_arrow = UNICHAR(129137)
+			var down_arrow = UNICHAR(129139)
+			var thisyear = [OTD %]
+			var LY = [OTD % PY]
+			var difpercentage = DIVIDE([OTD %],[OTD % PY])-1
+			
+			Return
+			IF(
+			    difpercentage < 0, 
+			    down_arrow & FORMAT(difpercentage, "0%") & " | PY "& FORMAT([OTD % PY], "0.00%"),
+			    up_arrow & FORMAT(difpercentage, "0%")& " | PY "& FORMAT([OTD % PY], "0.00%")
+			)
+			```
+		lineageTag: 01931793-6f8a-454a-9b40-bdf5f42298ce
+
+	measure 'Inconsistent Data PY' = CALCULATE([Inconsistent data], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		formatString: 0
+		lineageTag: 19ceaa49-1682-46fe-9af3-09ca941c1f09
+
+	measure 'Inconsistent data Vergleich Pfeil' = ```
+			
+			var up_arrow = UNICHAR(129137)
+			var down_arrow = UNICHAR(129139)
+			var thisyear = [Inconsistent data]
+			var LY = [Inconsistent Data PY]
+			var difpercentage = DIVIDE([Inconsistent data],[Inconsistent Data PY])-1
+			
+			Return
+			IF(
+			    difpercentage < 0, 
+			    down_arrow & FORMAT(difpercentage, "0%") & " | PY "& [Inconsistent Data PY],
+			    up_arrow & FORMAT(difpercentage, "0%")& " | PY "& [Inconsistent Data PY]
+			)
+			```
+		lineageTag: 89bed96c-f391-4060-a13d-44e6c0f30581
+
+	measure 'Order items Reason Code CU PY' = CALCULATE([Order Items - Reason Code Cu], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		formatString: 0
+		lineageTag: 325996e2-fd46-4e2b-808d-f908ec41f314
+
+	measure 'Order items Reason Code CU Vergleich Pfeil' = ```
+			
+			var up_arrow = UNICHAR(129137)
+			var down_arrow = UNICHAR(129139)
+			var thisyear = [Order Items - Reason Code Cu]
+			var LY = [Order items Reason Code CU PY]
+			var difpercentage = DIVIDE([Order Items - Reason Code Cu],[Order items Reason Code CU PY])-1
+			
+			Return
+			IF(
+			    difpercentage < 0, 
+			    down_arrow & FORMAT(difpercentage, "0%") & " | PY "& [Order items Reason Code CU PY],
+			    up_arrow & FORMAT(difpercentage, "0%")& " | PY "& [Order items Reason Code CU PY]
+			)
+			```
+		lineageTag: a6d86787-731e-4fd5-a42e-45ac68c8e8aa
+
+	measure 'Percentage of CU / Total % PY' = CALCULATE([Percentage of CU / Total %], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		lineageTag: 96877a33-d6fc-43bf-a67a-d09581a38084
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Percentage of CU / Total % Vergleich Pfeil' = ```
+			
+			var up_arrow = UNICHAR(129137)
+			var down_arrow = UNICHAR(129139)
+			var thisyear = [Percentage of CU / Total %]
+			var LY = [Percentage of CU / Total % PY]
+			var difpercentage = DIVIDE([Percentage of CU / Total %],[Percentage of CU / Total % PY])-1
+			
+			Return
+			IF(
+			    difpercentage < 0, 
+			    down_arrow & FORMAT(difpercentage, "0%") & " | PY "& FORMAT([Percentage of CU / Total % PY], "0.00%"),
+			    up_arrow & FORMAT(difpercentage, "0%")& " | PY "& FORMAT([Percentage of CU / Total % PY], "0.00%")
+			)
+			```
+		lineageTag: 6cf2f137-cf96-4099-8a95-2c31ab710393
+
+	measure 'AVG Order entry date' = AVERAGE('FACT_SALES_DELIVERY'[ORDER_DATE].[Date])
+		lineageTag: 31a6a73e-79a1-476a-a18a-0be477761d1f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'first Confirmation date for all delivered items' = MIN('FACT_SALES_DELIVERY'[FIRST_CONFIRMED_DELIVERY_DATE].[Date])
+		formatString: General Date
+		lineageTag: 1ceaee0c-1b86-4fd6-9d83-80dca3d21864
+
+	measure 'Count of Orders per Range' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('FACT_SALES_DELIVERY'[Order_nr]),
+			    ALLSELECTED('FACT_SALES_DELIVERY'[Order_nr])
+			)
+			
+			```
+		formatString: 0
+		lineageTag: de485d5a-5c58-474e-9751-e7e9b4cae2bc
+
+	measure 'Lieferqualität gefiltert' = ```
+			
+			VAR MinQuality = SELECTEDVALUE(MinQualityParameter[Value])
+			VAR MaxQuality = SELECTEDVALUE(MaxQualityParameter[Value])
+			RETURN
+			    IF(
+			        [Delivered Quantity %] >= MinQuality && 
+			        [Delivered Quantity %] <= MaxQuality,
+			        [Delivered Quantity %],
+			        BLANK()
+			    )
+			
+			```
+		lineageTag: cdc460da-034e-43b3-a9d2-cce755704bbc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure FilteredDeliveredQty = ```
+			
+			VAR SelectedMin = MIN('MaxQualityParameter'[Value])
+			VAR SelectedMax = MAX('MaxQualityParameter'[Value])
+			RETURN 
+			    IF(
+			        [Delivered Quantity %] >= SelectedMin && [Delivered Quantity %] <= SelectedMax,
+			        [Delivered Quantity %],
+			        BLANK()
+			    )
+			
+			```
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 67e08658-a560-4cfb-9962-ac22eeef5e51
+
+	measure Test = ```
+			SELECTEDVALUE('FACT_SALES_DELIVERY Old'[Kalenderwoche AGD]) 
+			```
+		formatString: 0
+		lineageTag: bcc7e8aa-be46-48bd-8c17-7cf0f94d3570
+
+	measure ReasonCode_Filter = ```
+			
+			IF(SELECTEDVALUE(Schaltfläche[Ansicht]) = "Gefiltert", 
+			   IF('Reason Codes'[Wert] IN {"Code1", "Code2", "Code3"}, 1, 0), 
+			   1)
+			
+			```
+		lineageTag: 3f7da8fc-cf3c-4f00-a990-f3a86ca3fb0c
+
+	measure OTD_Dynamisch = ```
+			
+			    SWITCH(
+			        SELECTEDVALUE(Datumsauswahl[Datumstyp]),
+			        "First Confirmation Date", [OTD_FirstConfirmation],
+			        "Delivery Date", [OTD_Delivery]
+			    )
+			
+			```
+		lineageTag: edd811ec-c568-47fd-b321-25053db13019
+
+	measure 'OTIF % req PY' = CALCULATE([OTIF % req], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		lineageTag: dcc5460b-3d1c-47e7-ad2d-cf025ed44188
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'OTD % req PY' = CALCULATE([OTD %  requested date], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		lineageTag: 091ea859-2afe-4c51-9002-734a5cd3e0b4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'OTD % req Vergleich Pfeil' = ```
+			
+			var up_arrow = UNICHAR(129137)
+			var down_arrow = UNICHAR(129139)
+			var thisyear = [OTD %  requested date]
+			var LY = [OTD % req PY]
+			var difpercentage = DIVIDE([OTD %  requested date],[OTD % req PY])-1
+			
+			Return
+			IF(
+			    difpercentage < 0, 
+			    down_arrow & FORMAT(difpercentage, "0%") & " | PY "& FORMAT([OTD % req PY], "0.00%"),
+			    up_arrow & FORMAT(difpercentage, "0%")& " | PY "& FORMAT([OTD % req PY], "0.00%")
+			)
+			```
+		lineageTag: 29941c16-2940-43e1-b4bb-74cb9d0095e4
+
+	measure 'OTIF % req Vergleich Pfeil' = ```
+			
+			var up_arrow = UNICHAR(129137)
+			var down_arrow = UNICHAR(129139)
+			var thisyear = [OTIF % req]
+			var LY = [OTIF % req PY]
+			var difpercentage = DIVIDE([OTIF % req],[OTIF % req PY])-1
+			
+			Return
+			IF(
+			    difpercentage < 0, 
+			    down_arrow & FORMAT(difpercentage, "0%") & " | PY "& FORMAT([OTIF % req PY], "0.00%"),
+			    up_arrow & FORMAT(difpercentage, "0%")& " | PY "& FORMAT([OTIF % req PY], "0.00%")
+			)
+			```
+		lineageTag: 6d9bd9d7-2243-48f2-8fc4-5c5b20687692
+
+	measure 'OTD Button no of order items delayed' = ```
+			
+			"No. of Order Items delayed " & FORMAT([Number of delayed order items], "0")
+			
+			```
+		lineageTag: c9f8e419-aca3-4db7-8c01-b5b3305f991a
+
+	measure 'OTD Button no of order items on time' = ```
+			
+			"No. of Order Items on time " & FORMAT([on time Order items], "0")
+			
+			```
+		lineageTag: 528306b0-8b66-4dd4-9905-92ecee9a6e4b
+
+	measure 'OTD Button new' = ```
+			
+			"OTD " & FORMAT([OTD %], "0.00%")
+			
+			```
+		lineageTag: d331e145-e7bb-4021-9656-8022e2956b7f
+
+	measure 'OTIF abs req PY' = CALCULATE([OTIF abs req], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		formatString: 0
+		lineageTag: badfa692-3ad6-40b0-b514-4b2d2a536798
+
+	measure 'OTIF Failures req Vergleich Pfeil' = ```
+			
+			var up_arrow = UNICHAR(129137)
+			var down_arrow = UNICHAR(129139)
+			var thisyear = [OTIF Failures req]
+			var LY = [OTIF Failures req PY]
+			var difpercentage = DIVIDE([OTIF Failures req],[OTIF Failures req PY])-1
+			
+			Return
+			IF(
+			    difpercentage < 0, 
+			    down_arrow & FORMAT(difpercentage, "0%") & " | PY "& [OTIF Failures req PY],
+			    up_arrow & FORMAT(difpercentage, "0%")& " | PY "& [OTIF Failures req PY]
+			)
+			```
+		lineageTag: 56c9b281-e6f8-43c1-99de-9e79e0fef4cb
+
+	measure 'OTIF Failures req PY' = CALCULATE([OTIF Failures req], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		formatString: 0
+		lineageTag: 76ea9abf-fb01-441e-bf36-1e334c02b1ce
+
+	measure 'OTIF abs req Vergleich Pfeil' = ```
+			
+			var up_arrow = UNICHAR(129137)
+			var down_arrow = UNICHAR(129139)
+			var thisyear = [OTIF abs req]
+			var LY = [OTIF abs req PY]
+			var difpercentage = DIVIDE([OTIF abs req],[OTIF abs req PY])-1
+			
+			Return
+			IF(
+			    difpercentage < 0, 
+			    down_arrow & FORMAT(difpercentage, "0%") & " | PY "& [OTIF abs req PY],
+			    up_arrow & FORMAT(difpercentage, "0%")& " | PY "& [OTIF abs req PY]
+			)
+			```
+		lineageTag: e681d944-549e-436f-b78e-fb7d72d53df6
+
+	measure 'Delayed Order items req PY' = CALCULATE([Number of delayed order items days requested], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		formatString: 0
+		lineageTag: 494beaea-1b84-4f59-8093-e16506f5ba5b
+
+	measure 'Delayed Order items req Vergleich Pfeil' = ```
+			
+			var up_arrow = UNICHAR(129137)
+			var down_arrow = UNICHAR(129139)
+			var thisyear = [Number of delayed order items days requested]
+			var LY = [Delayed Order items req PY]
+			var difpercentage = DIVIDE([Number of delayed order items days requested],[Delayed Order items req PY])-1
+			
+			Return
+			IF(
+			    difpercentage < 0, 
+			    down_arrow & FORMAT(difpercentage, "0%") & " | PY "& [Delayed Order items req PY],
+			    up_arrow & FORMAT(difpercentage, "0%")& " | PY "& [Delayed Order items req PY]
+			)
+			```
+		lineageTag: 73f724b6-e509-46dc-937c-0b7f271825f2
+
+	measure 'On time Order items req PY' = CALCULATE([on time Order items req], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		formatString: 0
+		lineageTag: 55b3fb59-f8d0-4db1-b125-83d411d355f7
+
+	measure 'On Time Order items req Vergleich Pfeil' = ```
+			
+			var up_arrow = UNICHAR(129137)
+			var down_arrow = UNICHAR(129139)
+			var thisyear = [on time Order items req]
+			var LY = [On time Order items req PY]
+			var difpercentage = DIVIDE([on time Order items req],[On time Order items req PY])-1
+			
+			Return
+			IF(
+			    difpercentage < 0, 
+			    down_arrow & FORMAT(difpercentage, "0%") & " | PY "& [On time Order items req PY],
+			    up_arrow & FORMAT(difpercentage, "0%")& " | PY "& [On time Order items req PY]
+			)
+			```
+		lineageTag: b0806478-e409-4280-b65a-16de2f86669c
+
+	measure 'Filtered Number of Items' = ```
+			
+			VAR CurrentDeliveredPct = [Delivered Quantity %]
+			VAR SelectedMin = MIN('MaxQualityParameter'[Value])
+			VAR SelectedMax = MAX('MaxQualityParameter'[Value])
+			RETURN
+			    IF(
+			        CurrentDeliveredPct >= SelectedMin && 
+			        CurrentDeliveredPct <= SelectedMax,
+			        [Number of order items],
+			        BLANK()
+			    )
+			```
+		formatString: 0
+		lineageTag: 2715fd3b-add1-422f-a037-91e336618595
+
+	measure 'OTIF Failures % req PY' = CALCULATE([OTIF Failures req %], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		lineageTag: bc2f61ee-6146-4ee5-8be3-743ab19d2a87
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'OTIF Failures % req Vergleich Pfeil' = ```
+			
+			var up_arrow = UNICHAR(129137)
+			var down_arrow = UNICHAR(129139)
+			var thisyear = [OTIF Failures req %]
+			var LY = [OTIF Failures % req PY]
+			var difpercentage = DIVIDE([OTIF Failures req %],[OTIF Failures % req PY])-1
+			
+			Return
+			IF(
+			    difpercentage < 0, 
+			    down_arrow & FORMAT(difpercentage, "0%") & " | PY "& FORMAT([OTIF Failures % req PY], "0.00%"),
+			    up_arrow & FORMAT(difpercentage, "0%")& " | PY "& FORMAT([OTIF Failures % req PY], "0.00%")
+			)
+			```
+		lineageTag: 68ea4a3d-2149-4065-a871-891f309f8836
+
+	measure 'Anzahl Order NO' = ```
+			
+			IF(
+			    ISBLANK(DISTINCTCOUNT(FACT_SALES_DELIVERY[ORDER_NR])),
+			    0,
+			    DISTINCTCOUNT(FACT_SALES_DELIVERY[ORDER_NR])
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 88689d08-5eae-48b8-b1d8-3592b87e1d3f
+
+	measure 'Order Count' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('FACT_SALES_DELIVERY'[ORDER_NR]),
+			    ALL('SortTable first confirmation')
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 03f720de-66cd-4cfb-9984-4b67dc17c186
+
+	measure 'No. of Order Items on time and in full' = CALCULATE([Number of order items], 'FACT_SALES_DELIVERY'[OTIF]="YES")
+		formatString: #,0
+		lineageTag: a7f493bd-7410-4029-aa65-e4dedb60d509
+
+	measure 'No. of Order Items delayed and in full' = CALCULATE([Number of delayed order items], 'FACT_SALES_DELIVERY'[OTIF]="NO")
+		formatString: 0
+		lineageTag: 5acd9efc-298c-426b-9496-79884b7778ce
+
+	measure 'OTIF Button no of order items delayed' = ```
+			
+			"No. of Order Items delayed and not in full " & FORMAT([No. of Order Items delayed and in full], "0")
+			
+			```
+		lineageTag: 78395cf3-f18e-46ff-977b-41a1d13a185f
+
+	measure 'OTIF Button no of order items on time' = ```
+			
+			"No. of Order Items on time and in full " & FORMAT([No. of Order Items on time and in full], "0")
+			
+			```
+		lineageTag: 2c2649e6-2048-48ec-8daf-90629c422f6e
+
+	measure 'OTIF Button new' = ```
+			
+			"OTIF " & FORMAT([OTIF %], "0.00%")
+			
+			```
+		lineageTag: 0af2fb9e-f452-480c-81d5-b46e6e0e14c5
+
+	measure 'Time to Order confirmation new' = ```
+			
+			AVERAGEX(
+			    SUMMARIZE(
+			        FACT_SALES_DELIVERY,
+			       FACT_SALES_DELIVERY[DELIVERY_NO/ITEM_NO],
+			        "LeadTimeOrder",DATEDIFF(MIN(FACT_SALES_DELIVERY[ORDER_DATE]), MAX(FACT_SALES_DELIVERY[FIRST_CONFIRMED_DELIVERY_DATE]), DAY)
+			    ),
+			    [LeadTimeOrder]
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 95170318-df0b-4776-a7c9-183cd9561b81
+
+	measure 'Number of order items' = ```
+			CALCULATE(
+			    DISTINCTCOUNT('FACT_SALES_DELIVERY'[ORDER_NO/ ITEM_NO]), 'FACT_SALES_DELIVERY'[FLAG_INCONSISTENT_DATA]="No")
+			
+			```
+		formatString: #,0
+		lineageTag: 4804f9a8-22ce-4187-98a0-e2837d5506fa
+
+	measure 'Number of Delivery items' = DISTINCTCOUNT('FACT_SALES_DELIVERY'[DELIVERY_NO/ITEM_NO])
+		formatString: #,0
+		lineageTag: 689774dd-c0c0-4caa-9167-4ba7bc17c07e
+
+	measure 'Number of delayed order items' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('FACT_SALES_DELIVERY'[ORDER_NO/ ITEM_NO]),
+			    FILTER(
+			        'FACT_SALES_DELIVERY',
+			        'FACT_SALES_DELIVERY'[FLAG_INCONSISTENT_DATA] = "No" &&
+			        (
+			            'FACT_SALES_DELIVERY'[OTD days to 1st conf date] < -50 ||
+			            'FACT_SALES_DELIVERY'[OTD days to 1st conf date] > 2
+			        )
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 2401b538-d6b0-49ac-90ba-beecd1ce6845
+
+	measure 'on time Order items' = [Number of order items]-[Number of delayed order items]
+		formatString: #,0
+		lineageTag: b5e5fca8-b216-427c-b659-94f1331f09c6
+
+	measure 'OTD %' = (1-[Number of delayed order items]/[Number of order items])*1
+		formatString: 0\ %;-0\ %;0\ %
+		lineageTag: 91cc70fc-46bf-4e50-aada-9e3b5e1d94ba
+
+	measure 'OTIF abs' = ```
+			
+			VAR TotalOrders = [Number of order items]
+			VAR OTIF_Orders = CALCULATE(
+			    [Number of order items],
+			    FACT_SALES_DELIVERY[Delivery Status 1st] = "OTIF"
+			)
+			RETURN
+			IF(
+			    ISBLANK(TotalOrders),     
+			    BLANK(),                  
+			    COALESCE(OTIF_Orders, 0) 
+			)
+			
+			```
+		formatString: #,0
+		lineageTag: 01a88653-fbe8-4d2d-a790-cb60723a9a22
+
+	measure 'OTIF abs req' = ```
+			
+			VAR TotalOrders = [Number of order items req]
+			VAR OTIF_Orders = CALCULATE(
+			    [Number of order items req],
+			    FACT_SALES_DELIVERY[Delivery Status req] = "OTIF"
+			)
+			RETURN
+			IF(
+			    ISBLANK(TotalOrders),
+			    BLANK(),
+			    COALESCE(OTIF_Orders, 0)
+			)
+			
+			```
+		formatString: #,0
+		lineageTag: de107bac-cfc7-4f10-89b2-2e79702b83a8
+
+	measure 'OTIF %' = [OTIF abs]/[Number of order items]
+		formatString: 0%;-0%;0%
+		lineageTag: 2f6e3def-533e-48a7-9bfd-f638a83e944a
+
+	measure 'OTIF % 1st' = CALCULATE(DISTINCTCOUNT('FACT_SALES_DELIVERY'[ORDER_NO/ ITEM_NO]), 'FACT_SALES_DELIVERY'[FLAG_INCONSISTENT_DATA]="No", 'FACT_SALES_DELIVERY'[Delivery Status 1st]="OTIF")/CALCULATE(DISTINCTCOUNT('FACT_SALES_DELIVERY'[ORDER_NO/ ITEM_NO]), 'FACT_SALES_DELIVERY'[FLAG_INCONSISTENT_DATA]="No")
+		formatString: 0
+		lineageTag: dd926112-18d0-49ad-8e35-cae59b4612df
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'OTIF % req' = [OTIF abs req]/[Number of order items req]
+		formatString: 0\ %;-0\ %;0\ %
+		lineageTag: d0e3eba8-1876-42d1-877b-cee35d2df551
+
+	measure 'OTIF % requested' = CALCULATE(DISTINCTCOUNT('FACT_SALES_DELIVERY'[ORDER_NO/ ITEM_NO]), 'FACT_SALES_DELIVERY'[FLAG_INCONSISTENT_DATA]="No", 'FACT_SALES_DELIVERY'[Delivery Status req]="OTIF")/CALCULATE(DISTINCTCOUNT('FACT_SALES_DELIVERY'[ORDER_NO/ ITEM_NO]), 'FACT_SALES_DELIVERY'[FLAG_INCONSISTENT_DATA]="No")
+		formatString: 0%;-0%;0%
+		lineageTag: ba887ed2-04ab-44b2-a557-6b993cb3d382
+
+	measure 'Inconsistent data' = CALCULATE(DISTINCTCOUNT('FACT_SALES_DELIVERY'[ORDER_NO/ ITEM_NO]), 'FACT_SALES_DELIVERY'[FLAG_INCONSISTENT_DATA]="Yes")+0
+		formatString: 0
+		lineageTag: fe6434d5-3d74-4d20-abd1-568fc594f270
+
+	measure 'Delivered Quantity %' = CALCULATE([Number of order items], 'FACT_SALES_DELIVERY'[QuantityInPercent_ByDate]>=0.9 && FACT_SALES_DELIVERY[QuantityInPercent_ByDate]<=1.1)/[Number of order items]
+		lineageTag: 9b847f06-da9e-4b8a-9ec8-5dfacd7f5727
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Number of delayed order items days requested' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('FACT_SALES_DELIVERY'[ORDER_NO/ ITEM_NO]),
+			    FILTER(
+			        'FACT_SALES_DELIVERY',
+			        'FACT_SALES_DELIVERY'[FLAG_INCONSISTENT_DATA_REQ] = "NO" &&
+			        (
+			            'FACT_SALES_DELIVERY'[OTD days requested date] < -50 ||
+			            'FACT_SALES_DELIVERY'[OTD days requested date] > 2
+			        )
+			    )
+			)
+			
+			```
+		formatString: #,0
+		lineageTag: abf333d6-5c8d-44aa-b518-42cf29818c14
+
+	measure '% Veränderung number items' = ([Number of order items]/[number order items PY])-1
+		lineageTag: 42e4bce0-0ee7-46d3-9ec4-305ed4f5ffec
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Dynamic Delivery Quality Filter' = ```
+			
+			IF(
+			    [Delivered Quantity %] >= SELECTEDVALUE(MinQualityParameter[Value]) && 
+			    [Delivered Quantity %] <= SELECTEDVALUE(MinQualityParameter[Value], 1),
+			    1, 
+			    0
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 3d570156-7965-4ace-a989-895cbab60eb0
+
+	measure 'Number of complete order items in time' = CALCULATE(DISTINCTCOUNT('FACT_SALES_DELIVERY'[ORDER_ITEM]), 'FACT_SALES_DELIVERY'[FLAG_INCONSISTENT_DATA]="No", 'FACT_SALES_DELIVERY'[FLAG_DELIVERYLAST12MONTH]=1, 'FACT_SALES_DELIVERY'[Delivery Status 1st]="OTIF")
+		formatString: 0
+		lineageTag: 193d2bc6-e92a-4542-b458-7783882a567b
+
+	measure 'number order items PY' = CALCULATE([Number of order items], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		formatString: 0
+		lineageTag: 15290afe-abec-49ed-8ee2-9bfed230cdfc
+
+	measure 'on time Order items req' = [Number of order items]-[Number of delayed order items days requested]
+		formatString: #,0
+		lineageTag: 43a5b044-1427-4ddc-82cd-2144f0b36591
+
+	measure 'Order Items - Reason Code Cu' = CALCULATE([Number of order items], REMOVEFILTERS('FACT_SALES_DELIVERY'[REASON_CODE]))-[Number of order items req]
+		formatString: #,0
+		lineageTag: b5aadb39-0212-4f01-b8fb-dcbd6f19daed
+
+	measure 'order items Vergleich Pfeil' = ```
+			
+			var up_arrow = UNICHAR(129137)
+			var down_arrow = UNICHAR(129139)
+			var thisyear = [Number of order items]
+			var LY = [number order items PY]
+			var difpercentage = DIVIDE([Number of order items],[number order items PY])-1
+			
+			Return
+			IF(
+			    difpercentage < 0, 
+			    down_arrow & FORMAT(difpercentage, "0%") & " | LY "& [number order items PY],
+			    up_arrow & FORMAT(difpercentage, "0%")& " | LY "& [number order items PY]
+			)
+			```
+		lineageTag: d354ba1d-d875-4392-b4a7-c1520cfa72b2
+
+	measure 'Time to order confirmation' = AVERAGE('FACT_SALES_DELIVERY'[FIRST_CONFIRMED_DELIVERY_DATE])-AVERAGE('FACT_SALES_DELIVERY'[ORDER_DATE])
+		lineageTag: 87c6bc88-94b6-4789-9930-5b09f70253f3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Percentage of CU / Total %' = ([Order Items - Reason Code Cu]/CALCULATE([Number of order items req], REMOVEFILTERS('FACT_SALES_DELIVERY'[REASON_CODE])))
+		formatString: 0\ %;-0\ %;0\ %
+		lineageTag: 6969abf2-dfea-4175-8418-cf8f4efa1aa4
+
+	measure 'OTIF Failures req' = ```
+			CALCULATE([Number of order items req], FACT_SALES_DELIVERY[Delivery Status req]<>"OTIF")
+			
+			```
+		formatString: #,0
+		lineageTag: 5919ddda-ea0d-49a9-b872-55b1d2c828de
+
+	measure 'OTIF Failures req %' = [OTIF Failures req]/[Number of order items]
+		formatString: 0\ %;-0\ %;0\ %
+		lineageTag: da50cbf6-6841-4ac5-adaf-75cb1bd6499c
+
+	measure 'OTIF Failures %' = [OTIF Failures]/[Number of order items]
+		formatString: 0\ %;-0\ %;0\ %
+		lineageTag: 49260d84-cd9c-4465-8f7e-2197362e935a
+
+	measure 'OTIF Failures' = CALCULATE([Number of order items], FACT_SALES_DELIVERY[Delivery Status 1st]<>"OTIF")
+		formatString: #,0
+		lineageTag: 55722d8e-d591-495d-b0ff-4ad011c71edb
+
+	measure 'OTD ranges' = ```
+			
+			SWITCH(
+			    TRUE(),
+			    MAX('FACT_SALES_DELIVERY'[OTD days to 1st conf date]) <= -50, " less -50",
+			    MAX('FACT_SALES_DELIVERY'[OTD days to 1st conf date]) <= -21, "-50 to -21",
+			    MAX('FACT_SALES_DELIVERY'[OTD days to 1st conf date]) <= -11, "-20 to -11",
+			    MAX('FACT_SALES_DELIVERY'[OTD days to 1st conf date]) <= -5, "-10 to -5",
+			    MAX('FACT_SALES_DELIVERY'[OTD days to 1st conf date]) <= 2, "-5 to 2",
+			    MAX('FACT_SALES_DELIVERY'[OTD days to 1st conf date]) <= 10, "3 to 10",
+			    MAX('FACT_SALES_DELIVERY'[OTD days to 1st conf date]) <= 20, "11 to 20",
+			    MAX('FACT_SALES_DELIVERY'[OTD days to 1st conf date]) <= 50, "21 to 50",
+			    "50 up"
+			)
+			
+			```
+		lineageTag: bc81f80c-6b5e-48fe-88f7-fd8f4ff714af
+
+	measure 'OTD %  requested date' = (1-[Number of delayed order items days requested]/[Number of order items req])*1
+		formatString: 0\ %;-0\ %;0\ %
+		lineageTag: 251b32c9-92f1-4fb2-af6a-18839a6d5d8b
+
+	measure QuantityInPercent = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM(FACT_SALES_DELIVERY[QTY_DELIVERED]),
+			        ALLEXCEPT(FACT_SALES_DELIVERY, FACT_SALES_DELIVERY[ORDER_NO/ ITEM_NO])
+			    ),
+			    CALCULATE(
+			        SUM(FACT_SALES_DELIVERY[QTY_ORDERED]),
+			        ALLEXCEPT(FACT_SALES_DELIVERY, FACT_SALES_DELIVERY[ORDER_NO/ ITEM_NO])
+			    )
+			)
+			
+			```
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 67baa983-8e01-4948-b377-b0a59b4d38c6
+
+	measure Hilfspalte = DISTINCTCOUNT(FACT_SALES_DELIVERY[ORDER_NO/ ITEM_NO])/COUNT(FACT_SALES_DELIVERY[ORDER_NO/ ITEM_NO])
+		lineageTag: e34ec759-46b9-44e5-b765-144a9f61b4e9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Quantity sum' = sum(FACT_SALES_DELIVERY[QuantityInPercent_ByDate])
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 62e40f95-bbe7-4933-8de6-8d0536aed3d3
+
+	measure StandortAnzeigen = ```
+			
+			VAR AktuelleLegalEntity = SELECTEDVALUE(DIM_PLANT[LE])
+			VAR StandortCount = 
+			    CALCULATE(
+			        DISTINCTCOUNT(DIM_PLANT[SITECODE]),
+			        ALLEXCEPT(DIM_PLANT, DIM_PLANT[LE])
+			    )
+			VAR IstDrilldown = ISFILTERED(FACT_SALES_DELIVERY[Actual Goods Issue Date])
+			RETURN
+			    IF(
+			        IstDrilldown || StandortCount = 1,
+			        SELECTEDVALUE(DIM_PLANT[SITECODE]),
+			        BLANK()
+			    )
+			
+			```
+		lineageTag: ad2041f2-cea7-4d6d-9713-e34205065909
+
+	measure 'Test QUantity ANzahl' = CALCULATE([Number of order items], 'FACT_SALES_DELIVERY'[QuantityInPercent_ByDate]>=0.9 && FACT_SALES_DELIVERY[QuantityInPercent_ByDate]<=1.1)
+		formatString: 0
+		lineageTag: 7f1f7852-964f-408c-81c6-43fb15d6130c
+
+	measure Umsatz_dynamisch = ```
+			
+			VAR Auswahl = SELECTEDVALUE('Zeitansicht'[Ansicht], "Standard")
+			VAR Zeitraum =
+			    SWITCH(
+			        TRUE(),
+			        Auswahl = "24 Wochen", DATESINPERIOD(FACT_SALES_DELIVERY[Actual Goods Issue Date], MAX(FACT_SALES_DELIVERY[Actual Goods Issue Date]), -6, MONTH),
+			        Auswahl = "12 Monate", DATESINPERIOD(FACT_SALES_DELIVERY[Actual Goods Issue Date], MAX(FACT_SALES_DELIVERY[Actual Goods Issue Date]), -12, MONTH),
+			        Auswahl = "Jahre", DATESINPERIOD(FACT_SALES_DELIVERY[Actual Goods Issue Date], MAX(FACT_SALES_DELIVERY[Actual Goods Issue Date]), -5, YEAR),
+			        -- Fallback: ganze Spalte als Tabelle zurückgeben
+			        ALL(FACT_SALES_DELIVERY[Actual Goods Issue Date])
+			    )
+			RETURN
+			CALCULATE(
+			    [OTD %],
+			    Zeitraum
+			)
+			
+			```
+		lineageTag: 19a6c1a5-6061-49c1-ab9f-723622356da7
+
+	measure LeadTime_diff_requested_date_order_date = ```
+			
+			AVERAGEX(
+			    SUMMARIZE(
+			        FACT_SALES_DELIVERY,
+			       FACT_SALES_DELIVERY[DELIVERY_NR],
+			        "LeadTimeOrder", DATEDIFF(MIN(FACT_SALES_DELIVERY[ORDER_DATE]), MAX(FACT_SALES_DELIVERY[REQUESTED_DELIVERY_DATE]), DAY)
+			    ),
+			    [LeadTimeOrder]
+			)
+			
+			```
+		formatString: 0
+		lineageTag: b2f3128d-478e-4ca6-86d5-5d94f5fcd8ec
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure LeadTime2_diff_firstconfirmeddeliverydate_order_date = ```
+			
+			AVERAGEX(
+			    SUMMARIZE(
+			        FACT_SALES_DELIVERY,
+			       FACT_SALES_DELIVERY[ORDER_NR],
+			        "LeadTimeOrder", DATEDIFF(MIN(FACT_SALES_DELIVERY[ORDER_DATE]), MAX(FACT_SALES_DELIVERY[FIRST_CONFIRMED_DELIVERY_DATE]), DAY)
+			    ),
+			    [LeadTimeOrder]
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 5cf2d7ea-5d89-4be9-a151-a2081b1c0f81
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure LeadTime3_diff_actualgoodsissuedate_order_date =
+			AVERAGEX(
+			    SUMMARIZE(
+			        FACT_SALES_DELIVERY,
+			       FACT_SALES_DELIVERY[DELIVERY_NO/ITEM_NO],
+			        "LeadTimeOrder", DATEDIFF(MIN(FACT_SALES_DELIVERY[ORDER_DATE]), MAX(FACT_SALES_DELIVERY[Actual Goods Issue Date]), DAY)
+			    ),
+			    [LeadTimeOrder])
+		formatString: 0
+		lineageTag: f550324e-ab0c-4a44-a9e9-00e72da43449
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Time to Order confirmation Test 12' = ```
+			
+			AVERAGEX(
+			    SUMMARIZE(
+			        FACT_SALES_DELIVERY,
+			       FACT_SALES_DELIVERY[DELIVERY_NO/ITEM_NO],
+			        "LeadTimeOrder",NETWORKDAYS(MIN(FACT_SALES_DELIVERY[ORDER_DATE]), MAX(FACT_SALES_DELIVERY[FIRST_CONFIRMED_DELIVERY_DATE]), 1, Holidays)
+			    ),
+			    [LeadTimeOrder]
+			)
+			
+			```
+		lineageTag: db24307e-ff36-4311-b210-7b4d879a75fd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure LeadTime_diff_requested_date_order_date_new = ```
+			
+			 AVERAGEX(DISTINCT(FACT_SALES_DELIVERY[ORDER_NO/ ITEM_NO]), FIRSTNONBLANK(FACT_SALES_DELIVERY[LT1_diff_requested_date_order_date], 0))
+			```
+		formatString: 0
+		lineageTag: 6fbcda2e-b5ed-4b38-92d8-cd564830f780
+
+	measure LeadTime2_diff_firstconfirmeddeliverydate_order_date_new = AVERAGEX(DISTINCT(FACT_SALES_DELIVERY[ORDER_NO/ ITEM_NO]), FIRSTNONBLANK(FACT_SALES_DELIVERY[LT2_diff_firstconfirmeddeliverydate_order_date], 0))
+		formatString: 0
+		lineageTag: 5c82e9b1-988c-40a7-bde8-f6adfb1965d0
+
+	measure 'Inconsistent data req' = CALCULATE(DISTINCTCOUNT('FACT_SALES_DELIVERY'[ORDER_NO/ ITEM_NO]), 'FACT_SALES_DELIVERY'[FLAG_INCONSISTENT_DATA_REQ]="YES")+0
+		formatString: 0
+		lineageTag: 3c8eccd9-8302-40a3-bdf8-0f2133b8b423
+
+	measure 'Number of order items req' = ```
+			CALCULATE(
+			    DISTINCTCOUNT('FACT_SALES_DELIVERY'[ORDER_NO/ ITEM_NO]), 'FACT_SALES_DELIVERY'[FLAG_INCONSISTENT_DATA_REQ]="NO")
+			
+			```
+		formatString: 0
+		lineageTag: a809d416-6818-4637-8c84-f0771caf213a
+
+	measure 'Inconsistent Data req PY' = CALCULATE([Inconsistent data req], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		formatString: 0
+		lineageTag: 57c4c910-5e04-47ff-8596-c3435eea793b
+
+	measure 'Inconsistent data req Vergleich Pfeil' = ```
+			
+			VAR up_arrow = UNICHAR(129137)
+			VAR down_arrow = UNICHAR(129139)
+			VAR thisyear = [Inconsistent data req]
+			VAR LY = [Inconsistent Data req PY]
+			VAR difpercentage = DIVIDE(thisyear, LY) - 1
+			
+			RETURN
+			IF(
+			    thisyear = 0 && LY = 0,
+			    "- | PY 0",
+			    IF(
+			        difpercentage < 0, 
+			        down_arrow & FORMAT(difpercentage, "0%") & " | PY " & LY,
+			        up_arrow & FORMAT(difpercentage, "0%") & " | PY " & LY
+			    )
+			)
+			
+			```
+		lineageTag: 9dc90b7d-7c87-4add-a6f7-ea2f7ad6ef13
+
+	measure 'number order items PY req' = CALCULATE([Number of order items req], SAMEPERIODLASTYEAR('FACT_SALES_DELIVERY'[Actual Goods Issue Date].[Date]))
+		formatString: 0
+		lineageTag: 9a443ebf-8ea0-4107-a729-35717079247b
+
+	measure 'Order items Vergleich Pfeil req' = ```
+			
+			var up_arrow = UNICHAR(129137)
+			var down_arrow = UNICHAR(129139)
+			var thisyear = [Number of order items req]
+			var LY = [number order items PY req]
+			var difpercentage = DIVIDE([Number of order items req],[number order items PY req])-1
+			
+			Return
+			IF(
+			    difpercentage < 0, 
+			    down_arrow & FORMAT(difpercentage, "0%") & " | PY "& [number order items PY req],
+			    up_arrow & FORMAT(difpercentage, "0%")& " | PY "& [number order items PY req]
+			)
+			```
+		lineageTag: 03340051-537b-456e-820c-775847416cdf
+
+	measure OrderInMultipleRanges = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('SortTable first confirmation'[Order Range]),
+			    ALLEXCEPT(FACT_SALES_DELIVERY, FACT_SALES_DELIVERY[ORDER_NO/ ITEM_NO])
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 3feaf18c-b9e0-465d-9515-421c01e3017f
+
+	measure Test213 = SUM(FACT_SALES_DELIVERY[Quantity new])
+		lineageTag: 5a5cf7fc-6046-4a5c-8600-0d7598d2e2af
+
+	measure asdasd = SUM(FACT_SALES_DELIVERY[Quantity new])
+		lineageTag: 452afdcf-f990-4397-bde6-5db26e440383
+
+	column Value
+		formatString: 0
+		lineageTag: 3c546573-c45a-47a0-816d-bdbb5a801883
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = calculated
+		mode: import
+		source = {1}
+
+	annotation PBI_Id = 4b0271ca07a44cecbd03e813f2b936e3
+

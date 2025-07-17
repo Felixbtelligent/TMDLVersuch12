@@ -1,0 +1,127 @@
+expression Explanation =
+		let
+		    Quelle = Excel.Workbook(File.Contents("C:\Users\felix.weber\OneDrive - b.telligent group\Dokumente\Data_Definitions_V1.xlsx"), null, true),
+		    Explanation_Sheet = Quelle{[Item="Explanation",Kind="Sheet"]}[Data],
+		    #"Geänderter Typ" = Table.TransformColumnTypes(Explanation_Sheet,{{"Column1", type text}, {"Column2", type text}})
+		in
+		    #"Geänderter Typ"
+	lineageTag: bfd24e8c-006f-42d7-bf58-4480b2768ae2
+
+	annotation PBI_ResultType = Table
+
+expression 'Report Mapping' =
+		let
+		    Quelle = Excel.Workbook(File.Contents("C:\Users\felix.weber\OneDrive - b.telligent group\Dokumente\Data_Definitions_V1.xlsx"), null, true),
+		    #"Report Mapping _Sheet" = Quelle{[Item="Report Mapping ",Kind="Sheet"]}[Data],
+		    #"Höher gestufte Header" = Table.PromoteHeaders(#"Report Mapping _Sheet", [PromoteAllScalars=true]),
+		    #"Geänderter Typ" = Table.TransformColumnTypes(#"Höher gestufte Header",{{"DRAFT - WIP", type any}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}, {"Column8", type text}, {"Column9", type text}, {"Column10", type text}, {"Column11", type text}, {"Column12", type text}, {"Column13", type text}, {"Column14", type text}, {"Column15", type text}, {"Column16", type text}, {"Column17", type text}, {"Column18", type text}, {"Column19", type text}, {"Column20", type text}, {"Column21", type text}, {"Column22", type text}, {"Column23", type text}, {"Column24", type text}, {"Column25", type text}, {"Column26", type text}, {"Column27", type text}, {"Column28", type text}, {"Column29", type text}, {"Column30", type text}, {"Column31", type text}, {"Column32", type text}, {"Column33", type text}, {"Column34", type text}, {"Column35", type text}, {"Column36", type text}, {"Column37", type text}, {"Column38", type text}, {"Column39", type text}, {"Column40", type text}, {"Column41", type text}, {"Column42", type text}, {"Column43", type text}, {"Column44", type text}, {"Column45", type text}, {"Column46", type text}, {"Column47", type text}, {"Column48", type text}, {"Column49", type text}, {"Column50", type text}, {"Column51", type text}, {"Column52", type text}, {"Column53", type text}, {"Column54", type text}, {"Column55", type text}, {"Column56", type text}, {"Column57", type text}, {"Column58", type text}, {"Column59", type text}, {"Column60", type text}, {"Column61", type text}, {"Column62", type text}, {"Column63", type text}, {"Column64", type text}, {"Column65", type text}, {"Column66", type text}, {"Column67", type text}, {"Column68", type text}, {"Column69", type text}, {"Column70", type text}, {"Column71", type text}, {"Column72", type text}, {"Column73", type text}, {"Column74", type text}, {"Column75", type text}, {"Column76", type text}, {"Column77", type text}, {"Column78", type text}, {"Column79", type text}, {"Column80", type text}, {"Column81", type text}, {"Column82", type text}, {"Column83", type text}, {"Column84", type text}, {"Column85", type text}, {"Column86", type text}, {"Column87", type text}, {"Column88", type text}, {"Column89", type text}, {"Column90", type text}, {"Column91", type text}, {"Column92", type text}, {"Column93", type text}, {"Column94", type text}, {"Column95", type text}, {"Column96", type text}, {"Column97", type text}, {"Column98", type text}, {"Column99", type text}, {"Column100", type text}, {"Column101", type text}, {"Column102", type text}, {"Column103", type text}, {"Column104", type text}, {"Column105", type text}, {"Column106", type text}, {"Column107", type text}, {"Column108", type text}, {"Column109", type text}, {"Column110", type text}, {"Column111", type text}, {"Column112", type text}, {"Column113", type text}, {"Column114", type text}, {"Column115", type text}, {"Column116", type text}, {"Column117", type text}, {"Column118", type text}, {"Column119", type text}, {"Column120", type text}, {"Column121", type text}, {"Column122", type text}, {"Column123", type text}, {"Column124", type text}, {"Column125", type text}, {"Column126", type text}, {"Column127", type text}, {"Column128", type text}, {"Column129", type text}, {"Column130", type text}, {"Column131", type text}, {"Column132", type text}, {"Column133", type text}, {"Column134", type text}, {"Column135", type text}, {"Column136", type text}, {"Column137", type text}, {"Column138", type text}, {"Column139", type text}, {"Column140", type text}, {"Column141", type text}, {"Column142", type text}, {"Column143", type text}, {"Column144", type text}, {"Column145", type text}, {"Column146", type text}, {"Column147", type text}, {"Column148", type text}, {"Column149", type text}, {"Column150", type text}, {"Column151", type text}, {"Column152", type text}, {"Column153", type text}, {"Column154", type text}, {"Column155", type text}, {"Column156", type text}, {"Column157", type text}, {"Column158", type text}, {"Column159", type text}, {"Column160", type text}, {"Column161", type text}, {"Column162", type text}, {"Column163", type text}, {"Column164", type text}, {"Column165", type text}, {"Column166", type text}, {"Column167", type text}, {"Column168", type text}, {"Column169", type text}, {"Column170", type text}, {"Column171", type text}, {"Column172", type text}, {"Column173", type text}, {"Column174", type text}, {"Column175", type text}, {"Column176", type text}, {"Column177", type text}, {"Column178", type text}, {"Column179", type text}, {"Column180", type text}, {"Column181", type text}, {"Column182", type text}, {"Column183", type text}, {"Column184", type text}, {"Column185", type text}, {"Column186", type text}, {"Column187", type text}, {"Column188", type text}, {"Column189", type text}, {"Column190", type text}, {"Column191", type text}, {"Column192", type text}, {"Column193", type text}, {"Column194", type text}, {"Column195", type text}, {"Column196", type text}, {"Column197", type text}, {"Column198", type text}, {"Column199", type text}, {"Column200", type text}, {"Column201", type text}, {"Column202", type text}, {"Column203", type text}, {"Column204", type text}, {"Column205", type text}, {"Column206", type text}, {"Column207", type text}, {"Column208", type text}, {"Column209", type text}, {"Column210", type text}, {"Column211", type text}, {"Column212", type text}, {"Column213", type text}, {"Column214", type text}, {"Column215", type text}, {"Column216", type text}, {"Column217", type text}, {"Column218", type text}, {"Column219", type text}, {"Column220", type text}, {"Column221", type text}, {"Column222", type text}, {"Column223", type text}, {"Column224", type text}, {"Column225", type text}, {"Column226", type text}, {"Column227", type text}, {"Column228", type text}, {"Column229", type text}, {"Column230", type text}, {"Column231", type text}, {"Column232", type text}, {"Column233", type text}, {"Column234", type text}, {"Column235", type text}, {"Column236", type text}, {"Column237", type text}, {"Column238", type text}, {"Column239", type text}, {"Column240", type text}, {"Column241", type text}, {"Column242", type text}, {"Column243", type text}, {"Column244", type text}, {"Column245", type text}, {"Column246", type text}, {"Column247", type text}, {"Column248", type text}, {"Column249", type text}, {"Column250", type text}, {"Column251", type text}, {"Column252", type text}, {"Column253", type text}, {"Column254", type text}, {"Column255", type text}, {"Column256", type text}, {"Column257", type text}, {"Column258", type text}, {"Column259", type text}, {"Column260", type text}, {"Column261", type text}, {"Column262", type text}, {"Column263", type text}, {"Column264", type text}, {"Column265", type text}, {"Column266", type text}, {"Column267", type text}, {"Column268", Int64.Type}, {"Column269", type text}, {"Column270", Int64.Type}, {"Column271", Int64.Type}, {"Column272", Int64.Type}, {"Column273", Int64.Type}, {"Column274", Int64.Type}, {"Column275", Int64.Type}, {"Column276", Int64.Type}, {"Column277", Int64.Type}, {"Column278", Int64.Type}, {"Column279", Int64.Type}, {"Column280", Int64.Type}, {"Column281", Int64.Type}, {"Column282", Int64.Type}, {"Column283", Int64.Type}, {"Column284", Int64.Type}, {"Column285", Int64.Type}, {"Column286", Int64.Type}, {"Column287", Int64.Type}, {"Column288", Int64.Type}, {"Column289", Int64.Type}, {"Column290", Int64.Type}, {"Column291", Int64.Type}, {"Column292", Int64.Type}, {"Column293", Int64.Type}, {"Column294", Int64.Type}, {"Column295", Int64.Type}, {"Column296", Int64.Type}, {"Column297", Int64.Type}, {"Column298", Int64.Type}, {"Column299", Int64.Type}, {"Column300", Int64.Type}, {"Column301", Int64.Type}, {"Column302", Int64.Type}, {"Column303", Int64.Type}, {"Column304", Int64.Type}})
+		in
+		    #"Geänderter Typ"
+	lineageTag: e8a987f2-fec7-465f-8086-c276faab64d0
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Blending_QANDOTD (2)' = ```
+		let
+		    Source = Snowflake.Databases("zr99360.west-europe.azure.snowflakecomputing.com","DBT_WH_M_TEST"),
+		    SF_DWH_TEST_Database = Source{[Name="SF_DWH_TEST",Kind="Database"]}[Data],
+		    DWH_EXTERNAL_MAX_FILE_TS_Schema = SF_DWH_TEST_Database{[Name="DWH_EXTERNAL_MAX_FILE_TS",Kind="Schema"]}[Data],
+		    BCPM_QANDOTD_TEST_View = DWH_EXTERNAL_MAX_FILE_TS_Schema{[Name="BLENDING_QANDOTD",Kind="View"]}[Data],
+		    #"Geänderter Typ" = Table.TransformColumnTypes(BCPM_QANDOTD_TEST_View,{{"VOUCH_DATE", type datetime}, {"BP_ORDER", Int64.Type}, {"ITEM_NO", Int64.Type}}),
+		    #"Hinzugefügte benutzerdefinierte Spalte" = Table.AddColumn(#"Geänderter Typ", "Busi Partner new", each [BUSI_PARTNER]),
+		    #"Der Text vor dem Trennzeichen wurde eingefügt." = Table.AddColumn(#"Hinzugefügte benutzerdefinierte Spalte", "Text vor Trennzeichen", each Text.BeforeDelimiter([Busi Partner new], "-"), type text),
+		    #"Umbenannte Spalten" = Table.RenameColumns(#"Der Text vor dem Trennzeichen wurde eingefügt.",{{"Text vor Trennzeichen", "Busi Partner 2"}, {"DATE_ORDER", "ORDER_DATE"}}),
+		    #"Geänderter Typ9" = Table.TransformColumnTypes(#"Umbenannte Spalten",{{"ORDER_DATE", type datetime}}),
+		    #"Geänderter Typ1" = Table.TransformColumnTypes(#"Geänderter Typ9",{{"Busi Partner 2", type text}}),
+		    #"Hinzugefügte benutzerdefinierte Spalte1" = Table.AddColumn(#"Geänderter Typ1", "PRODUCT_KEY", each [RSRC]&"|"&[ART_NO]),
+		    #"Umbenannte Spalten1" = Table.RenameColumns(#"Hinzugefügte benutzerdefinierte Spalte1",{{"SOURCETABLE", "SOURCE_SYSTEM"}, {"VOUCH_NO", "DELIVERY_NR"}}),
+		    #"Entfernte Spalten" = Table.RemoveColumns(#"Umbenannte Spalten1",{"USER_PICK", "PREV_VOUCH_NO", "PREV_VOUCH_TYPE"}),
+		    #"Umbenannte Spalten2" = Table.RenameColumns(#"Entfernte Spalten",{{"VOUCH_ITEM_NO", "DELIVERY_LINEITEM_NR"}, {"ORD_NO", "ORDER_NR"}, {"ART_NO", "PRODUCT_ID"}, {"RSRC", "CLIENT_CODE"}}),
+		    #"Entfernte Spalten1" = Table.RemoveColumns(#"Umbenannte Spalten2",{"RSRC_ENTITY", "FILE_TS", "METADATA_DATE", "METADATA_YEAR", "METADATA_MONTH", "METADATA_DAY", "METADATA_HOUR", "METADATA_MINUTE", "METADATA_SECOND", "METADATA_MILLISECOND", "FILENAME", "FILE_NAME", "IS_LAST_FILE", "BP_FFORW_2", "SSCC_YN", "VOUCH_NO_CANC", "CONF_ARRIVAL_STATUS", "BP_FFORW_1"}),
+		    #"Umbenannte Spalten3" = Table.RenameColumns(#"Entfernte Spalten1",{{"BUSI_PARTNER", "DEBITOR_NR"}}),
+		    #"Entfernte Spalten2" = Table.RemoveColumns(#"Umbenannte Spalten3",{"DATE_CONF_ARRIVAL", "DISC_1", "PACK_NO", "QTY_PROCESS", "TAX_CD", "Z_PLANT", "DEADLINE", "KIT_CD", "LINKED_ITEM_NO", "PARENT_ORD_NO", "PRICE_NET_NET", "SHORTAGE_PRINT_YN", "QTY_PROPS", "REMARK_IN", "RETAIL_PRICE_UNIT", "TRANS_CD_DELIV", "Z_LOT_NO_EXT", "CASH_DISC_YN", "DELIV_TIME", "ORDER_REL_CD", "POST_MAN_YN", "PRICE_ORDER"}),
+		    #"Umbenannte Spalten4" = Table.RenameColumns(#"Entfernte Spalten2",{{"DATE_DESIRED", "REQUESTED_DELIVERY_DATE"}, {"DEL_TERM", "INCOTERMS_1"}}),
+		    #"Entfernte Spalten3" = Table.RemoveColumns(#"Umbenannte Spalten4",{"RETAIL_PRICE", "TRANSFER_YN", "USER_DEF_4", "Z_QTY_ORDER_LAST", "Z_QTY_ORDER_ACT", "BP_MANUF", "COMM_CD_1", "PRICE_CALC", "QTY_TOTALL", "COMM_CD_2", "PRICE_AME_YN"}),
+		    #"Umbenannte Spalten5" = Table.RenameColumns(#"Entfernte Spalten3",{{"VOUCH_DATE", "ACTUAL_GOODS_ISSUE_DATE_2"}, {"QTY_ORDER", "QTY_ORDERED"}, {"QTY_UNIT_STOCK", "SALES_UNIT_ORDERS"}, {"QTY_DELIV", "QTY_DELIVERED"}}),
+		    #"Entfernte Spalten4" = Table.RemoveColumns(#"Umbenannte Spalten5",{"USER_DEF_1", "USER_DEF_5", "BUSI_ART_NO", "REGISTRATION_NO", "COST_OBJ", "ORDER_CONVY", "ORDER_CONVX", "REBATE_QTY_CD", "COM_2", "COST_CENTER", "COSTING_CD", "DATE_AME", "DATE_CRE", "DATE_L_UPDATE", "DEL_PORT", "DISC_2", "REGISTR_VALID_FROM", "PROC_TYPE", "WH_SCALE", "PRICE_SOURCE_CD", "QTY_FRAME", "PRICE_VAL", "Z_COST_PRJ", "PRINT_YN", "CONFIRMED_BAL_YN", "ERROR_CD", "QTY_UNIT_ORDER"}),
+		    #"Umbenannte Spalten6" = Table.RenameColumns(#"Entfernte Spalten4",{{"Z_REASON_NUMBER", "REASON_CODE"}, {"Z_DATE_DELIVERY_FIRST", "FIRST_CONFIRMED_DELIVERY_DATE"}, {"DATE_DELIV", "ACTUAL_CONFIRMED_DELIVERY_DATE"}, {"QTY_VOUCH", "QTY_DELIV"}}),
+		    #"Geänderter Typ10" = Table.TransformColumnTypes(#"Umbenannte Spalten6",{{"QTY_USED", Int64.Type}, {"QTY_DELIV", Int64.Type}, {"QTY_ORDERED", Int64.Type}, {"QTY_DELIVERED", Int64.Type}, {"QTY_INVOICE", Int64.Type}, {"QTY_OPEN", Int64.Type}, {"QTY_ALLOC", Int64.Type}}),
+		    #"Entfernte Spalten5" = Table.RemoveColumns(#"Geänderter Typ10",{"QTY_UNIT_PRICE", "Z_ORD_NO_SEL", "PRICE_CONVX", "PRICE_UNIT", "QTY_INVOICE", "QTY_OPEN", "TRANS_CD_INV", "TRANS_CD_PROPS", "USER_DEF_2", "Z_PSP", "PRICE_HCURR", "WH_NO", "CLOSE_YN", "COM_1", "DISC_3", "DISC_4", "DISC_5", "RETAIL_QU_PRICE", "DISC_6", "EXTRA_COST_YN", "PSEUDO_YN", "TAX_PERC", "RETAIL_CURR_CD", "USER_DEF_3", "PARENT_ITEM_NO", "TICKET_NO", "ACC_SUFF", "DEADLINE_CD", "PART_DEL_YN", "TRANS_CD", "DISC_YN", "QTY_ALLOC", "Z_DATE_DELIVERY_LAST", "REMARK_EX", "PRICE_CONVY", "DESC_2"}),
+		    #"Hinzugefügte benutzerdefinierte Spalte14" = Table.AddColumn(#"Entfernte Spalten5", "ACTUAL_CONFIRMED_DELIVERY_DATE_New", each if [SOURCE_SYSTEM] = "SWIP" then [ACTUAL_GOODS_ISSUE_DATE_2] else [ACTUAL_CONFIRMED_DELIVERY_DATE]),
+		    #"Umbenannte Spalten10" = Table.RenameColumns(#"Hinzugefügte benutzerdefinierte Spalte14",{{"ACTUAL_CONFIRMED_DELIVERY_DATE", "ACTUAL_CONFIRMED_DELIVERY_DATE_old"}, {"ACTUAL_CONFIRMED_DELIVERY_DATE_New", "ACTUAL_CONFIRMED_DELIVERY_DATE"}}),
+		    #"Hinzugefügte benutzerdefinierte Spalte2" = Table.AddColumn(#"Umbenannte Spalten10", "DELIVERY_NO/ITEM_NO", each [SOURCE_SYSTEM]&"/"&[CLIENT_CODE]&"/"&[DELIVERY_NR]&"/"&Text.From([ITEM_NO])),
+		    #"Hinzugefügte benutzerdefinierte Spalte3" = Table.AddColumn(
+		    #"Hinzugefügte benutzerdefinierte Spalte2",
+		    "ORDER_NO/ ITEM_NO",
+		    each [SOURCE_SYSTEM] & "/" & [CLIENT_CODE] & "/" & [ORDER_NR] & "/" & Text.From([ITEM_NO])
+		),
+		    #"Hinzugefügte benutzerdefinierte Spalte4" = Table.AddColumn(#"Hinzugefügte benutzerdefinierte Spalte3", "SITE", each if [CLIENT_CODE]="BCPM" then "FKB" else if [CLIENT_CODE]="BGRO" then "GRO" else if [CLIENT_CODE]="SWIP" then "SIS" else [CLIENT_CODE]),
+		    #"Hinzugefügte benutzerdefinierte Spalte5" = Table.AddColumn(#"Hinzugefügte benutzerdefinierte Spalte4", "TRANSIT_DAYS", each null),
+		    #"Hinzugefügte benutzerdefinierte Spalte7" = Table.AddColumn(#"Hinzugefügte benutzerdefinierte Spalte5", "FLAG_REQUESTED_DATE", each if [FIRST_CONFIRMED_DELIVERY_DATE]<=[REQUESTED_DELIVERY_DATE] then "Yes" else "No"),
+		    #"Geänderter Typ3" = Table.TransformColumnTypes(#"Hinzugefügte benutzerdefinierte Spalte7",{{"FIRST_CONFIRMED_DELIVERY_DATE", type datetime}}),
+		    #"Hinzugefügte benutzerdefinierte Spalte6" = Table.AddColumn(#"Geänderter Typ3", "FLAG_INCONSITENT_DATA", each if [FIRST_CONFIRMED_DELIVERY_DATE] is null then "YES" else "No"),
+		    #"Hinzugefügte benutzerdefinierte Spalte15" = Table.AddColumn(#"Hinzugefügte benutzerdefinierte Spalte6", "FLAG_INCONSISTENT_DATA_REQ", each if [REQUESTED_DELIVERY_DATE] is null then "YES" else "NO"),
+		    #"Hinzugefügte benutzerdefinierte Spalte8" = Table.AddColumn(#"Hinzugefügte benutzerdefinierte Spalte15", "FLAG_MISSING_TRANSIT_DAYS", each if [TRANSIT_DAYS] is null then "Yes" else "No"),
+		    #"Hinzugefügte benutzerdefinierte Spalte9" = Table.AddColumn(#"Hinzugefügte benutzerdefinierte Spalte8", "QUANTITY_STATUS_IN_PERCENT", each [QTY_DELIVERED]/[QTY_ORDERED]),
+		    #"Hinzugefügte benutzerdefinierte Spalte10" = Table.AddColumn(#"Hinzugefügte benutzerdefinierte Spalte9", "Benutzerdefiniert", each [ACTUAL_GOODS_ISSUE_DATE_2]),
+		    #"Geänderter Typ4" = Table.TransformColumnTypes(#"Hinzugefügte benutzerdefinierte Spalte10",{{"Benutzerdefiniert", type datetime}}),
+		    #"Extrahiertes Jahr" = Table.TransformColumns(#"Geänderter Typ4",{{"Benutzerdefiniert", Date.Year, Int64.Type}}),
+		    #"Hinzugefügte benutzerdefinierte Spalte11" = Table.AddColumn(#"Extrahiertes Jahr", "Benutzerdefiniert.1", each [ACTUAL_GOODS_ISSUE_DATE_2]),
+		    #"Geänderter Typ5" = Table.TransformColumnTypes(#"Hinzugefügte benutzerdefinierte Spalte11",{{"Benutzerdefiniert.1", type datetime}}),
+		    #"Name des Monats extrahiert" = Table.TransformColumns(#"Geänderter Typ5", {{"Benutzerdefiniert.1", each Date.MonthName(_), type text}}),
+		    #"Spalte nach Position teilen" = Table.SplitColumn(#"Name des Monats extrahiert", "Benutzerdefiniert.1", Splitter.SplitTextByRepeatedLengths(3), {"Benutzerdefiniert.1.1", "Benutzerdefiniert.1.2"}),
+		    #"Entfernte Spalten6" = Table.RemoveColumns(#"Spalte nach Position teilen",{"Benutzerdefiniert.1.2"}),
+		    #"Zusammengeführte Spalten" = Table.CombineColumns(Table.TransformColumnTypes(#"Entfernte Spalten6", {{"Benutzerdefiniert", type text}}, "de-DE"),{"Benutzerdefiniert.1.1", "Benutzerdefiniert"},Combiner.CombineTextByDelimiter("/", QuoteStyle.None),"Zusammengeführt"),
+		    #"Umbenannte Spalten7" = Table.RenameColumns(#"Zusammengeführte Spalten",{{"Zusammengeführt", "MONTH_YEAR_ACTUAL_GOODS_ISSUE_DATE"}}),
+		    #"Duplizierte Spalte" = Table.DuplicateColumn(#"Umbenannte Spalten7", "MONTH_YEAR_ACTUAL_GOODS_ISSUE_DATE", "MONTH_YEAR_ACTUAL_GOODS_ISSUE_DATE - Kopie"),
+		    #"Umbenannte Spalten8" = Table.RenameColumns(#"Duplizierte Spalte",{{"MONTH_YEAR_ACTUAL_GOODS_ISSUE_DATE - Kopie", "MONTH_OF_DELIVERY"}}),
+		    #"Geänderter Typ6" = Table.TransformColumnTypes(#"Umbenannte Spalten8",{{"ACTUAL_GOODS_ISSUE_DATE_2", type datetime}}),
+		    #"Geänderter Typ7" = Table.TransformColumnTypes(#"Geänderter Typ6",{{"ACTUAL_GOODS_ISSUE_DATE_2", type date}, {"FIRST_CONFIRMED_DELIVERY_DATE", type datetime}}),
+		    #"Geänderter Typ8" = Table.TransformColumnTypes(#"Geänderter Typ7",{{"FIRST_CONFIRMED_DELIVERY_DATE", type date}, {"REQUESTED_DELIVERY_DATE", type datetime}, {"ACTUAL_CONFIRMED_DELIVERY_DATE", type datetime}, {"QTY_USED", Int64.Type}, {"BP_ORDER", type text}}),
+		    #"Hinzugefügte benutzerdefinierte Spalte12" = Table.AddColumn(#"Geänderter Typ8", "FLAG_DELIVERYLAST12MONTH", each let 
+		    TodayDate = Date.From(DateTime.LocalNow()),  // Heutiges Datum
+		    LastYearDate = Date.AddYears(TodayDate, -1)  // Datum vor 1 Jahr
+		in
+		    if [ACTUAL_CONFIRMED_DELIVERY_DATE] <> null then
+		        if Date.From([ACTUAL_CONFIRMED_DELIVERY_DATE]) >= LastYearDate 
+		           and Date.From([ACTUAL_CONFIRMED_DELIVERY_DATE]) <= TodayDate 
+		        then 1 
+		        else 0
+		    else 0),
+		    #"Hinzugefügte benutzerdefinierte Spalte13" = Table.AddColumn(#"Hinzugefügte benutzerdefinierte Spalte12", "Benutzerdefiniert", each [SOURCE_SYSTEM]&"|"&[BP_ORDER]),
+		    #"Geänderter Typ2" = Table.TransformColumnTypes(#"Hinzugefügte benutzerdefinierte Spalte13",{{"Benutzerdefiniert", type text}}),
+		    #"Umbenannte Spalten9" = Table.RenameColumns(#"Geänderter Typ2",{{"Benutzerdefiniert", "CUSTOMER_KEY"}, {"QTY_DELIVERED", "QTY_DELIV_old"}, {"QTY_DELIV", "QTY_DELIVERED"}, {"ACTUAL_GOODS_ISSUE_DATE_2", "ACTUAL_GOODS_ISSUE_DATE_SOURCE"}})
+		in
+		    #"Umbenannte Spalten9"
+		```
+	lineageTag: 8d1f2c3e-6a9b-4935-8a3d-5b411e7feb96
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Fehler in FACT_SALES_DELIVERY' =
+		let
+		Quelle = FACT_SALES_DELIVERY,
+		  #"Typenkonflikte gefunden." = let
+		    tableWithOnlyPrimitiveTypes = Table.SelectColumns(Quelle, Table.ColumnsOfType(Quelle, {type nullable number, type nullable text, type nullable logical, type nullable date, type nullable datetime, type nullable datetimezone, type nullable time, type nullable duration})),
+		    recordTypeFields = Type.RecordFields(Type.TableRow(Value.Type(tableWithOnlyPrimitiveTypes))),
+		    fieldNames = Record.FieldNames(recordTypeFields),
+		    fieldTypes = List.Transform(Record.ToList(recordTypeFields), each [Type]),
+		    pairs = List.Transform(List.Positions(fieldNames), (i) => {fieldNames{i}, (v) => if v = null or Value.Is(v, fieldTypes{i}) then v else error [Message = "Der Werttyp stimmt nicht mit dem Typ der Spalte überein.", Detail = v], fieldTypes{i}})
+		in
+		    Table.TransformColumns(Quelle, pairs),
+		  #"Hinzugefügter Index" = Table.AddIndexColumn(#"Typenkonflikte gefunden.", "Zeilennummer" ,1),
+		  #"Beibehaltene Fehler" = Table.SelectRowsWithErrors(#"Hinzugefügter Index", {"SOURCE_SYSTEM", "CLIENT_CODE", "DELIVERY_NR", "DELIVERY_LINEITEM_NR", "QTY_DELIVERED", "PRODUCT_ID", "NET_VALUE", "ORDER_NR", "ORDER_LINEITEM_NR", "CREATED_ON", "CREATED_BY", "DELIVERY_NO/ITEM_NO", "ORDER_NO/ ITEM_NO", "DEBITOR_NR", "SOLDTO_DEBITOR_NR", "DELIVERY_TYPE", "ACTUAL_CONFIRMED_DELIVERY_DATE", "ACTUAL_GOODS_ISSUE_DATE_SOURCE", "ACTUAL_GOODS_ISSUE_DATE_TRANSIT_DAYS", "CALCULATED_ACTUAL_GOODS_ISSUE_DATE", "CALCULATED_WORKDAY_ACTUAL_GOODS_ISSUE_DATE", "ACTUAL_GOODS_ISSUE_DATE_2", "MIN_ACTUAL_GOODS_ISSUE_DATE", "SALES_ORGANIZATION", "PLANNED_GOODS_ISSUE_DATE", "CURRENCY_CODE", "INCOTERMS_1", "INCOTERMS_2", "ORDER_ITEM", "SALES_UNIT_ORDERS", "QTY_ORDERED", "FIRST_CONFIRMED_DELIVERY_DATE", "SITE", "REQUESTED_DELIVERY_DATE", "SALES_OFFICE", "SALES_GROUP", "ORDER_CURRENCY", "CUSTOMER_NO", "ORDER_TYPE", "ORDER_DATE", "TRANSIT_DAYS", "REASON_CODE", "FLAG_INCONSITENT_DATA", "FLAG_REQUESTED_DATE_old", "FLAG_MISSING_TRANSIT_DAYS", "QUANTITY_STATUS_90", "QUANTITY_STATUS_80", "QUANTITY_STATUS_75", "QUANTITY_STATUS_70", "QUANTITY_STATUS_60", "QUANTITY_STATUS_IN_PERCENT", "CONTRACTUAL_LT", "FLAG_DELIVERYLAST12MONTH", "PRODUCT_KEY", "CUSTOMER_KEY", "MONTH_YEAR_ACTUAL_GOODS_ISSUE_DATE", "FLAG_ALREADY_DELIVERED_old", "FLAG_REQUESTED_DATE", "ITEM_NO", "QTY_USED", "VOUCH_TYPE", "VOUCH_STATUS", "ITEM_TYPE", "Z_QTY_ORDER_FIRST", "DEL_METHOD", "DATE_L_DELIV", "QTY_DELIV_old", "DESC_1", "CURR_CD", "BP_ORDER", "Busi Partner new", "Busi Partner 2", "MONTH_OF_DELIVERY", "SITECODE", "Quantity new", "DIM_PLANT"}),
+		  #"Neu angeordnete Spalten" = Table.ReorderColumns(#"Beibehaltene Fehler", {"Zeilennummer", "SOURCE_SYSTEM", "CLIENT_CODE", "DELIVERY_NR", "DELIVERY_LINEITEM_NR", "QTY_DELIVERED", "PRODUCT_ID", "NET_VALUE", "ORDER_NR", "ORDER_LINEITEM_NR", "CREATED_ON", "CREATED_BY", "DELIVERY_NO/ITEM_NO", "ORDER_NO/ ITEM_NO", "DEBITOR_NR", "SOLDTO_DEBITOR_NR", "DELIVERY_TYPE", "ACTUAL_CONFIRMED_DELIVERY_DATE", "ACTUAL_GOODS_ISSUE_DATE_SOURCE", "ACTUAL_GOODS_ISSUE_DATE_TRANSIT_DAYS", "CALCULATED_ACTUAL_GOODS_ISSUE_DATE", "CALCULATED_WORKDAY_ACTUAL_GOODS_ISSUE_DATE", "ACTUAL_GOODS_ISSUE_DATE_2", "MIN_ACTUAL_GOODS_ISSUE_DATE", "SALES_ORGANIZATION", "PLANNED_GOODS_ISSUE_DATE", "CURRENCY_CODE", "INCOTERMS_1", "INCOTERMS_2", "ORDER_ITEM", "SALES_UNIT_ORDERS", "QTY_ORDERED", "FIRST_CONFIRMED_DELIVERY_DATE", "SITE", "REQUESTED_DELIVERY_DATE", "SALES_OFFICE", "SALES_GROUP", "ORDER_CURRENCY", "CUSTOMER_NO", "ORDER_TYPE", "ORDER_DATE", "TRANSIT_DAYS", "REASON_CODE", "FLAG_INCONSITENT_DATA", "FLAG_REQUESTED_DATE_old", "FLAG_MISSING_TRANSIT_DAYS", "QUANTITY_STATUS_90", "QUANTITY_STATUS_80", "QUANTITY_STATUS_75", "QUANTITY_STATUS_70", "QUANTITY_STATUS_60", "QUANTITY_STATUS_IN_PERCENT", "CONTRACTUAL_LT", "FLAG_DELIVERYLAST12MONTH", "PRODUCT_KEY", "CUSTOMER_KEY", "MONTH_YEAR_ACTUAL_GOODS_ISSUE_DATE", "FLAG_ALREADY_DELIVERED_old", "FLAG_REQUESTED_DATE", "ITEM_NO", "QTY_USED", "VOUCH_TYPE", "VOUCH_STATUS", "ITEM_TYPE", "Z_QTY_ORDER_FIRST", "DEL_METHOD", "DATE_L_DELIV", "QTY_DELIV_old", "DESC_1", "CURR_CD", "BP_ORDER", "Busi Partner new", "Busi Partner 2", "MONTH_OF_DELIVERY", "SITECODE", "Quantity new", "DIM_PLANT"})
+		in
+		  #"Neu angeordnete Spalten"
+	lineageTag: 239351a4-92c0-44ae-93ed-599db264bc87
+	queryGroup: 'Abfragefehler: 23 04 2025 16:31:53'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

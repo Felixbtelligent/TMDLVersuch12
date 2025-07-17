@@ -1,0 +1,70 @@
+createOrReplace
+
+	table CalendarTable
+		lineageTag: 5d7341a1-192e-411d-a149-6370a09803a4
+
+		column Date
+			lineageTag: d41bd94d-f5ef-4b95-9669-ebabf57977e1
+			summarizeBy: none
+			isNameInferred
+			sourceColumn: [Date]
+
+			variation Variation
+				isDefault
+				relationship: 8effa650-96f8-4939-9508-6cd59d79a361
+				defaultHierarchy: LocalDateTable_f5c972d9-4838-4ec1-94be-ff5e738c5a00.Datumshierarchie
+
+			annotation SummarizationSetBy = Automatic
+
+		column Year
+			lineageTag: 3942faa3-fb84-43e1-8c28-8f02d3da2853
+			summarizeBy: sum
+			isNameInferred
+			sourceColumn: [Year]
+
+			annotation SummarizationSetBy = Automatic
+
+		column Month
+			lineageTag: 4c49bc6c-73b2-4ff4-ab63-07b3dc7f49b4
+			summarizeBy: none
+			isNameInferred
+			sourceColumn: [Month]
+
+			annotation SummarizationSetBy = Automatic
+
+		column Weekday
+			lineageTag: 35351137-8635-4c75-b299-02fd7035417a
+			summarizeBy: sum
+			isNameInferred
+			sourceColumn: [Weekday]
+
+			annotation SummarizationSetBy = Automatic
+
+		column IsWorkday
+			lineageTag: e4b107e1-835f-47c5-9bc9-2c249afd8ca0
+			summarizeBy: none
+			isNameInferred
+			sourceColumn: [IsWorkday]
+
+			annotation SummarizationSetBy = Automatic
+
+		partition CalendarTable = calculated
+			mode: directQuery
+			source = ```
+					
+					ADDCOLUMNS (
+					    CALENDAR (DATE(2020,1,1), DATE(2030,12,31)),
+					    "Year", YEAR([Date]),
+					    "Month", FORMAT([Date], "MMMM"),
+					    "Weekday", WEEKDAY([Date], 2),
+					    "IsWorkday", 
+					        VAR currentDate = [Date]
+					        RETURN
+					            WEEKDAY(currentDate, 2) <= 5 && 
+					            NOT currentDate IN VALUES(HolidayTable[HolidayDate])
+					)
+					
+					```
+
+		annotation PBI_Id = e5b7b8c6b1ff4413aa744bd321f7e19f
+

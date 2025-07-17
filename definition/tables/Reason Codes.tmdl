@@ -1,0 +1,165 @@
+table 'Reason Codes'
+	lineageTag: facafa95-5232-44e6-9772-6e957ed1b084
+
+	column REASON_CODE_ID
+		dataType: string
+		lineageTag: 079f06d4-575f-4d92-a7e2-5bd34d181deb
+		summarizeBy: none
+		sourceColumn: REASON_CODE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reason - Causing Group'
+		dataType: string
+		lineageTag: 1ac8bf69-9159-49ca-89c2-9f16b30c15e6
+		summarizeBy: none
+		sourceColumn: Reason - Causing Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reason Code Name'
+		dataType: string
+		lineageTag: ad21cf41-a772-4cd5-b2f1-1a89c7f85f10
+		summarizeBy: none
+		sourceColumn: Reason Code Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reason Code'
+		dataType: string
+		lineageTag: 3388b3b7-9a4e-44a3-959f-11206c5e2af8
+		summarizeBy: none
+		sourceColumn: Reason Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column RSRC
+		dataType: string
+		lineageTag: 93d1566f-732b-4bf3-921d-7dccac4d672d
+		summarizeBy: none
+		sourceColumn: RSRC
+
+		annotation SummarizationSetBy = Automatic
+
+	column RSRC_ENTITY
+		dataType: string
+		lineageTag: fbd17bd3-b502-4a57-b37a-521390125b57
+		summarizeBy: none
+		sourceColumn: RSRC_ENTITY
+
+		annotation SummarizationSetBy = Automatic
+
+	column FILE_TS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1b374b7a-8abb-4d36-899b-afc844fbde33
+		summarizeBy: none
+		sourceColumn: FILE_TS
+
+		variation Variation
+			isDefault
+			relationship: 6161f794-0b37-470a-ac73-77981a768812
+			defaultHierarchy: LocalDateTable_cbaa8fe6-8739-4a05-8e3d-751401c72aa3.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+	column METADATA_DATE
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 254835d9-3137-4a3d-a779-88dd1e8c7fb9
+		summarizeBy: none
+		sourceColumn: METADATA_DATE
+
+		variation Variation
+			isDefault
+			relationship: 2eb53bf8-635d-42bb-ae06-ad1c89ebf762
+			defaultHierarchy: LocalDateTable_5db2d1c9-1310-4ee9-b21e-7f988f09252a.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column METADATA_YEAR
+		dataType: string
+		lineageTag: 0a2b1df0-a121-4da3-bcdd-216a496fedba
+		summarizeBy: none
+		sourceColumn: METADATA_YEAR
+
+		annotation SummarizationSetBy = Automatic
+
+	column METADATA_MONTH
+		dataType: string
+		lineageTag: f3dfbdd4-84a0-4619-a4e1-abfe71557fd2
+		summarizeBy: none
+		sourceColumn: METADATA_MONTH
+
+		annotation SummarizationSetBy = Automatic
+
+	column METADATA_DAY
+		dataType: string
+		lineageTag: b582d6d4-cc35-46a7-ab78-fac5cc915af3
+		summarizeBy: none
+		sourceColumn: METADATA_DAY
+
+		annotation SummarizationSetBy = Automatic
+
+	column METADATA_HOUR
+		dataType: string
+		lineageTag: b124351f-90e0-47df-be28-a6c7a3de6d9a
+		summarizeBy: none
+		sourceColumn: METADATA_HOUR
+
+		annotation SummarizationSetBy = Automatic
+
+	column METADATA_MINUTE
+		dataType: double
+		lineageTag: 4d3f6e61-fe8e-452b-b299-2a2b1e4e1f39
+		summarizeBy: sum
+		sourceColumn: METADATA_MINUTE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column METADATA_SECOND
+		dataType: double
+		lineageTag: 73d6162e-f50b-4194-be9b-ac59069b1653
+		summarizeBy: sum
+		sourceColumn: METADATA_SECOND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column METADATA_MILLISECOND
+		dataType: string
+		lineageTag: 30b5a5b5-d678-4f1c-b6b9-2b1cfb328476
+		summarizeBy: none
+		sourceColumn: METADATA_MILLISECOND
+
+		annotation SummarizationSetBy = Automatic
+
+	column FILENAME
+		dataType: string
+		lineageTag: 35021048-33fa-414f-8a6a-31e7cce0d4d6
+		summarizeBy: none
+		sourceColumn: FILENAME
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Reason Codes' = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("zr99360.west-europe.azure.snowflakecomputing.com","DBT_WH_M_TEST"),
+				    SF_DWH_TEST_Database = Source{[Name="SF_DWH_TEST",Kind="Database"]}[Data],
+				    DWH_EXTERNAL_Schema = SF_DWH_TEST_Database{[Name="DWH_EXTERNAL",Kind="Schema"]}[Data],
+				    EXT_SPO_CALENDAR_PUBLIC_HOLIDAYS_TO_2030_DATA_View = DWH_EXTERNAL_Schema{[Name="EXT_SPO_REASON_CODES_DATA",Kind="View"]}[Data],
+				    #"Umbenannte Spalten" = Table.RenameColumns(EXT_SPO_CALENDAR_PUBLIC_HOLIDAYS_TO_2030_DATA_View,{{"REASON_CAUSING_GROUP", "Reason - Causing Group"}, {"REASON_CODE_NAME", "Reason Code Name"}, {"REASON_CODE", "Reason Code"}})
+				in
+				    #"Umbenannte Spalten"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

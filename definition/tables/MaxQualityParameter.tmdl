@@ -1,0 +1,18 @@
+table MaxQualityParameter
+	lineageTag: 96892cc7-bca8-4d4b-ac90-a53d90f61d3f
+
+	column Value
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 2ee752c0-13da-4009-8927-ffe9059f2d9d
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MaxQualityParameter = calculated
+		mode: import
+		source = GENERATESERIES(0, 1.01, 0.01)
+
+	annotation PBI_Id = 6706219f49db4425805706e315fb19dd
+

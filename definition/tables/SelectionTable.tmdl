@@ -1,0 +1,75 @@
+table SelectionTable
+	lineageTag: 4083c421-3331-4536-ab79-934721f6591e
+
+	column 'Selection Name'
+		lineageTag: 94b35169-893b-4d90-9f32-1660d882c336
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Selection Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sort Order'
+		formatString: 0
+		lineageTag: d14f298c-640f-45a6-85e2-fddf12c580dd
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Sort Order]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SelectionTable = calculated
+		mode: import
+		source = ```
+				DATATABLE(
+				    "Selection Name", STRING, 
+				    "Sort Order", INTEGER,
+				    {
+				        {"Site (Legal Entity)", 1},
+				        {"Sitecode", 2},
+				        {"LT1", 3},
+				        {"LT2", 4},
+				        {"LT3", 5},
+				        {"Order Date", 6},
+				        {"Month of Delivery", 7},
+				        {"Source System", 8},
+				        {"Order No", 9},
+				        {"Order No/Delivery No", 10},
+				        {"Order type", 11},
+				        {"Delivery Number", 12},
+				        {"Delivery No/Item No", 13},
+				        {"Material No", 14},
+				        {"Material Name", 15},
+				        {"First confirmed delivery date", 16},
+				        {"Requested delivery date", 17},
+				        {"Actual confirmed delivery date", 18},
+				        {"Actual goods issue date", 19},
+				        {"Quantity ordered", 20},
+				        {"Quantity delivered", 21},
+				        {"OTD days to 1st conf. date", 22},
+				        {"OTD days to req. date", 23},
+				        {"Quantity status in %", 24},
+				        {"Incoterms1", 25},
+				        {"Transit days", 26},
+				        {"Reason code ID", 27},
+				        {"Delivery status 1st", 28},
+				        {"Delivery status req", 29},
+				        {"Leading API", 30},
+				        {"Customer Group", 31},
+				        {"Customer Name", 32},
+				        {"Order NO / Item No", 33},
+				        {"Dosage Form", 34},
+				        {"Dosage Form Retail", 35},
+				        {"Sales Type", 36},
+				        {"Special Substance Class", 37},
+				        {"Sterile", 38},
+				        {"Order Item", 39},
+				        {"Inconsistent Data", 40},
+				        {"Flag Already Delivered", 41}
+				    }
+				)
+				
+				```
+
+	annotation PBI_Id = 63c729d9e54143148036146768c71d64
+

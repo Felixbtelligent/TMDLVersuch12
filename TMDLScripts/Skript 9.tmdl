@@ -1,0 +1,383 @@
+createOrReplace
+
+	ref table _Measures
+
+		measure 'Delayed Order items req Vergleich Pfeil' = ```
+				
+				var up_arrow = UNICHAR(129137)
+				var down_arrow = UNICHAR(129139)
+				var thisyear = [Number of delayed order items days requested]
+				var LY = [Delayed Order items req PY]
+				var difpercentage = DIVIDE([Number of delayed order items days requested],[Delayed Order items req PY])-1
+				
+				Return
+				IF(
+				    difpercentage < 0, 
+				    down_arrow & FORMAT(difpercentage, "0.00%") & " | PY "& [Delayed Order items req PY],
+				    up_arrow & FORMAT(difpercentage, "0.00%")& " | PY "& [Delayed Order items req PY]
+				)
+				```
+			lineageTag: 73f724b6-e509-46dc-937c-0b7f271825f2
+
+		measure 'Delayed Order items Vergleich Pfeil' = ```
+				
+				var up_arrow = UNICHAR(129137)
+				var down_arrow = UNICHAR(129139)
+				var thisyear = [Number of delayed order items]
+				var LY = [Delayed Order items PY]
+				var difpercentage = DIVIDE([Number of delayed order items],[Delayed Order items PY])-1
+				
+				Return
+				IF(
+				    difpercentage < 0, 
+				    down_arrow & FORMAT(difpercentage, "0.00%") & " | PY "& [Delayed Order items PY],
+				    up_arrow & FORMAT(difpercentage, "0.00%")& " | PY "& [Delayed Order items PY]
+				)
+				```
+			lineageTag: 1bbaaddd-f1b2-4362-9a79-ee9611475119
+
+		measure 'Delivery items Vergleich Pfeil' = ```
+				
+				var up_arrow = UNICHAR(129137)
+				var down_arrow = UNICHAR(129139)
+				var thisyear = [Number of Delivery items]
+				var LY = [Delivery items PY]
+				var difpercentage = DIVIDE([Number of Delivery items],[Delivery items PY])-1
+				
+				Return
+				IF(
+				    difpercentage < 0, 
+				    down_arrow & FORMAT(difpercentage, "0.00%") & " | PY "& [Delivery items PY],
+				    up_arrow & FORMAT(difpercentage, "0.00%")& " | PY "& [Delivery items PY]
+				)
+				```
+			lineageTag: 464765e4-2f4f-4c04-8689-10276f4fbe68
+
+		measure 'Inconsistent data req Vergleich Pfeil' = ```
+				
+				VAR up_arrow = UNICHAR(129137)
+				VAR down_arrow = UNICHAR(129139)
+				VAR thisyear = [Inconsistent data req]
+				VAR LY = [Inconsistent Data req PY]
+				VAR difpercentage = DIVIDE(thisyear, LY) - 1
+				
+				RETURN
+				IF(
+				    thisyear = 0 && LY = 0,
+				    "- | PY 0",
+				    IF(
+				        difpercentage < 0, 
+				        down_arrow & FORMAT(difpercentage, "0.00%") & " | PY " & LY,
+				        up_arrow & FORMAT(difpercentage, "0.00%") & " | PY " & LY
+				    )
+				)
+				
+				```
+			lineageTag: 9dc90b7d-7c87-4add-a6f7-ea2f7ad6ef13
+
+		measure 'Inconsistent data Vergleich Pfeil' = ```
+				
+				var up_arrow = UNICHAR(129137)
+				var down_arrow = UNICHAR(129139)
+				var thisyear = [Inconsistent data]
+				var LY = [Inconsistent Data PY]
+				var difpercentage = DIVIDE([Inconsistent data],[Inconsistent Data PY])-1
+				
+				Return
+				IF(
+				    difpercentage < 0, 
+				    down_arrow & FORMAT(difpercentage, "0.00%") & " | PY "& [Inconsistent Data PY],
+				    up_arrow & FORMAT(difpercentage, "0.00%")& " | PY "& [Inconsistent Data PY]
+				)
+				```
+			lineageTag: 89bed96c-f391-4060-a13d-44e6c0f30581
+
+		measure 'On Time Order items req Vergleich Pfeil' = ```
+				
+				var up_arrow = UNICHAR(129137)
+				var down_arrow = UNICHAR(129139)
+				var thisyear = [on time Order items req]
+				var LY = [On time Order items req PY]
+				var difpercentage = DIVIDE([on time Order items req],[On time Order items req PY])-1
+				
+				Return
+				IF(
+				    difpercentage < 0, 
+				    down_arrow & FORMAT(difpercentage, "0.00%") & " | PY "& [On time Order items req PY],
+				    up_arrow & FORMAT(difpercentage, "0.00%")& " | PY "& [On time Order items req PY]
+				)
+				```
+			lineageTag: b0806478-e409-4280-b65a-16de2f86669c
+
+		measure 'On Time Order items Vergleich Pfeil' = ```
+				
+				var up_arrow = UNICHAR(129137)
+				var down_arrow = UNICHAR(129139)
+				var thisyear = [on time Order items]
+				var LY = [On time Order items PY]
+				var difpercentage = DIVIDE([on time Order items],[On time Order items PY])-1
+				
+				Return
+				IF(
+				    difpercentage < 0, 
+				    down_arrow & FORMAT(difpercentage, "0.00%") & " | PY "& [On time Order items PY],
+				    up_arrow & FORMAT(difpercentage, "0.00%")& " | PY "& [On time Order items PY]
+				)
+				```
+			lineageTag: f08871c4-37fe-45fb-baaf-97640345108d
+
+		measure 'Order items Reason Code CU Vergleich Pfeil' = ```
+				
+				var up_arrow = UNICHAR(129137)
+				var down_arrow = UNICHAR(129139)
+				var thisyear = [Order Items - Reason Code Cu]
+				var LY = [Order items Reason Code CU PY]
+				var difpercentage = DIVIDE([Order Items - Reason Code Cu],[Order items Reason Code CU PY])-1
+				
+				Return
+				IF(
+				    difpercentage < 0, 
+				    down_arrow & FORMAT(difpercentage, "0.00%") & " | PY "& [Order items Reason Code CU PY],
+				    up_arrow & FORMAT(difpercentage, "0.00%")& " | PY "& [Order items Reason Code CU PY]
+				)
+				```
+			lineageTag: a6d86787-731e-4fd5-a42e-45ac68c8e8aa
+
+		measure 'order items Vergleich Pfeil' = ```
+				
+				var up_arrow = UNICHAR(129137)
+				var down_arrow = UNICHAR(129139)
+				var thisyear = [Number of order items]
+				var LY = [number order items PY]
+				var difpercentage = DIVIDE([Number of order items],[number order items PY])-1
+				
+				Return
+				IF(
+				    difpercentage < 0, 
+				    down_arrow & FORMAT(difpercentage, "0.00%") & " | LY "& [number order items PY],
+				    up_arrow & FORMAT(difpercentage, "0.00%")& " | LY "& [number order items PY]
+				)
+				```
+			lineageTag: d354ba1d-d875-4392-b4a7-c1520cfa72b2
+
+		measure 'Order items Vergleich Pfeil req' = ```
+				
+				var up_arrow = UNICHAR(129137)
+				var down_arrow = UNICHAR(129139)
+				var thisyear = [Number of order items req]
+				var LY = [number order items PY req]
+				var difpercentage = DIVIDE([Number of order items req],[number order items PY req])-1
+				
+				Return
+				IF(
+				    difpercentage < 0, 
+				    down_arrow & FORMAT(difpercentage, "0.00%") & " | PY "& [number order items PY req],
+				    up_arrow & FORMAT(difpercentage, "0.00%")& " | PY "& [number order items PY req]
+				)
+				```
+			lineageTag: 03340051-537b-456e-820c-775847416cdf
+
+		measure 'Order items Vergleich Pfeil test' = ```
+				
+				var up_arrow = UNICHAR(129137)
+				var down_arrow = UNICHAR(129139)
+				var thisyear = [Number of order items]
+				var LY = [Order items PY]
+				var difpercentage = DIVIDE([Number of order items],[Order items PY])-1
+				
+				Return
+				IF(
+				    difpercentage < 0, 
+				    down_arrow & FORMAT(difpercentage, "0.00%") & " | PY "& [Order items PY],
+				    up_arrow & FORMAT(difpercentage, "0.00%")& " | PY "& [Order items PY]
+				)
+				```
+			lineageTag: cf2c1f38-b718-4f02-85a4-91ae2a99b1a5
+
+		measure 'OTD % req Vergleich Pfeil' = ```
+				
+				var up_arrow = UNICHAR(129137)
+				var down_arrow = UNICHAR(129139)
+				var thisyear = [OTD %  requested date]
+				var LY = [OTD % req PY]
+				var difpercentage = DIVIDE([OTD %  requested date],[OTD % req PY])-1
+				
+				Return
+				IF(
+				    difpercentage < 0, 
+				    down_arrow & FORMAT(difpercentage, "0.00%") & " | PY "& FORMAT([OTD % req PY], "0.00%"),
+				    up_arrow & FORMAT(difpercentage, "0.00%")& " | PY "& FORMAT([OTD % req PY], "0.00%")
+				)
+				```
+			lineageTag: 29941c16-2940-43e1-b4bb-74cb9d0095e4
+
+		measure 'OTD % Vergleich Pfeil' = ```
+				
+				var up_arrow = UNICHAR(129137)
+				var down_arrow = UNICHAR(129139)
+				var thisyear = [OTD %]
+				var LY = [OTD % PY]
+				var difpercentage = DIVIDE([OTD %],[OTD % PY])-1
+				
+				Return
+				IF(
+				    difpercentage < 0, 
+				    down_arrow & FORMAT(difpercentage, "0.00%") & " | PY "& FORMAT([OTD % PY], "0.00%"),
+				    up_arrow & FORMAT(difpercentage, "0.00%")& " | PY "& FORMAT([OTD % PY], "0.00%")
+				)
+				```
+			lineageTag: 01931793-6f8a-454a-9b40-bdf5f42298ce
+
+		measure 'OTIF % req Vergleich Pfeil' = ```
+				
+				var up_arrow = UNICHAR(129137)
+				var down_arrow = UNICHAR(129139)
+				var thisyear = [OTIF % req]
+				var LY = [OTIF % req PY]
+				var difpercentage = DIVIDE([OTIF % req],[OTIF % req PY])-1
+				
+				Return
+				IF(
+				    difpercentage < 0, 
+				    down_arrow & FORMAT(difpercentage, "0.00%") & " | PY "& FORMAT([OTIF % req PY], "0.00%"),
+				    up_arrow & FORMAT(difpercentage, "0.00%")& " | PY "& FORMAT([OTIF % req PY], "0.00%")
+				)
+				```
+			lineageTag: 6d9bd9d7-2243-48f2-8fc4-5c5b20687692
+
+		measure 'OTIF % Vergleich Pfeil' = ```
+				
+				var up_arrow = UNICHAR(129137)
+				var down_arrow = UNICHAR(129139)
+				var thisyear = [OTIF %]
+				var LY = [OTIF % PY]
+				var difpercentage = DIVIDE([OTIF %],[OTIF % PY])-1
+				
+				Return
+				IF(
+				    difpercentage < 0, 
+				    down_arrow & FORMAT(difpercentage, "0.00%") & " | PY "& FORMAT([OTIF % PY], "0.00%"),
+				    up_arrow & FORMAT(difpercentage, "0.00%")& " | PY "& FORMAT([OTIF % PY], "0.00%")
+				)
+				```
+			lineageTag: 83c3a8d7-cbfb-40c4-a53e-7e506d9b5aad
+
+		measure 'OTIF abs req Vergleich Pfeil' = ```
+				
+				var up_arrow = UNICHAR(129137)
+				var down_arrow = UNICHAR(129139)
+				var thisyear = [OTIF abs req]
+				var LY = [OTIF abs req PY]
+				var difpercentage = DIVIDE([OTIF abs req],[OTIF abs req PY])-1
+				
+				Return
+				IF(
+				    difpercentage < 0, 
+				    down_arrow & FORMAT(difpercentage, "0.00%") & " | PY "& [OTIF abs req PY],
+				    up_arrow & FORMAT(difpercentage, "0.00%")& " | PY "& [OTIF abs req PY]
+				)
+				```
+			lineageTag: e681d944-549e-436f-b78e-fb7d72d53df6
+
+		measure 'OTIF abs Vergleich Pfeil' = ```
+				
+				var up_arrow = UNICHAR(129137)
+				var down_arrow = UNICHAR(129139)
+				var thisyear = [OTIF abs]
+				var LY = [OTIF abs PY]
+				var difpercentage = DIVIDE([OTIF abs],[OTIF abs PY])-1
+				
+				Return
+				IF(
+				    difpercentage < 0, 
+				    down_arrow & FORMAT(difpercentage, "0.00%") & " | PY "& [OTIF abs PY],
+				    up_arrow & FORMAT(difpercentage, "0.00%")& " | PY "& [OTIF abs PY]
+				)
+				```
+			lineageTag: 3b17787a-c8a4-4fdc-bd57-b70436fcda54
+
+		measure 'OTIF Failures % req Vergleich Pfeil' = ```
+				
+				var up_arrow = UNICHAR(129137)
+				var down_arrow = UNICHAR(129139)
+				var thisyear = [OTIF Failures req %]
+				var LY = [OTIF Failures % req PY]
+				var difpercentage = DIVIDE([OTIF Failures req %],[OTIF Failures % req PY])-1
+				
+				Return
+				IF(
+				    difpercentage < 0, 
+				    down_arrow & FORMAT(difpercentage, "0.00%") & " | PY "& FORMAT([OTIF Failures % req PY], "0.00%"),
+				    up_arrow & FORMAT(difpercentage, "0.00%")& " | PY "& FORMAT([OTIF Failures % req PY], "0.00%")
+				)
+				```
+			lineageTag: 68ea4a3d-2149-4065-a871-891f309f8836
+
+		measure 'OTIF Failures % Vergleich Pfeil' = ```
+				
+				var up_arrow = UNICHAR(129137)
+				var down_arrow = UNICHAR(129139)
+				var thisyear = [OTIF Failures %]
+				var LY = [OTIF Failures % PY]
+				var difpercentage = DIVIDE([OTIF Failures %],[OTIF Failures % PY])-1
+				
+				Return
+				IF(
+				    difpercentage < 0, 
+				    down_arrow & FORMAT(difpercentage, "0.00%") & " | PY "& FORMAT([OTIF Failures % PY], "0.00%"),
+				    up_arrow & FORMAT(difpercentage, "0.00%")& " | PY "& FORMAT([OTIF Failures % PY], "0.00%")
+				)
+				```
+			lineageTag: 84d798fd-b68c-4b14-bffd-e5d1d4f89b7f
+
+		measure 'OTIF Failures req Vergleich Pfeil' = ```
+				
+				var up_arrow = UNICHAR(129137)
+				var down_arrow = UNICHAR(129139)
+				var thisyear = [OTIF Failures req]
+				var LY = [OTIF Failures req PY]
+				var difpercentage = DIVIDE([OTIF Failures req],[OTIF Failures req PY])-1
+				
+				Return
+				IF(
+				    difpercentage < 0, 
+				    down_arrow & FORMAT(difpercentage, "0.00%") & " | PY "& [OTIF Failures req PY],
+				    up_arrow & FORMAT(difpercentage, "0.00%")& " | PY "& [OTIF Failures req PY]
+				)
+				```
+			lineageTag: 56c9b281-e6f8-43c1-99de-9e79e0fef4cb
+
+		measure 'OTIF Failures Vergleich Pfeil' = ```
+				
+				var up_arrow = UNICHAR(129137)
+				var down_arrow = UNICHAR(129139)
+				var thisyear = [OTIF Failures]
+				var LY = [OTIF Failures PY]
+				var difpercentage = DIVIDE([OTIF Failures],[OTIF Failures PY])-1
+				
+				Return
+				IF(
+				    difpercentage < 0, 
+				    down_arrow & FORMAT(difpercentage, "0.00%") & " | PY "& [OTIF Failures PY],
+				    up_arrow & FORMAT(difpercentage, "0.00%")& " | PY "& [OTIF Failures PY]
+				)
+				```
+			lineageTag: 1ef4f9bd-26ff-4f77-8d0c-4039ebba7a7f
+
+		measure 'Percentage of CU / Total % Vergleich Pfeil' = ```
+				
+				var up_arrow = UNICHAR(129137)
+				var down_arrow = UNICHAR(129139)
+				var thisyear = [Percentage of CU / Total %]
+				var LY = [Percentage of CU / Total % PY]
+				var difpercentage = DIVIDE([Percentage of CU / Total %],[Percentage of CU / Total % PY])-1
+				
+				Return
+				IF(
+				    difpercentage < 0, 
+				    down_arrow & FORMAT(difpercentage, "0.00%") & " | PY "& FORMAT([Percentage of CU / Total % PY], "0.00%"),
+				    up_arrow & FORMAT(difpercentage, "0.00%")& " | PY "& FORMAT([Percentage of CU / Total % PY], "0.00%")
+				)
+				```
+			lineageTag: 6cf2f137-cf96-4099-8a95-2c31ab710393
+

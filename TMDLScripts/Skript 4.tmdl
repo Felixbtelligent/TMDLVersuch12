@@ -1,0 +1,120 @@
+createOrReplace
+
+	table DIM_PLANT
+		lineageTag: 82ebaae5-9edf-427e-925a-f93e56f66426
+
+		column DIM_PLANT
+			dataType: string
+			lineageTag: 8b57aa86-6503-4cbf-99e3-5efbe3f848af
+			summarizeBy: none
+			sourceColumn: DIM_PLANT
+
+			annotation SummarizationSetBy = Automatic
+
+		column SITECODE
+			dataType: string
+			lineageTag: 8803e40f-c6a7-4322-bf43-c890aaa4eedb
+			summarizeBy: none
+			sourceColumn: SITECODE
+
+			annotation SummarizationSetBy = Automatic
+
+		column PLANT
+			dataType: string
+			lineageTag: ec695e2f-605e-4356-9f9c-a0f8cd7c2e8a
+			summarizeBy: none
+			sourceColumn: PLANT
+
+			annotation SummarizationSetBy = Automatic
+
+		column RSRC
+			dataType: string
+			lineageTag: 054073d5-820d-416b-bd4e-911d0121c001
+			summarizeBy: none
+			sourceColumn: RSRC
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'Location Code'
+			dataType: string
+			lineageTag: 1cb3e848-d220-487f-a729-560f15f2f06b
+			summarizeBy: none
+			sourceColumn: Location Code
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'Plant Code BOM'
+			dataType: string
+			lineageTag: 13c5f665-70f2-4bd8-8a54-242ab017e6ac
+			summarizeBy: none
+			sourceColumn: Plant Code BOM
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'Client Code'
+			dataType: string
+			lineageTag: 2746fc38-e7ca-4012-bb8b-9e266d6b53c2
+			summarizeBy: none
+			sourceColumn: Client Code
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'IT System'
+			dataType: string
+			lineageTag: 9ec355e9-b9d7-4db0-b896-5c1ff0760b4c
+			summarizeBy: none
+			sourceColumn: IT System
+
+			annotation SummarizationSetBy = Automatic
+
+		column LE
+			dataType: string
+			lineageTag: 3c8be39b-6f0d-497f-ab88-cb7ae14a6ffb
+			summarizeBy: none
+			sourceColumn: LE
+
+			annotation SummarizationSetBy = Automatic
+
+		column BOOKING_CODE
+			dataType: string
+			lineageTag: 25110b73-9a6c-4803-bb18-6747dd0109b9
+			summarizeBy: none
+			sourceColumn: BOOKING_CODE
+
+			annotation SummarizationSetBy = Automatic
+
+		column INVOICING_ENTITY
+			dataType: string
+			lineageTag: 5041f330-ebcb-4e3d-a1a3-6b1176cd1f51
+			summarizeBy: none
+			sourceColumn: INVOICING_ENTITY
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'LE + Sitecode'
+			dataType: string
+			lineageTag: a7aa0867-85ed-43c1-996a-71702a035adf
+			summarizeBy: none
+			sourceColumn: LE + Sitecode
+
+			annotation SummarizationSetBy = Automatic
+
+		partition DIM_PLANT = m
+			mode: directQuery
+			source =
+					let
+					    Source = Snowflake.Databases("zr99360.west-europe.azure.snowflakecomputing.com","DBT_WH_M_TEST"),
+					    SF_DWH_SII_Database = Source{[Name="SF_DWH_SII",Kind="Database"]}[Data],
+					    DWH_MART_SD03SD05_Schema = SF_DWH_SII_Database{[Name="DWH_MART_SD03SD05",Kind="Schema"]}[Data],
+					    DIM_PLANT_View = DWH_MART_SD03SD05_Schema{[Name="DIM_PLANT",Kind="View"]}[Data],
+					    #"Gefilterte Zeilen" = Table.SelectRows(DIM_PLANT_View, each ([SITECODE] <> "AIP")),
+					    #"Removed Duplicates" = Table.Distinct(#"Gefilterte Zeilen", {"BOOKING_CODE"}),
+					    #"Filtered Rows" = Table.SelectRows(#"Removed Duplicates", each ([SITECODE] <> "GRB" and [SITECODE] <> "MIA" and [SITECODE] <> "WOR") and ([DIM_PLANT] <> "/CRM")),
+					    #"Hinzugefügte benutzerdefinierte Spalte" = Table.AddColumn(#"Filtered Rows", "LE + Sitecode", each [LE]&" - "&[SITECODE])
+					in
+					    #"Hinzugefügte benutzerdefinierte Spalte"
+
+		annotation PBI_NavigationStepName = Navigation
+
+		annotation PBI_ResultType = Table
+

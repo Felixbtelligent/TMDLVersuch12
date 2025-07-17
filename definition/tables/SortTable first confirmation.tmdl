@@ -1,0 +1,44 @@
+table 'SortTable first confirmation'
+	lineageTag: f0995a5a-3804-414a-a26d-88d0176fadff
+
+	column 'Order Range'
+		lineageTag: a3fd1986-eeeb-4664-9294-8d2388cd3881
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Order Range]
+		sortByColumn: 'Sort Order'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sort Order'
+		formatString: 0
+		lineageTag: 8bb5ca08-6f24-4f34-862f-23798c58557f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Sort Order]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'SortTable first confirmation' = calculated
+		mode: import
+		source = ```
+				DATATABLE(
+				    "Order Range", STRING,
+				    "Sort Order", INTEGER,
+				    {
+				        {"less -50", 1},
+				        {"-50 to -21", 2},
+				        {"-20 to -11", 3},
+				        {"-10 to -6", 4},
+				        {"-5 to 2", 5},
+				        {"3 to 10", 6},
+				        {"11 to 20", 7},
+				        {"21 to 50", 8},
+				        {"50 up", 9}
+				    }
+				)
+				
+				```
+
+	annotation PBI_Id = e9a063f346044275911b31ea57ff7098
+

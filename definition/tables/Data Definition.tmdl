@@ -1,0 +1,79 @@
+table 'Data Definition'
+	lineageTag: e3ae24a1-c9e8-4b7a-ac0d-ca671910e135
+
+	column 'Analytical Term (e.g. Revenue)'
+		dataType: string
+		lineageTag: 8be27ad6-315f-4649-9412-08eb9a7846d8
+		summarizeBy: none
+		sourceColumn: Analytical Term (e.g. Revenue)
+
+		annotation SummarizationSetBy = Automatic
+
+	column '"abbreviation in Power BI'
+		dataType: string
+		lineageTag: 7e961777-8ce4-43b3-acc1-1f3fca018d3b
+		summarizeBy: none
+		sourceColumn: "abbreviation in Power BI
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'technical name'
+		dataType: string
+		lineageTag: d44d64f1-e393-449e-b482-b7bd8b790981
+		summarizeBy: none
+		sourceColumn: technical name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'KPI-/ DIM-Definition in prosa AND formula (NO table or column names)'
+		dataType: string
+		lineageTag: f098afc3-127f-4571-9c41-9319947cd193
+		summarizeBy: none
+		sourceColumn: KPI-/ DIM-Definition in prosa AND formula (NO table or column names)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Type KPI (metric) vs. DIM (dimension)'
+		dataType: string
+		lineageTag: 863427a6-d22d-42c5-8dab-a06b7b065b3b
+		summarizeBy: none
+		sourceColumn: Type KPI (metric) vs. DIM (dimension)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calculation formula from QlikView'
+		dataType: string
+		lineageTag: 5bd83606-7989-4466-90c4-7fa07e06ec9a
+		summarizeBy: none
+		sourceColumn: Calculation formula from QlikView
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Source [way it is in DataVault or Power BI]'
+		dataType: string
+		lineageTag: 00b6f87b-7821-4344-8a2e-b65faccf99e0
+		summarizeBy: none
+		sourceColumn: Current Source [way it is in DataVault or Power BI]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'New calculation formula in dbt or Power BI'
+		dataType: string
+		lineageTag: f648fae5-30ff-48b2-a21d-aaa98c3e7ac8
+		summarizeBy: none
+		sourceColumn: New calculation formula in dbt or Power BI
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Data Definition' = m
+		mode: import
+		source =
+				let
+				    Quelle = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("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", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Analytical Term (e.g. Revenue)" = _t, #"""abbreviation in Power BI" = _t, #"technical name" = _t, #"KPI-/ DIM-Definition in prosa AND formula (NO table or column names)" = _t, #"Type KPI (metric) vs. DIM (dimension)" = _t, #"Calculation formula from QlikView" = _t, #"Current Source [way it is in DataVault or Power BI]" = _t, #"New calculation formula in dbt or Power BI" = _t])
+				in
+				    Quelle
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,37 @@
+createOrReplace
+
+    table 'Time Intelligence'      
+
+        calculationGroup
+            precedence: 1
+
+            calculationItem YTD =
+                    CALCULATE (
+                        SELECTEDMEASURE (),
+                        DATESYTD ( 'CalendarTable'[Date] )
+                    )
+
+            calculationItem QTD =
+                    CALCULATE (
+                        SELECTEDMEASURE (),
+                        DATESQTD ( 'CalendarTable'[Date] )
+                    )
+
+            calculationItem MTD =
+                    CALCULATE (
+                        SELECTEDMEASURE (),
+                        DATESMTD ( 'CalendarTable'[Date] )
+                    )
+
+            calculationItem Current = SELECTEDMEASURE()
+
+        column 'Show as'
+            dataType: string                        
+            sourceColumn: Name
+            sortByColumn: Ordinal          
+
+        column Ordinal
+            dataType: int64
+            formatString: 0        
+            summarizeBy: none
+            sourceColumn: Ordinal

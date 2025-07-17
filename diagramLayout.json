@@ -1,0 +1,258 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 2209.1694201453261,
+        "y": 1173.0000356900491
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 1567.6178588867188
+          },
+          "nodeIndex": "Tabelle",
+          "nodeLineageTag": "c60f9313-39db-41a3-b12b-5c4f5473c498",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 1888.6178588867188
+          },
+          "nodeIndex": "Holidays",
+          "nodeLineageTag": "35c27b17-d4fa-4e9e-9924-c588e5b6b1b1",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 675,
+            "y": 1517.6178588867188
+          },
+          "nodeIndex": "DIM_PLANT",
+          "nodeLineageTag": "82ebaae5-9edf-427e-925a-f93e56f66426",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 18
+        },
+        {
+          "location": {
+            "x": 650,
+            "y": 1885.6178588867188
+          },
+          "nodeIndex": "DIM_PRODCUT",
+          "nodeLineageTag": "93b48e10-bfbc-4200-8864-06fb1d111a19",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 17
+        },
+        {
+          "location": {
+            "x": 1321,
+            "y": 1775.6178588867188
+          },
+          "nodeIndex": "Selections",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 2173,
+            "y": 1751.6178588867188
+          },
+          "nodeIndex": "_Measures",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 1605,
+            "y": 1751.6178588867188
+          },
+          "nodeIndex": "MinQualityParameter",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 2741,
+            "y": 1751.6178588867188
+          },
+          "nodeIndex": "MaxQualityParameter",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 3025,
+            "y": 1701.6178588867188
+          },
+          "nodeIndex": "DIM_CUSTOMER",
+          "nodeLineageTag": "780218a0-a6d1-445c-aa95-eb4760545c3a",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 19
+        },
+        {
+          "location": {
+            "x": 2457,
+            "y": 1751.6178588867188
+          },
+          "nodeIndex": "SortTable first confirmation",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 3309,
+            "y": 1751.6178588867188
+          },
+          "nodeIndex": "SortTable requested date",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 5297,
+            "y": 1682.8678588867188
+          },
+          "nodeIndex": "FACT_SALES_DELIVERY",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 5581,
+            "y": 1723.4928588867188
+          },
+          "nodeIndex": "SelectionTable",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 6149,
+            "y": 1633.2350463867188
+          },
+          "nodeIndex": "Reason Codes",
+          "nodeLineageTag": "21cbb6c4-373c-4e51-a536-b2bc3c2315cd",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 6433,
+            "y": 1538.0436401367188
+          },
+          "nodeIndex": "CalendarTable",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 5865,
+            "y": 1704.6959838867188
+          },
+          "nodeIndex": "HolidayTable",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 7001,
+            "y": 1131.1661987304688
+          },
+          "nodeIndex": "Data Definition",
+          "nodeLineageTag": "e3ae24a1-c9e8-4b7a-ac0d-ca671910e135",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 7285,
+            "y": 1034.0758666992188
+          },
+          "nodeIndex": "Zeitansicht",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 7569,
+            "y": 856.46295166015625
+          },
+          "nodeIndex": "Time Intelligence",
+          "nodeLineageTag": "f355f14f-8acd-4c0e-a124-4eca558d3c55",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 8
+        }
+      ],
+      "name": "Alle Tabellen",
+      "zoomValue": 68.405797101449267,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Alle Tabellen",
+  "defaultDiagram": "Alle Tabellen"
+}

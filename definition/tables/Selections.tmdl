@@ -1,0 +1,89 @@
+table Selections
+	lineageTag: 78076951-ca28-4d04-8bff-9f8569790332
+
+	column Parameter
+		lineageTag: ae19819e-a4d2-4eb8-b942-e90036bc5479
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: 1aa934e6-1ddb-4a35-9d77-eb120c62a69a
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: 8e91526a-4b97-4b33-b3c3-52faccf11a2f
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Selections = calculated
+		mode: import
+		source = ```
+				{
+				    ("Site (Legal Entity)", NAMEOF(DIM_PLANT[LE]), 1),
+				    ("Sitecode", NAMEOF('DIM_PLANT'[SITECODE]), 2),
+				    ("LT1", NAMEOF('FACT_SALES_DELIVERY'[LT1_diff_requested_date_order_date]), 3),
+				    ("LT2", NAMEOF('FACT_SALES_DELIVERY'[LT2_diff_firstconfirmeddeliverydate_order_date]), 4),
+				    ("LT3", NAMEOF('FACT_SALES_DELIVERY'[LT3_diff_actualgoodsissuedate_order_date]), 5),
+				    ("Order Date", NAMEOF('FACT_SALES_DELIVERY'[ORDER_DATE]), 6),
+				    ("Month of Delivery", NAMEOF(FACT_SALES_DELIVERY[Delivery Month]), 7),
+				    ("Source System", NAMEOF('FACT_SALES_DELIVERY'[SOURCE_SYSTEM]), 8),
+				    ("Order No", NAMEOF('FACT_SALES_DELIVERY'[ORDER_NR]), 9),
+				    ("Order No/Item No", NAMEOF('FACT_SALES_DELIVERY'[ORDER_NO/ ITEM_NO]), 10),
+				    ("Order type", NAMEOF('FACT_SALES_DELIVERY'[ORDER_TYPE]), 11),
+				    ("Delivery Number", NAMEOF('FACT_SALES_DELIVERY'[DELIVERY_NR]), 12),
+				    ("Delivery No/Item No", NAMEOF('FACT_SALES_DELIVERY'[DELIVERY_NO/ITEM_NO]), 13),
+				    ("Material No", NAMEOF('FACT_SALES_DELIVERY'[PRODUCT_ID]), 14),
+				    ("Material Name", NAMEOF(DIM_PRODCUT[PRODUCT_NAME_DE]), 15),
+				    ("First confirmed delivery date", NAMEOF('FACT_SALES_DELIVERY'[FIRST_CONFIRMED_DELIVERY_DATE]), 16),
+				    ("Requested delivery date", NAMEOF('FACT_SALES_DELIVERY'[REQUESTED_DELIVERY_DATE]), 17),
+				    ("Actual confirmed delivery date", NAMEOF('FACT_SALES_DELIVERY'[ACTUAL_CONFIRMED_DELIVERY_DATE]), 18),
+				    ("Actual goods issue date", NAMEOF('FACT_SALES_DELIVERY'[Actual Goods Issue Date]), 19),
+				    ("Quantity ordered", NAMEOF('FACT_SALES_DELIVERY'[QTY_ORDERED]), 20),
+				    ("Quantity delivered", NAMEOF('FACT_SALES_DELIVERY'[QTY_DELIVERED]), 21),
+				    ("OTD days to 1st conf. date", NAMEOF('FACT_SALES_DELIVERY'[OTD days to 1st conf date]), 22),
+				    ("OTD days to req. date", NAMEOF('FACT_SALES_DELIVERY'[OTD days requested date]), 23),
+				    ("Quantity Status in %", NAMEOF([Quantity sum]), 24),
+				    ("Incoterms1", NAMEOF('FACT_SALES_DELIVERY'[INCOTERMS_1]), 25),
+				    ("Transit days", NAMEOF('FACT_SALES_DELIVERY'[TRANSIT_DAYS]), 26),
+				    ("Reason code ID", NAMEOF('FACT_SALES_DELIVERY'[REASON_CODE]), 27),
+				    ("Delivery status 1st", NAMEOF('FACT_SALES_DELIVERY'[Delivery Status 1st]), 28),
+				    ("Delivery status req", NAMEOF('FACT_SALES_DELIVERY'[Delivery Status req]), 29),
+				    ("Leading API", NAMEOF(DIM_PRODCUT[CRM_API_NAME]), 30),
+				    ("Customer Group", NAMEOF(DIM_CUSTOMER[DEBITOR_GROUP_NAME]), 31),
+				    ("Customer Name", NAMEOF(DIM_CUSTOMER[DEBITOR_NAME]), 32),
+				    ("Delivery Item No", NAMEOF('FACT_SALES_DELIVERY'[DELIVERY_LINEITEM_NR]), 33),
+				    ("Dosage Form", NAMEOF(DIM_PRODCUT[CRM_DOSAGE_FORM]), 34),
+				    ("Dosage Form Retail", NAMEOF(DIM_PRODCUT[CRM_DOSAGE_FORM_DESCR]), 35),
+				    ("Sales Type", NAMEOF(DIM_PRODCUT[CRM_SALES_TYPE]), 36),
+				    ("Special Substance Class", NAMEOF(DIM_PRODCUT[CRM_SPECIAL_SUBSTANCE_CLASS]), 37),
+				    ("Sterile", NAMEOF(DIM_PRODCUT[CRM_STERILE]), 38),
+				    ("Order Item", NAMEOF('FACT_SALES_DELIVERY'[ORDER_ITEM]), 39),
+				    ("Inconsistent Data", NAMEOF('FACT_SALES_DELIVERY'[FLAG_INCONSISTENT_DATA]), 40),
+				    ("Flag Already Delivered", NAMEOF('FACT_SALES_DELIVERY'[FLAG_ALREADY_DELIVERED]), 41)
+				}
+				
+				```
+
+	annotation PBI_Id = 2b86184c826b4e1787c6681efc36d019
+

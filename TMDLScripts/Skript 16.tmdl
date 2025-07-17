@@ -1,0 +1,9 @@
+createOrReplace
+
+	role Unbenannt
+		modelPermission: read
+
+		tablePermission DIM_PLANT = [IT System] == "P11"
+
+		annotation PBI_Id = a3fb8e431bd14421bb796c450f3ded40
+

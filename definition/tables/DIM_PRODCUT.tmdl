@@ -1,0 +1,387 @@
+table DIM_PRODCUT
+	lineageTag: 93b48e10-bfbc-4200-8864-06fb1d111a19
+
+	column HUB_PRODUCT_HKEY
+		dataType: string
+		lineageTag: 9a3e3cbd-5c4c-4cf5-a9bd-4b8880dd770f
+		summarizeBy: none
+		sourceColumn: HUB_PRODUCT_HKEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_ID
+		dataType: string
+		lineageTag: 33695b9a-a49e-41f6-bcf7-06566cc35bdb
+		summarizeBy: none
+		sourceColumn: PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column RSRC
+		dataType: string
+		lineageTag: 71ebe16d-f019-4e44-a098-463dbb5c88eb
+		summarizeBy: none
+		sourceColumn: RSRC
+
+		annotation SummarizationSetBy = Automatic
+
+	column RSRC_ENTITY
+		dataType: string
+		lineageTag: 93949d09-aab1-4304-8d09-d8eab390aeaf
+		summarizeBy: none
+		sourceColumn: RSRC_ENTITY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CLIENT_CODE
+		dataType: string
+		lineageTag: 521ee810-767e-4328-a017-1020d27bffa1
+		summarizeBy: none
+		sourceColumn: CLIENT_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_NAME_DE
+		dataType: string
+		lineageTag: 3954b523-320f-45f4-b7f1-cbc6da27f069
+		summarizeBy: none
+		sourceColumn: PRODUCT_NAME_DE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_NAME_EN
+		dataType: string
+		lineageTag: 1f863cfb-6442-4257-adb2-3f89f9664cc5
+		summarizeBy: none
+		sourceColumn: PRODUCT_NAME_EN
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_GROUP
+		dataType: string
+		lineageTag: f6fcef7a-047a-4168-8a48-0435a691e994
+		summarizeBy: none
+		sourceColumn: PRODUCT_GROUP
+
+		annotation SummarizationSetBy = Automatic
+
+	column BULK
+		dataType: string
+		lineageTag: 2d501277-6238-4bc7-9bff-7e802eeb483a
+		summarizeBy: none
+		sourceColumn: BULK
+
+		annotation SummarizationSetBy = Automatic
+
+	column AMG_CODE
+		dataType: string
+		lineageTag: cee00872-69a1-44eb-8196-5232cc2978c4
+		summarizeBy: none
+		sourceColumn: AMG_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column AMG_CODE_DESCR
+		dataType: string
+		lineageTag: 7a1502f1-0f2e-45af-ab91-73e9e7a71ceb
+		summarizeBy: none
+		sourceColumn: AMG_CODE_DESCR
+
+		annotation SummarizationSetBy = Automatic
+
+	column LEAD_BUYER
+		dataType: string
+		lineageTag: 1d30a22d-36bb-4411-9c53-6d53b658a6fd
+		summarizeBy: none
+		sourceColumn: LEAD_BUYER
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUB_KATEGORIE
+		dataType: string
+		lineageTag: e1c08fcc-56f4-4b69-87b7-c23b073b0fca
+		summarizeBy: none
+		sourceColumn: SUB_KATEGORIE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUB_SUB_KATEGORIE
+		dataType: string
+		lineageTag: 20c17cad-8261-401b-9a2c-bc73d3ccda8a
+		summarizeBy: none
+		sourceColumn: SUB_SUB_KATEGORIE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_TYPE
+		dataType: string
+		lineageTag: 421d8ad6-2238-422b-98e3-3580c149e744
+		summarizeBy: none
+		sourceColumn: PRODUCT_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CREATED_ON
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7860e4ea-fe64-4436-bc0b-13922faa21bb
+		summarizeBy: none
+		sourceColumn: CREATED_ON
+
+		variation Variation
+			isDefault
+			relationship: 79fab313-d736-490f-9b67-872d708fb8f4
+			defaultHierarchy: LocalDateTable_26ee9370-3193-4dcc-b949-111a0f8f00bd.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+	column CREATED_BY
+		dataType: string
+		lineageTag: c1d05d28-e817-4614-85f7-a8c890da6549
+		summarizeBy: none
+		sourceColumn: CREATED_BY
+
+		annotation SummarizationSetBy = Automatic
+
+	column AENOVA_PRODUCT_TYPE_DESCR
+		dataType: string
+		lineageTag: b29e35e3-c961-411b-9c55-4e6f7bc82816
+		summarizeBy: none
+		sourceColumn: AENOVA_PRODUCT_TYPE_DESCR
+
+		annotation SummarizationSetBy = Automatic
+
+	column ERP_DELETE_FLAG
+		dataType: double
+		lineageTag: 5c285154-9e38-4b46-ba53-b0a0c14a1e62
+		summarizeBy: sum
+		sourceColumn: ERP_DELETE_FLAG
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CRM_PRODUCT_ID
+		dataType: string
+		lineageTag: 464de012-0695-44d7-8cff-a202b304f451
+		summarizeBy: none
+		sourceColumn: CRM_PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_PRODUCT_ID_ERP
+		dataType: string
+		lineageTag: 2bae4f40-40ec-493d-86d9-feaf6bc362c5
+		summarizeBy: none
+		sourceColumn: CRM_PRODUCT_ID_ERP
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_PRODUCT_NAME
+		dataType: string
+		lineageTag: c351eec9-61f3-44a3-8a93-d0edd83e7996
+		summarizeBy: none
+		sourceColumn: CRM_PRODUCT_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_BRAND_NAME
+		dataType: string
+		lineageTag: 232be100-00cc-4f6f-9779-cfaa7ff76514
+		summarizeBy: none
+		sourceColumn: CRM_BRAND_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_PRODUCT_TYPE
+		dataType: string
+		lineageTag: 8e4b378b-8efc-45e2-b529-fd6c17b20373
+		summarizeBy: none
+		sourceColumn: CRM_PRODUCT_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_AENOVA_PRODUCT_TYPE_DESCR
+		dataType: string
+		lineageTag: 07fa29f7-8e80-4e09-8ed3-c25be6a13bf6
+		summarizeBy: none
+		sourceColumn: CRM_AENOVA_PRODUCT_TYPE_DESCR
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_PRODUCT_TYPE_BY_REGULATORY_CATEGORY
+		dataType: string
+		lineageTag: c70fe27e-6f29-4008-a54b-81a59e23d573
+		summarizeBy: none
+		sourceColumn: CRM_PRODUCT_TYPE_BY_REGULATORY_CATEGORY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_PRODUCT_TYPE_BY_COMMERCIAL_CYCLE_STAGE
+		dataType: string
+		lineageTag: cd267fdb-82bf-43bd-9fc6-142d843d2ba0
+		summarizeBy: none
+		sourceColumn: CRM_PRODUCT_TYPE_BY_COMMERCIAL_CYCLE_STAGE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_SALES_TYPE
+		dataType: string
+		lineageTag: 2a87adba-2082-49bc-8097-bf1e5f468b4c
+		summarizeBy: none
+		sourceColumn: CRM_SALES_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_API_NAME
+		dataType: string
+		lineageTag: ef788200-01f8-4c99-aa4e-46c2b7b630df
+		summarizeBy: none
+		sourceColumn: CRM_API_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_DOSAGE_FORM_ID
+		dataType: string
+		lineageTag: e595398e-7ef4-4658-8b45-f7a50c744a6f
+		summarizeBy: none
+		sourceColumn: CRM_DOSAGE_FORM_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_DOSAGE_FORM_DESCR
+		dataType: string
+		lineageTag: a31feccf-7be3-4fca-8865-3c523a5a798a
+		summarizeBy: none
+		sourceColumn: CRM_DOSAGE_FORM_DESCR
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_BUSINESS_UNIT
+		dataType: string
+		lineageTag: a07030ea-5ed3-4ae1-aa13-9eb4009c484b
+		summarizeBy: none
+		sourceColumn: CRM_BUSINESS_UNIT
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_SALES_TYPE_DETAIL
+		dataType: string
+		lineageTag: 74e416ad-488a-4a83-a8de-a24967380780
+		summarizeBy: none
+		sourceColumn: CRM_SALES_TYPE_DETAIL
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_PRIMARY_PACKAGING
+		dataType: string
+		lineageTag: 83f5094a-0b6d-4f27-971c-381c8f7c7586
+		summarizeBy: none
+		sourceColumn: CRM_PRIMARY_PACKAGING
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_SPECIAL_SUBSTANCE_CLASS
+		dataType: string
+		lineageTag: f03165a6-a259-4c44-9d8f-799080b24227
+		summarizeBy: none
+		sourceColumn: CRM_SPECIAL_SUBSTANCE_CLASS
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_STERILE
+		dataType: string
+		lineageTag: 15d12a21-a4f2-4858-810f-3c505efcdb17
+		summarizeBy: none
+		sourceColumn: CRM_STERILE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_DOSAGE_FORM
+		dataType: string
+		lineageTag: 63775e8d-cbec-4791-9840-6de91c704efb
+		summarizeBy: none
+		sourceColumn: CRM_DOSAGE_FORM
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_DOSAGE_UNIT
+		dataType: string
+		lineageTag: a70171c2-fda7-4b67-b40e-9c0aec6881fe
+		summarizeBy: none
+		sourceColumn: CRM_DOSAGE_UNIT
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_DOSAGE_STRENGTH
+		dataType: string
+		lineageTag: 835be551-af29-414a-8acb-a1136acb96b1
+		summarizeBy: none
+		sourceColumn: CRM_DOSAGE_STRENGTH
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_DESTINATION_COUNTRY
+		dataType: string
+		lineageTag: 213c1105-107f-4fb0-852d-3d2e57b48e8b
+		summarizeBy: none
+		sourceColumn: CRM_DESTINATION_COUNTRY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_SALES_UNIT
+		dataType: string
+		lineageTag: 1922f1ad-3179-48b5-b5ae-10c7ef79a1a3
+		summarizeBy: none
+		sourceColumn: CRM_SALES_UNIT
+
+		annotation SummarizationSetBy = Automatic
+
+	column BASE_UNIT_MEASURE
+		dataType: string
+		lineageTag: 59f64f9c-fb2c-4273-8a8b-8d69df094f75
+		summarizeBy: none
+		sourceColumn: BASE_UNIT_MEASURE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_PACK_SIZE
+		dataType: string
+		lineageTag: bc5f4764-88c9-45cb-bfc0-21145b7f6b4b
+		summarizeBy: none
+		sourceColumn: CRM_PACK_SIZE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CRM_NO_OF_PRIMARY_PACKED_PIECES_PER_SECONDARY
+		dataType: string
+		lineageTag: 9d60a215-afa1-4ad7-bdb0-771c56bbde33
+		summarizeBy: none
+		sourceColumn: CRM_NO_OF_PRIMARY_PACKED_PIECES_PER_SECONDARY
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_KEY
+		dataType: string
+		lineageTag: eb358cc7-325b-4365-b8b6-650a6d867fa5
+		summarizeBy: none
+		sourceColumn: PRODUCT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_PRODCUT = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("zr99360.west-europe.azure.snowflakecomputing.com","DBT_WH_M_TEST"),
+				    SF_DWH_TEST_Database = Source{[Name="SF_DWH_TEST",Kind="Database"]}[Data],
+				    DWH_GEN_BV_Schema = SF_DWH_TEST_Database{[Name="DWH_GEN_BV",Kind="Schema"]}[Data],
+				    DIM_PRODUCT_GEN_Table = DWH_GEN_BV_Schema{[Name="DIM_PRODUCT_GEN",Kind="Table"]}[Data],
+				    #"Hinzugefügte benutzerdefinierte Spalte" = Table.AddColumn(DIM_PRODUCT_GEN_Table, "PRODUCT_KEY", each [CLIENT_CODE]&"|"&[PRODUCT_ID])
+				in
+				    #"Hinzugefügte benutzerdefinierte Spalte"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

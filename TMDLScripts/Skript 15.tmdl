@@ -1,0 +1,1340 @@
+createOrReplace
+
+	table FACT_SALES_DELIVERY
+		lineageTag: d58ac3a0-3920-49f9-aeea-f24ee7f4b071
+
+		measure 'Number of delayed order items test' = ```
+				
+				CALCULATE(
+				    [Number of order items], 'FACT_SALES_DELIVERY'[OTD days to 1st conf date] <= -50 || 'FACT_SALES_DELIVERY'[OTD days to 1st conf date] >= 2)
+				
+				```
+			formatString: 0
+			lineageTag: 868e0a92-e8bf-4a42-bfd7-d4d1342eeba3
+
+		column SOURCE_SYSTEM
+			dataType: string
+			lineageTag: 5c61b080-8fcd-4005-a839-fd96abb551c8
+			summarizeBy: none
+			sourceColumn: SOURCE_SYSTEM
+
+			annotation SummarizationSetBy = Automatic
+
+		column CLIENT_CODE
+			dataType: string
+			lineageTag: f6758683-3d4c-4f1c-b02c-ec97c9604214
+			summarizeBy: none
+			sourceColumn: CLIENT_CODE
+
+			annotation SummarizationSetBy = Automatic
+
+		column DELIVERY_NR
+			dataType: string
+			lineageTag: a0b8e7d2-52cd-4d22-9d82-54844e192c1a
+			summarizeBy: none
+			sourceColumn: DELIVERY_NR
+
+			annotation SummarizationSetBy = Automatic
+
+		column DELIVERY_LINEITEM_NR
+			dataType: string
+			lineageTag: faa316b2-458f-4698-bd21-ae665affa2cb
+			summarizeBy: none
+			sourceColumn: DELIVERY_LINEITEM_NR
+
+			annotation SummarizationSetBy = Automatic
+
+		column QTY_DELIVERED
+			dataType: double
+			formatString: #,0
+			lineageTag: b8210ee5-732e-479d-8a44-28d925662389
+			summarizeBy: sum
+			sourceColumn: QTY_DELIVERED
+
+			annotation SummarizationSetBy = Automatic
+
+			annotation PBI_FormatHint = {"isDecimal":true}
+
+		column PRODUCT_ID
+			dataType: string
+			lineageTag: fe85775c-d21d-4dcd-bf6c-40b2e6c4a6e5
+			summarizeBy: none
+			sourceColumn: PRODUCT_ID
+
+			annotation SummarizationSetBy = Automatic
+
+		column NET_VALUE
+			dataType: string
+			lineageTag: db59616c-74ee-4eae-8d85-28826e6ff302
+			summarizeBy: none
+			sourceColumn: NET_VALUE
+
+			annotation SummarizationSetBy = Automatic
+
+		column ORDER_NR
+			dataType: string
+			lineageTag: 1c410f68-9504-463d-bd67-3832ab4a8ebf
+			summarizeBy: none
+			sourceColumn: ORDER_NR
+
+			annotation SummarizationSetBy = Automatic
+
+		column ORDER_LINEITEM_NR
+			dataType: string
+			lineageTag: f1080228-1f6f-4346-896f-5acb128d8989
+			summarizeBy: none
+			sourceColumn: ORDER_LINEITEM_NR
+
+			annotation SummarizationSetBy = Automatic
+
+		column CREATED_ON
+			dataType: string
+			lineageTag: 72c3f68f-a027-44de-b0a5-de9ccb64adec
+			summarizeBy: none
+			sourceColumn: CREATED_ON
+
+			annotation SummarizationSetBy = Automatic
+
+		column CREATED_BY
+			dataType: string
+			lineageTag: dc74ef6a-a5c4-45a2-ab59-e2adc5c67c9c
+			summarizeBy: none
+			sourceColumn: CREATED_BY
+
+			annotation SummarizationSetBy = Automatic
+
+		column DELIVERY_NO/ITEM_NO
+			dataType: string
+			lineageTag: 3c5e92e4-577a-4baa-87b3-2afcdc9e0ee8
+			summarizeBy: none
+			sourceColumn: DELIVERY_NO/ITEM_NO
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'ORDER_NO/ ITEM_NO'
+			dataType: string
+			lineageTag: 6a51a0e9-aeaa-459b-b8d4-3891d243f7c1
+			summarizeBy: none
+			sourceColumn: ORDER_NO/ ITEM_NO
+
+			annotation SummarizationSetBy = Automatic
+
+		column DEBITOR_NR
+			dataType: string
+			lineageTag: cd1d2b67-d30c-429f-8938-2ef96e98984b
+			summarizeBy: none
+			sourceColumn: DEBITOR_NR
+
+			annotation SummarizationSetBy = Automatic
+
+		column SOLDTO_DEBITOR_NR
+			dataType: string
+			lineageTag: 2b812696-66d8-41e5-be3e-3665babcf917
+			summarizeBy: none
+			sourceColumn: SOLDTO_DEBITOR_NR
+
+			annotation SummarizationSetBy = Automatic
+
+		column DELIVERY_TYPE
+			dataType: string
+			lineageTag: c2f463e6-8817-4a81-84e1-6ff31deefa5c
+			summarizeBy: none
+			sourceColumn: DELIVERY_TYPE
+
+			annotation SummarizationSetBy = Automatic
+
+		column ACTUAL_CONFIRMED_DELIVERY_DATE
+			dataType: dateTime
+			formatString: Long Date
+			lineageTag: abce4efd-846a-4146-b67b-7a4f689315b4
+			summarizeBy: none
+			sourceColumn: ACTUAL_CONFIRMED_DELIVERY_DATE
+
+			variation Variation
+				isDefault
+				relationship: 3dc738bf-88e1-487d-85e5-d2b1a39b1575
+				defaultHierarchy: LocalDateTable_48630aa0-6b7b-4e53-b77a-2dc1a9d40f68.Datumshierarchie
+
+			changedProperty = DataType
+
+			annotation SummarizationSetBy = Automatic
+
+		column ACTUAL_GOODS_ISSUE_DATE_TRANSIT_DAYS
+			dataType: double
+			lineageTag: 45153b5d-8a56-4562-be13-f6abcc5c7c17
+			summarizeBy: sum
+			sourceColumn: ACTUAL_GOODS_ISSUE_DATE_TRANSIT_DAYS
+
+			annotation SummarizationSetBy = Automatic
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		column CALCULATED_ACTUAL_GOODS_ISSUE_DATE
+			dataType: dateTime
+			formatString: Long Date
+			lineageTag: 626564ec-a338-4463-891b-1bb8f7615673
+			summarizeBy: none
+			sourceColumn: CALCULATED_ACTUAL_GOODS_ISSUE_DATE
+
+			variation Variation
+				isDefault
+				relationship: 1c15bec5-1e77-41f7-8beb-4102c7e44c25
+				defaultHierarchy: LocalDateTable_870a2145-aef4-46ec-b676-39ea4d4ddfb3.Datumshierarchie
+
+			annotation SummarizationSetBy = Automatic
+
+			annotation UnderlyingDateTimeDataType = Date
+
+		column CALCULATED_WORKDAY_ACTUAL_GOODS_ISSUE_DATE
+			dataType: dateTime
+			formatString: Long Date
+			lineageTag: f59e6477-4a9b-4554-8f88-45949bae9db8
+			summarizeBy: none
+			sourceColumn: CALCULATED_WORKDAY_ACTUAL_GOODS_ISSUE_DATE
+
+			variation Variation
+				isDefault
+				relationship: f5327dea-6d42-42ba-8326-f699bcb98ec8
+				defaultHierarchy: LocalDateTable_b841aad5-5a26-4363-bbe3-782eb06dbf64.Datumshierarchie
+
+			annotation SummarizationSetBy = Automatic
+
+			annotation UnderlyingDateTimeDataType = Date
+
+		column ACTUAL_GOODS_ISSUE_DATE_2
+			dataType: dateTime
+			formatString: Long date
+			lineageTag: 07e0c418-529e-4159-96ba-f4ea63c0e745
+			summarizeBy: none
+			sourceColumn: ACTUAL_GOODS_ISSUE_DATE_2
+
+			variation Variation
+				isDefault
+				relationship: def5edd0-ee30-4e33-9150-eb2aa6d84c6f
+				defaultHierarchy: LocalDateTable_3f947b56-85c8-406d-af5f-5cbc26506d2b.Datumshierarchie
+
+			annotation SummarizationSetBy = Automatic
+
+			annotation UnderlyingDateTimeDataType = Date
+
+		column MIN_ACTUAL_GOODS_ISSUE_DATE
+			dataType: dateTime
+			formatString: Long date
+			lineageTag: 32de82d1-b863-4e82-a714-b4b256aa65d9
+			summarizeBy: none
+			sourceColumn: MIN_ACTUAL_GOODS_ISSUE_DATE
+
+			variation Variation
+				isDefault
+				relationship: 3d93fbb7-e1db-451f-a6b3-656195b5b8f7
+				defaultHierarchy: LocalDateTable_cd53e518-fd27-4d57-a873-b36eb83e240c.Datumshierarchie
+
+			annotation SummarizationSetBy = Automatic
+
+			annotation UnderlyingDateTimeDataType = Date
+
+		column SALES_ORGANIZATION
+			dataType: string
+			lineageTag: aa803828-22cc-49f8-8747-46b1dcec3033
+			summarizeBy: none
+			sourceColumn: SALES_ORGANIZATION
+
+			annotation SummarizationSetBy = Automatic
+
+		column PLANNED_GOODS_ISSUE_DATE
+			dataType: dateTime
+			formatString: Long date
+			lineageTag: d732c5bd-3a49-4e74-801a-166464100e84
+			summarizeBy: none
+			sourceColumn: PLANNED_GOODS_ISSUE_DATE
+
+			variation Variation
+				isDefault
+				relationship: c2849d45-edaf-49ac-adab-e8614969b258
+				defaultHierarchy: LocalDateTable_9402d676-9761-4925-b017-600ab6835415.Datumshierarchie
+
+			annotation SummarizationSetBy = Automatic
+
+			annotation UnderlyingDateTimeDataType = Date
+
+		column CURRENCY_CODE
+			dataType: string
+			lineageTag: 8b908bef-0d1a-46fc-81c2-ed9c814c8327
+			summarizeBy: none
+			sourceColumn: CURRENCY_CODE
+
+			annotation SummarizationSetBy = Automatic
+
+		column INCOTERMS_1
+			dataType: string
+			lineageTag: 1196d1ed-8f07-47b2-9ebd-5f10c2190ccf
+			summarizeBy: none
+			sourceColumn: INCOTERMS_1
+
+			annotation SummarizationSetBy = Automatic
+
+		column INCOTERMS_2
+			dataType: string
+			lineageTag: ba951b07-aab8-4ee4-b211-de5fa845a8ea
+			summarizeBy: none
+			sourceColumn: INCOTERMS_2
+
+			annotation SummarizationSetBy = Automatic
+
+		column ORDER_ITEM
+			dataType: string
+			lineageTag: 7dbeee33-81e1-4b14-b570-9ee49af6e7b4
+			summarizeBy: none
+			sourceColumn: ORDER_ITEM
+
+			annotation SummarizationSetBy = Automatic
+
+		column SALES_UNIT_ORDERS
+			dataType: string
+			lineageTag: 61201e25-e587-441d-bb9d-502761b29b0f
+			summarizeBy: none
+			sourceColumn: SALES_UNIT_ORDERS
+
+			annotation SummarizationSetBy = Automatic
+
+		column QTY_ORDERED
+			dataType: int64
+			formatString: #,0
+			lineageTag: 7f45b4a5-9193-463e-ac5b-f49c914a703a
+			summarizeBy: sum
+			sourceColumn: QTY_ORDERED
+
+			changedProperty = DataType
+
+			annotation SummarizationSetBy = Automatic
+
+		column FIRST_CONFIRMED_DELIVERY_DATE
+			dataType: dateTime
+			formatString: Long date
+			lineageTag: 87e8cc76-2e32-40d0-b428-5c4862f2f96a
+			summarizeBy: none
+			sourceColumn: FIRST_CONFIRMED_DELIVERY_DATE
+
+			variation Variation
+				isDefault
+				relationship: e7dce33b-5582-4f8a-bc63-d68f028803bb
+				defaultHierarchy: LocalDateTable_60f75317-a09e-4dee-83c9-7b8ab921f006.Datumshierarchie
+
+			annotation SummarizationSetBy = Automatic
+
+			annotation UnderlyingDateTimeDataType = Date
+
+		column SITE
+			dataType: string
+			lineageTag: 584b0c84-06b8-4213-94bd-34cd524c253a
+			summarizeBy: none
+			sourceColumn: SITE
+
+			annotation SummarizationSetBy = Automatic
+
+		column REQUESTED_DELIVERY_DATE
+			dataType: dateTime
+			formatString: Long date
+			lineageTag: 7e7ffef0-c104-43aa-91d3-3901f39c8dba
+			summarizeBy: none
+			sourceColumn: REQUESTED_DELIVERY_DATE
+
+			variation Variation
+				isDefault
+				relationship: 263be63b-f738-4e8e-a3fe-8e7f06e2203b
+				defaultHierarchy: LocalDateTable_0b3b5801-5056-4506-b84c-464fead7e5a2.Datumshierarchie
+
+			annotation SummarizationSetBy = Automatic
+
+			annotation UnderlyingDateTimeDataType = Date
+
+		column SALES_OFFICE
+			dataType: string
+			lineageTag: a2a5a0d0-3de8-470a-9ff2-8463747ec499
+			summarizeBy: none
+			sourceColumn: SALES_OFFICE
+
+			annotation SummarizationSetBy = Automatic
+
+		column SALES_GROUP
+			dataType: string
+			lineageTag: f495ea33-d79d-448a-98bd-f38e3c451aa2
+			summarizeBy: none
+			sourceColumn: SALES_GROUP
+
+			annotation SummarizationSetBy = Automatic
+
+		column ORDER_CURRENCY
+			dataType: string
+			lineageTag: 9cc55806-ce93-4dab-b35a-24e86bf03ed6
+			summarizeBy: none
+			sourceColumn: ORDER_CURRENCY
+
+			annotation SummarizationSetBy = Automatic
+
+		column CUSTOMER_NO
+			dataType: string
+			lineageTag: a4c2662e-4220-44e1-8f0a-47b8fc818198
+			summarizeBy: none
+			sourceColumn: CUSTOMER_NO
+
+			annotation SummarizationSetBy = Automatic
+
+		column ORDER_TYPE
+			dataType: string
+			lineageTag: c8781cbc-c94a-48c1-9fdf-4ec2d5999b8a
+			summarizeBy: none
+			sourceColumn: ORDER_TYPE
+
+			annotation SummarizationSetBy = Automatic
+
+		column ORDER_DATE
+			dataType: dateTime
+			formatString: Long date
+			lineageTag: 6becc5a3-bfaf-45aa-8eff-6d86d4295ab3
+			summarizeBy: none
+			sourceColumn: ORDER_DATE
+
+			variation Variation
+				isDefault
+				relationship: 937d132a-eda1-414c-8a63-dd55506079b8
+				defaultHierarchy: LocalDateTable_b30d1d15-cd75-4fbc-ad10-3f3e497b9208.Datumshierarchie
+
+			annotation SummarizationSetBy = Automatic
+
+			annotation UnderlyingDateTimeDataType = Date
+
+		column TRANSIT_DAYS
+			dataType: int64
+			formatString: 0
+			lineageTag: c11a8f28-202c-4cad-99ec-9c734dcb8ffc
+			summarizeBy: sum
+			sourceColumn: TRANSIT_DAYS
+
+			changedProperty = DataType
+
+			annotation SummarizationSetBy = Automatic
+
+		column REASON_CODE
+			dataType: string
+			lineageTag: cacb7caf-7389-45d8-9ce6-1825b67b1f3a
+			summarizeBy: none
+			sourceColumn: REASON_CODE
+
+			annotation SummarizationSetBy = Automatic
+
+		column FLAG_INCONSISTENT_DATA
+			dataType: string
+			lineageTag: 9c1f4bbb-5e7c-4239-89a0-cf11baaa114a
+			summarizeBy: none
+			sourceColumn: FLAG_INCONSISTENT_DATA
+
+			annotation SummarizationSetBy = Automatic
+
+		column FLAG_REQUESTED_DATE_old
+			dataType: string
+			lineageTag: f3d31d2f-9c59-4e01-96f8-82ee805451ac
+			summarizeBy: none
+			sourceColumn: FLAG_REQUESTED_DATE_old
+
+			annotation SummarizationSetBy = Automatic
+
+		column FLAG_MISSING_TRANSIT_DAYS
+			dataType: string
+			lineageTag: 5016e242-0a8a-49f2-804a-e0dbe19b4009
+			summarizeBy: none
+			sourceColumn: FLAG_MISSING_TRANSIT_DAYS
+
+			annotation SummarizationSetBy = Automatic
+
+		column QUANTITY_STATUS_90
+			dataType: string
+			lineageTag: 12b9bb87-307f-4769-b08f-92b4b2288bf5
+			summarizeBy: none
+			sourceColumn: QUANTITY_STATUS_90
+
+			annotation SummarizationSetBy = Automatic
+
+		column QUANTITY_STATUS_80
+			dataType: string
+			lineageTag: 48f63d57-9434-4e85-8833-1049248f2dcf
+			summarizeBy: none
+			sourceColumn: QUANTITY_STATUS_80
+
+			annotation SummarizationSetBy = Automatic
+
+		column QUANTITY_STATUS_75
+			dataType: string
+			lineageTag: 4370a4d9-7988-41d8-bc39-d129bd337cb6
+			summarizeBy: none
+			sourceColumn: QUANTITY_STATUS_75
+
+			annotation SummarizationSetBy = Automatic
+
+		column QUANTITY_STATUS_70
+			dataType: string
+			lineageTag: 0d8f6489-c24b-46b3-8860-1e0eee98d8a6
+			summarizeBy: none
+			sourceColumn: QUANTITY_STATUS_70
+
+			annotation SummarizationSetBy = Automatic
+
+		column QUANTITY_STATUS_60
+			dataType: string
+			lineageTag: 626d9170-25b6-4cdc-beef-724dd4492308
+			summarizeBy: none
+			sourceColumn: QUANTITY_STATUS_60
+
+			annotation SummarizationSetBy = Automatic
+
+		column QUANTITY_STATUS_IN_PERCENT
+			dataType: string
+			lineageTag: 8946dd8e-118c-4087-900d-1f97e2629075
+			summarizeBy: none
+			sourceColumn: QUANTITY_STATUS_IN_PERCENT
+
+			annotation SummarizationSetBy = Automatic
+
+		column CONTRACTUAL_LT
+			dataType: string
+			lineageTag: 071972a3-30de-4809-ac26-8fe8bf53113a
+			summarizeBy: none
+			sourceColumn: CONTRACTUAL_LT
+
+			annotation SummarizationSetBy = Automatic
+
+		column FLAG_DELIVERYLAST12MONTH
+			dataType: string
+			lineageTag: c730e9e1-1aac-48bf-b06d-8d05cd0bcd88
+			summarizeBy: none
+			sourceColumn: FLAG_DELIVERYLAST12MONTH
+
+			annotation SummarizationSetBy = Automatic
+
+		column PRODUCT_KEY
+			dataType: string
+			lineageTag: 6c7946e0-d019-4e0b-b5c5-84012920223b
+			summarizeBy: none
+			sourceColumn: PRODUCT_KEY
+
+			annotation SummarizationSetBy = Automatic
+
+		column CUSTOMER_KEY
+			dataType: string
+			lineageTag: e99fee0b-64d8-4f36-94c6-075fe48569de
+			summarizeBy: none
+			sourceColumn: CUSTOMER_KEY
+
+			annotation SummarizationSetBy = Automatic
+
+		column MONTH_YEAR_ACTUAL_GOODS_ISSUE_DATE
+			dataType: string
+			lineageTag: 42ae8ac0-e0e9-46ee-9ac5-f05fb1269f0f
+			summarizeBy: none
+			sourceColumn: MONTH_YEAR_ACTUAL_GOODS_ISSUE_DATE
+
+			annotation SummarizationSetBy = Automatic
+
+		column FLAG_ALREADY_DELIVERED_old
+			dataType: string
+			lineageTag: d288dc76-03c3-4357-8f9c-747650a6f44d
+			summarizeBy: none
+			sourceColumn: FLAG_ALREADY_DELIVERED_old
+
+			annotation SummarizationSetBy = Automatic
+
+		column ITEM_NO
+			dataType: int64
+			formatString: 0
+			lineageTag: e3633e1b-e143-4bf7-a04f-5cea3d1d0912
+			summarizeBy: sum
+			sourceColumn: ITEM_NO
+
+			annotation SummarizationSetBy = Automatic
+
+		column VOUCH_TYPE
+			dataType: string
+			lineageTag: 945535e9-6c27-468a-ad8b-b2dba1978f63
+			summarizeBy: none
+			sourceColumn: VOUCH_TYPE
+
+			annotation SummarizationSetBy = Automatic
+
+		column VOUCH_STATUS
+			dataType: string
+			lineageTag: 85c128b6-29a7-4d96-b787-91db042421e1
+			summarizeBy: none
+			sourceColumn: VOUCH_STATUS
+
+			annotation SummarizationSetBy = Automatic
+
+		column ITEM_TYPE
+			dataType: string
+			lineageTag: e5aecb56-146c-4bbd-bb43-104b22f5f581
+			summarizeBy: none
+			sourceColumn: ITEM_TYPE
+
+			annotation SummarizationSetBy = Automatic
+
+		column Z_QTY_ORDER_FIRST
+			dataType: string
+			lineageTag: 16e576a1-d088-4496-8bf3-1aa4585c9efb
+			summarizeBy: none
+			sourceColumn: Z_QTY_ORDER_FIRST
+
+			annotation SummarizationSetBy = Automatic
+
+		column DEL_METHOD
+			dataType: string
+			lineageTag: a2d65197-065a-459f-9152-a62597aa4717
+			summarizeBy: none
+			sourceColumn: DEL_METHOD
+
+			annotation SummarizationSetBy = Automatic
+
+		column DESC_1
+			dataType: string
+			lineageTag: 53974382-6892-4d14-b7ef-fbc50b5602ea
+			summarizeBy: none
+			sourceColumn: DESC_1
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'Busi Partner new'
+			dataType: string
+			lineageTag: 0e5157a3-b0d6-4ec6-9235-02e2bbaf7d00
+			summarizeBy: none
+			sourceColumn: Busi Partner new
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'Busi Partner 2'
+			dataType: string
+			lineageTag: 766e8316-f0af-47e4-97be-6e65aa9b6eae
+			summarizeBy: none
+			sourceColumn: Busi Partner 2
+
+			annotation SummarizationSetBy = Automatic
+
+		column MONTH_OF_DELIVERY
+			dataType: string
+			lineageTag: 66de0ece-69dc-44b6-8f9d-9dd9c109793f
+			summarizeBy: none
+			sourceColumn: MONTH_OF_DELIVERY
+
+			annotation SummarizationSetBy = Automatic
+
+		column SITECODE
+			dataType: string
+			lineageTag: a594cad9-fc56-4786-aeb7-42a4d2b40562
+			summarizeBy: none
+			sourceColumn: SITECODE
+
+			annotation SummarizationSetBy = Automatic
+
+		column CURR_CD
+			dataType: string
+			lineageTag: ee907714-9206-42ff-b27e-cca7bbd64b62
+			summarizeBy: none
+			sourceColumn: CURR_CD
+
+			annotation SummarizationSetBy = Automatic
+
+		column LT1_diff_requested_date_order_date = DATEDIFF('FACT_SALES_DELIVERY'[ORDER_DATE], 'FACT_SALES_DELIVERY'[REQUESTED_DELIVERY_DATE],DAY)
+			dataType: double
+			formatString: 0
+			lineageTag: ad922040-2e73-4a6d-8e11-9330b98455a2
+			summarizeBy: sum
+
+			changedProperty = DataType
+
+			annotation SummarizationSetBy = Automatic
+
+		column LT2_diff_firstconfirmeddeliverydate_order_date = DATEDIFF('FACT_SALES_DELIVERY'[ORDER_DATE], 'FACT_SALES_DELIVERY'[FIRST_CONFIRMED_DELIVERY_DATE],day)
+			dataType: double
+			formatString: 0
+			lineageTag: a5a4501c-a00f-47ef-a2e0-fcbb96e74914
+			summarizeBy: sum
+
+			changedProperty = DataType
+
+			annotation SummarizationSetBy = Automatic
+
+		column LT3_diff_actualgoodsissuedate_order_date = DATEDIFF('FACT_SALES_DELIVERY'[ORDER_DATE],'FACT_SALES_DELIVERY'[Actual Goods Issue Date],day)
+			dataType: double
+			formatString: 0
+			lineageTag: 002f77f4-5743-4adb-b64a-f7be0a9e29cd
+			summarizeBy: sum
+
+			changedProperty = DataType
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'OTD days to 1st conf date' = ```
+				
+				VAR StartDate = 'FACT_SALES_DELIVERY'[FIRST_CONFIRMED_DELIVERY_DATE]
+				VAR EndDate = FACT_SALES_DELIVERY[Min_Actual_Goods_Issue_Date_Item_Column]
+				
+				RETURN 
+				IF(
+				    ISBLANK(StartDate), 
+				    Blank(),  -- NULL-Wert beibehalten
+				    IF(
+				        EndDate >= StartDate, 
+				        NETWORKDAYS(StartDate, EndDate, 1, Holidays) -1, 
+				        -(NETWORKDAYS(EndDate, StartDate, 1, Holidays) -1)
+				    )
+				)
+				
+				```
+			dataType: int64
+			formatString: 0
+			lineageTag: ec4d1728-dc8e-49cd-b16c-d81112baa6a5
+			summarizeBy: sum
+
+			changedProperty = DataType
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'OTD days requested date' = ```
+				
+				VAR StartDate = 'FACT_SALES_DELIVERY'[REQUESTED_DELIVERY_DATE]
+				VAR EndDate = 'FACT_SALES_DELIVERY'[Min_Actual_Goods_Issue_Date_Item_Column]
+				
+				RETURN 
+				IF(
+				    ISBLANK(StartDate), 
+				    BLANK(), -- Falls kein REQUESTED_DELIVERY_DATE vorhanden ist, NULL zurückgeben
+				    IF(
+				        EndDate >= StartDate, 
+				        NETWORKDAYS(StartDate, EndDate, 1, Holidays) - 1, 
+				        -(NETWORKDAYS(EndDate, StartDate, 1, Holidays) - 1)
+				    )
+				)
+				
+				```
+			formatString: 0
+			lineageTag: e5160edd-225f-49d3-9eaa-c913760d1c0e
+			summarizeBy: sum
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'Delivery Status 1st' = ```
+				
+				VAR OTD = 'FACT_SALES_DELIVERY'[OTD days to 1st conf date]
+				VAR Quantity = 'FACT_SALES_DELIVERY'[QuantityInPercent_ByDate]
+				
+				RETURN 
+				IF(
+				    ISBLANK(OTD), 
+				    BLANK(), -- Falls OTD leer ist, gib BLANK zurück
+				    IF(
+				        AND(Quantity >= 0.9 && Quantity <= 1.1, OTD >= -50 && OTD <= 2), 
+				        "OTIF",
+				        IF(
+				            AND((Quantity < 0.9 || Quantity > 1.1), OTD >= -50 && OTD <= 2), 
+				            "On-time, not in full", 
+				            "Too late"
+				        )
+				    )
+				)
+				
+				```
+			lineageTag: 133c5aa3-8f88-49f7-8cc6-74224262e859
+			summarizeBy: none
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'Delivery Status req' = ```
+				
+				VAR OTD = 'FACT_SALES_DELIVERY'[OTD days requested date]
+				VAR Quantity = 'FACT_SALES_DELIVERY'[QuantityInPercent_ByDate]
+				
+				RETURN 
+				IF(
+				    ISBLANK(OTD), 
+				    BLANK(), -- Falls OTD leer ist, gib BLANK zurück
+				    IF(
+				        AND(Quantity >= 0.9 && Quantity <= 1.1, OTD >= -50 && OTD <= 2), 
+				        "OTIF",
+				        IF(
+				            AND((Quantity < 0.9 || Quantity > 1.1), OTD >= -50 && OTD <= 2), 
+				            "On-time, not in full", 
+				            "Too late"
+				        )
+				    )
+				)
+				
+				```
+			lineageTag: 5737bff0-aeb9-486f-91ea-6cd071f60214
+			summarizeBy: none
+
+			annotation SummarizationSetBy = Automatic
+
+		column OTD = ```
+				
+				IF(
+				    NOT ISBLANK('FACT_SALES_DELIVERY'[OTD days to 1st conf date]) &&
+				    'FACT_SALES_DELIVERY'[OTD days to 1st conf date] >= -50 && 
+				    'FACT_SALES_DELIVERY'[OTD days to 1st conf date] <= 2, 
+				    "YES", 
+				    "NO"
+				)
+				
+				```
+			lineageTag: 2b18ca8e-d882-4766-b0b5-8b57cfcad551
+			summarizeBy: none
+
+			annotation SummarizationSetBy = Automatic
+
+		column OTIF = if('FACT_SALES_DELIVERY'[OTD]="YES" && 'FACT_SALES_DELIVERY'[QuantityInPercent_ByDate]>=0.9,"YES","NO")
+			lineageTag: e2219e44-3e79-4a67-a239-fe0f7296c096
+			summarizeBy: none
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'OTIF requested' = if('FACT_SALES_DELIVERY'[OTD requested]="YES" && 'FACT_SALES_DELIVERY'[QuantityInPercent_ByDate]>=0.9,"YES","NO")
+			lineageTag: 28a76878-dcc0-43eb-b4fc-422c9c61b825
+			summarizeBy: none
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'OTD requested' = ```
+				
+				IF(
+				    NOT ISBLANK('FACT_SALES_DELIVERY'[OTD days requested date]) &&
+				    'FACT_SALES_DELIVERY'[OTD days requested date] >= -50 && 
+				    'FACT_SALES_DELIVERY'[OTD days requested date] <= 2, 
+				    "YES", 
+				    "NO"
+				)
+				
+				```
+			lineageTag: 11b7695e-7343-4564-b68d-9f1c65a05b87
+			summarizeBy: none
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'Quantity new'
+			dataType: double
+			formatString: 0.00\ %;-0.00\ %;0.00\ %
+			lineageTag: 61c7b971-07b7-4f3f-8822-9a63a26b67b9
+			summarizeBy: sum
+			sourceColumn: Quantity new
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'OTD %  requested date' = (1-[Number of delayed order items days requested old]/[Number of order items])*1
+			formatString: 0
+			lineageTag: e5ef21b1-bc57-42d1-8c8f-3f32438fa5ad
+			summarizeBy: sum
+
+			annotation SummarizationSetBy = Automatic
+
+			annotation PBI_FormatHint = {"isDecimal":true}
+
+		column QTY_USED
+			dataType: int64
+			formatString: 0
+			lineageTag: 21016631-9d64-4fd6-a3de-ed15052bec8d
+			summarizeBy: sum
+			sourceColumn: QTY_USED
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'Kalenderwoche AGD' = WEEKNUM('FACT_SALES_DELIVERY'[Actual Goods Issue Date], 2)
+			formatString: 0
+			lineageTag: 4e0d9929-41d8-4330-9998-1c739cb9a480
+			summarizeBy: sum
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'Number of delayed order items days requested old' = 1
+			formatString: 0
+			lineageTag: 48e927b5-ba43-40d2-90cc-42c5ead35e02
+			summarizeBy: sum
+
+			annotation SummarizationSetBy = Automatic
+
+		column DATE_L_DELIV
+			dataType: string
+			lineageTag: b776aa38-b980-48c3-ad24-bb1787a33fc9
+			summarizeBy: none
+			sourceColumn: DATE_L_DELIV
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'Sort Order first confirmed' = ```
+				
+				SWITCH(
+				    TRUE(),
+				    FACT_SALES_DELIVERY[Order Range Spalte first confirmed] = "less -50", 1,
+				    FACT_SALES_DELIVERY[Order Range Spalte first confirmed] = "-50 to -21", 2,
+				    FACT_SALES_DELIVERY[Order Range Spalte first confirmed] = "-20 to -11", 3,
+				    FACT_SALES_DELIVERY[Order Range Spalte first confirmed] = "-10 to -6", 4,
+				    FACT_SALES_DELIVERY[Order Range Spalte first confirmed] = "-5 to 2", 5,
+				    FACT_SALES_DELIVERY[Order Range Spalte first confirmed] = "3 to 10", 6,
+				    FACT_SALES_DELIVERY[Order Range Spalte first confirmed] = "11 to 20", 7,
+				    FACT_SALES_DELIVERY[Order Range Spalte first confirmed] = "21 to 50", 8,
+				    FACT_SALES_DELIVERY[Order Range Spalte first confirmed] = "50 up", 9
+				)
+				
+				```
+			formatString: 0
+			lineageTag: 7f044852-b412-42c5-9899-189f71ce1628
+			summarizeBy: none
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'Order Range Spalte first confirmed' = ```
+				
+				SWITCH(
+				    TRUE(),
+				    FACT_SALES_DELIVERY[OTD days to 1st conf date] <= -51, "less -50",
+				    FACT_SALES_DELIVERY[OTD days to 1st conf date] <= -21, "-50 to -21",
+				    FACT_SALES_DELIVERY[OTD days to 1st conf date] <= -11, "-20 to -11",
+				    FACT_SALES_DELIVERY[OTD days to 1st conf date] <= -6, "-10 to -6",
+				    FACT_SALES_DELIVERY[OTD days to 1st conf date] <= 2, "-5 to 2",
+				    FACT_SALES_DELIVERY[OTD days to 1st conf date] <= 10, "3 to 10",
+				    FACT_SALES_DELIVERY[OTD days to 1st conf date] <= 20, "11 to 20",
+				    FACT_SALES_DELIVERY[OTD days to 1st conf date] <= 50, "21 to 50",
+				    "50 up"
+				)
+				
+				```
+			lineageTag: 01048058-b113-4f6f-a1eb-e288dd6f21c9
+			summarizeBy: none
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'Order Range Spalte cust req' = ```
+				
+				SWITCH(
+				    TRUE(),
+				    FACT_SALES_DELIVERY[OTD days requested date] <= -51, "less -50",
+				    FACT_SALES_DELIVERY[OTD days requested date] <= -21, "-50 to -21",
+				    FACT_SALES_DELIVERY[OTD days requested date] <= -11, "-20 to -11",
+				    FACT_SALES_DELIVERY[OTD days requested date] <= -6, "-10 to -6",
+				    FACT_SALES_DELIVERY[OTD days requested date] <= 2, "-5 to 2",
+				    FACT_SALES_DELIVERY[OTD days requested date] <= 10, "3 to 10",
+				    FACT_SALES_DELIVERY[OTD days requested date] <= 20, "11 to 20",
+				    FACT_SALES_DELIVERY[OTD days requested date] <= 50, "21 to 50",
+				    "50 up"
+				)
+				
+				```
+			lineageTag: 9a9f502d-8d60-49a0-9f64-157a02938a38
+			summarizeBy: none
+
+			annotation SummarizationSetBy = Automatic
+
+		column Min_Actual_Goods_Issue_Date_Item_Column = ```
+				
+				VAR ItemNo = FACT_SALES_DELIVERY[ORDER_NO/ ITEM_NO]
+				RETURN 
+				CALCULATE(
+				    MIN(FACT_SALES_DELIVERY[Actual Goods Issue Date]),
+				    FILTER(FACT_SALES_DELIVERY, FACT_SALES_DELIVERY[ORDER_NO/ ITEM_NO] = ItemNo)
+				)
+				
+				```
+			formatString: Long date
+			lineageTag: 4001680c-1555-4ffd-9ed1-df2a3483c144
+			summarizeBy: none
+
+			variation Variation
+				isDefault
+				relationship: 950db104-2f13-4d3a-aff4-799475726478
+				defaultHierarchy: LocalDateTable_1e9d8d69-12cb-4fc1-9cec-f95502b23c44.Datumshierarchie
+
+			annotation SummarizationSetBy = Automatic
+
+		column FLAG_ALREADY_DELIVERED = ```
+				
+				 IF(
+				    FACT_SALES_DELIVERY[Min_Actual_Goods_Issue_Date_Item_Column] = FACT_SALES_DELIVERY[Actual Goods Issue Date], 
+				    "NO",
+				    "YES"
+				)
+				
+				```
+			lineageTag: e079b835-68e3-4dfd-af23-66b747dbcce2
+			summarizeBy: none
+
+			annotation SummarizationSetBy = Automatic
+
+		column BP_ORDER
+			dataType: string
+			lineageTag: 820fc8c3-93b1-4bb8-8bd9-d182036e183b
+			summarizeBy: none
+			sourceColumn: BP_ORDER
+
+			annotation SummarizationSetBy = Automatic
+
+		column ACTUAL_GOODS_ISSUE_DATE_SOURCE
+			dataType: dateTime
+			formatString: Long Date
+			lineageTag: ecff1b4d-c75b-4450-a8e8-ea130a43f514
+			summarizeBy: none
+			sourceColumn: ACTUAL_GOODS_ISSUE_DATE_SOURCE
+
+			variation Variation
+				isDefault
+				relationship: 02585959-7fc1-41d4-b0eb-b90b53f656bb
+				defaultHierarchy: LocalDateTable_2a20c57a-4cd5-42a0-bf2a-46ce514112d7.Datumshierarchie
+
+			annotation SummarizationSetBy = Automatic
+
+			annotation UnderlyingDateTimeDataType = Date
+
+		column ActualGoodsIssueDate = ```
+				
+				VAR TransitRaw = [TRANSIT_DAYS]
+				VAR Transit = VALUE(TransitRaw)
+				VAR BaseDate = DATEVALUE([FIRST_CONFIRMED_DELIVERY_DATE])
+				VAR DaysToTake = Transit + 1
+				
+				RETURN
+				    IF (
+				        Transit > 25,
+				        MAXX (
+				            TOPN (
+				                DaysToTake,
+				                FILTER (
+				                    'CalendarTable',
+				                    'CalendarTable'[IsWorkday] = TRUE &&
+				                    'CalendarTable'[Date] <= BaseDate
+				                ),
+				                'CalendarTable'[Date], DESC
+				            ),
+				            'CalendarTable'[Date]
+				        ),
+				        [ACTUAL_GOODS_ISSUE_DATE_2]  -- 👈 Wenn TransitDays ≤ 25 oder leer
+				    )
+				
+				```
+			formatString: General Date
+			lineageTag: e3fa7938-ad23-40b8-8320-57e94aa2160e
+			summarizeBy: none
+
+			variation Variation
+				isDefault
+				relationship: 0513f100-11df-4416-b245-d07823eb66af
+				defaultHierarchy: LocalDateTable_77f58261-dd81-44e4-91bc-0ecc3a6f524c.Datumshierarchie
+
+			annotation SummarizationSetBy = Automatic
+
+		column RequestedInNext3Weeks = ```
+				
+				VAR TodayDate = TODAY()
+				VAR SundayIn3Weeks = TodayDate + (7 - WEEKDAY(TodayDate, 2)) + 14
+				RETURN
+				    IF (
+				        FACT_SALES_DELIVERY[REQUESTED_DELIVERY_DATE] > TodayDate
+				            && FACT_SALES_DELIVERY[REQUESTED_DELIVERY_DATE] <= SundayIn3Weeks,
+				        TRUE(),
+				        FALSE()
+				    )
+				
+				```
+			formatString: """TRUE"";""TRUE"";""FALSE"""
+			lineageTag: f2349469-1130-4578-847b-b0fb8d36e2a1
+			summarizeBy: none
+
+			annotation SummarizationSetBy = Automatic
+
+		column QTY_DELIV_old
+			dataType: int64
+			formatString: #,0
+			lineageTag: 8ab6b3e7-a9a2-416e-9243-425f7d1fc20c
+			summarizeBy: sum
+			sourceColumn: QTY_DELIV_old
+
+			annotation SummarizationSetBy = Automatic
+
+		column FLAG_EARLY_1ST_CONF
+			dataType: string
+			lineageTag: 0afdd667-5daf-4e88-92d1-3c2865c9e400
+			summarizeBy: none
+			sourceColumn: FLAG_EARLY_1ST_CONF
+
+			annotation SummarizationSetBy = Automatic
+
+		column DIM_PLANT
+			dataType: string
+			lineageTag: 33d438ab-bc3a-4929-ab39-2de73fd0f680
+			summarizeBy: none
+			sourceColumn: DIM_PLANT
+
+			annotation SummarizationSetBy = Automatic
+
+		column INCO1
+			dataType: string
+			lineageTag: 2aa1b38a-e8a3-4e69-b7b1-4fb3e52f5c31
+			summarizeBy: none
+			sourceColumn: INCO1
+
+			annotation SummarizationSetBy = Automatic
+
+		column DOCUMENTDATE_DELIVERY
+			dataType: dateTime
+			formatString: Long Date
+			lineageTag: 01a9687a-0381-457a-9c77-80d50d1b283e
+			summarizeBy: none
+			sourceColumn: DOCUMENTDATE_DELIVERY
+
+			variation Variation
+				isDefault
+				relationship: ca9b71ee-ca0e-4025-afc2-d97d83eb306d
+				defaultHierarchy: LocalDateTable_7882cfe7-3c8f-4db7-97c8-ee2d6acdd764.Datumshierarchie
+
+			annotation SummarizationSetBy = Automatic
+
+			annotation UnderlyingDateTimeDataType = Date
+
+		column 'Test Actual Goods Issue Date' = ```
+				
+				VAR TransitRaw = FACT_SALES_DELIVERY[TRANSIT_DAYS]
+				VAR Transit = VALUE(TransitRaw)
+				VAR BaseDate = DATEVALUE(FACT_SALES_DELIVERY[FIRST_CONFIRMED_DELIVERY_DATE])
+				VAR DaysToTake = Transit + 1
+				VAR CalculatedActualGoodsIssueDate = 
+				    IF(
+				        FACT_SALES_DELIVERY[SITECODE]="BAA" && FACT_SALES_DELIVERY[INCOTERMS_1]="DDP",
+				        MAXX(
+				            TOPN(
+				                DaysToTake,
+				                FILTER(
+				                    'CalendarTable',
+				                    'CalendarTable'[IsWorkday] = TRUE &&
+				                    'CalendarTable'[Date] <= BaseDate
+				                ),
+				                'CalendarTable'[Date], DESC
+				            ),
+				            'CalendarTable'[Date]
+				        ),
+				        FACT_SALES_DELIVERY[ACTUAL_GOODS_ISSUE_DATE_SOURCE]
+				    )
+				RETURN
+				    IF(
+				        Transit >=0,
+				        CalculatedActualGoodsIssueDate,
+				        IF(
+				            FACT_SALES_DELIVERY[SOURCE_SYSTEM] = "PSN" && 
+				            (FACT_SALES_DELIVERY[INCOTERMS_1] = "EXW" || FACT_SALES_DELIVERY[INCOTERMS_1] = "FCA"),
+				            FACT_SALES_DELIVERY[DOCUMENTDATE_DELIVERY],
+				            FACT_SALES_DELIVERY[ACTUAL_GOODS_ISSUE_DATE_SOURCE]
+				        )
+				    )
+				
+				```
+			formatString: General Date
+			lineageTag: dea17af0-7fce-4625-93ca-614237fe3254
+			summarizeBy: none
+
+			variation Variation
+				isDefault
+				relationship: 894a9c73-64fd-4ae2-84dc-c91de588bb21
+				defaultHierarchy: LocalDateTable_2eb20253-0ddf-4019-8d77-22a73f02727d.Datumshierarchie
+
+			annotation SummarizationSetBy = Automatic
+
+		column Monat_Jahr = FORMAT(FACT_SALES_DELIVERY[Test Actual Goods Issue Date], "MMM/yyyy")
+			lineageTag: e0d4ab48-d6ea-411d-93df-7a397a04f923
+			summarizeBy: none
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'Qty in Percent' = FACT_SALES_DELIVERY[QTY_DELIVERED]/FACT_SALES_DELIVERY[QTY_ORDERED]
+			lineageTag: 4f89d4aa-49a5-48e4-b9b8-63bddb532304
+			summarizeBy: sum
+
+			annotation SummarizationSetBy = Automatic
+
+			annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		column 'Actual Goods Issue Date' = ```
+				
+				VAR RawStartDate =
+				    IF(
+				        (FACT_SALES_DELIVERY[SOURCE_SYSTEM] = "PSN" &&
+				        (FACT_SALES_DELIVERY[INCOTERMS_1] = "EXW" || FACT_SALES_DELIVERY[INCOTERMS_1] = "FCA")) || 
+				        (FACT_SALES_DELIVERY[SOURCE_SYSTEM] = "PSN" &&
+				        FACT_SALES_DELIVERY[INCOTERMS_1] = "DDP" &&
+				        FACT_SALES_DELIVERY[SITECODE] = "KIR" &&
+				        FACT_SALES_DELIVERY[TRANSIT_DAYS]=0),
+				        FACT_SALES_DELIVERY[DOCUMENTDATE_DELIVERY],
+				        FACT_SALES_DELIVERY[ACTUAL_GOODS_ISSUE_DATE_SOURCE]
+				    )
+				
+				VAR TransitDays = FACT_SALES_DELIVERY[TRANSIT_DAYS]
+				VAR Sitecode = FACT_SALES_DELIVERY[SITECODE]
+				VAR Incoterms = FACT_SALES_DELIVERY[INCOTERMS_1]
+				
+				VAR StartDatumEffektiv =
+				    IF(
+				        Sitecode = "BAA" && Incoterms = "DDP" ||  Sitecode = "BAA" && Incoterms = "DAP" || Sitecode = "KIL" && Incoterms <> "EXW" || Sitecode = "KIR" && Incoterms = "DDP" && TransitDays>0 ||  Sitecode = "COR" && Incoterms = "DDP" ||  Sitecode = "COR" && Incoterms = "DAP",
+				        RawStartDate + 1,
+				        RawStartDate
+				    )
+				
+				VAR GefilterteTage =
+				    TOPN(
+				        TransitDays,
+				        FILTER(
+				            CalendarTable,
+				            CalendarTable[Date] >= StartDatumEffektiv &&
+				            WEEKDAY(CalendarTable[Date], 2) <= 5 &&
+				            NOT CalendarTable[Date] IN VALUES(HolidayTable[HolidayDate])
+				        ),
+				        CalendarTable[Date], ASC
+				    )
+				
+				VAR ZielDatum =
+				    IF(
+				        NOT ISEMPTY(GefilterteTage),
+				        MAXX(GefilterteTage, CalendarTable[Date])
+				    )
+				
+				RETURN
+				IF(
+				    Sitecode = "BAA" && Incoterms = "DDP" && NOT ISBLANK(ZielDatum) || Sitecode = "BAA" && Incoterms = "DAP" && NOT ISBLANK(ZielDatum) || Sitecode = "KIL" && Incoterms <> "EXW" && NOT ISBLANK(ZielDatum) ||  Sitecode = "KIR" && Incoterms = "DDP" && TransitDays>0 && NOT ISBLANK(ZielDatum) ||  Sitecode = "COR" && Incoterms = "DDP" ||  Sitecode = "COR" && Incoterms = "DAP",
+				    ZielDatum,
+				    RawStartDate
+				)
+				
+				```
+			formatString: Long date
+			lineageTag: 3389c4c7-66a5-45ca-a689-8946e8053dfa
+			summarizeBy: none
+
+			variation Variation
+				isDefault
+				relationship: 16c2be95-eb7d-4775-8a2c-d5086fe842aa
+				defaultHierarchy: LocalDateTable_aeea913f-e23b-4857-a82a-38a820aa77cc.Datumshierarchie
+
+			annotation SummarizationSetBy = Automatic
+
+		column ACTUAL_CONFIRMED_DELIVERY_DATE_old
+			dataType: string
+			lineageTag: d7b01a51-df21-4aa2-b8c3-67f9ead7495b
+			summarizeBy: none
+			sourceColumn: ACTUAL_CONFIRMED_DELIVERY_DATE_old
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'Delivery Month' = ```
+				FORMAT(FACT_SALES_DELIVERY[Actual Goods Issue Date], "MMM/yyyy")
+				
+				```
+			lineageTag: 0b5609d9-62a7-462a-890f-ad367dfc080e
+			summarizeBy: none
+
+			annotation SummarizationSetBy = Automatic
+
+		column QuantityInPercent_ByDate = ```
+				
+				VAR CurrentDate =
+				    FACT_SALES_DELIVERY[Actual Goods Issue Date]
+				
+				VAR CurrentOrderItem =
+				    FACT_SALES_DELIVERY[ORDER_NO/ ITEM_NO]
+				
+				VAR DeliveredThisDate=
+				    CALCULATE(
+				        SUM(FACT_SALES_DELIVERY[QTY_DELIVERED]),
+				        FILTER(
+				            FACT_SALES_DELIVERY,
+				            FACT_SALES_DELIVERY[ORDER_NO/ ITEM_NO] = CurrentOrderItem &&
+				            FACT_SALES_DELIVERY[Actual Goods Issue Date] = CurrentDate
+				        )
+				    )
+				
+				VAR Orderede=
+				    CALCULATE(
+				        MAX(FACT_SALES_DELIVERY[QTY_ORDERED]),
+				        FILTER(
+				            FACT_SALES_DELIVERY,
+				            FACT_SALES_DELIVERY[ORDER_NO/ ITEM_NO] = CurrentOrderItem
+				        )
+				    )
+				
+				RETURN
+				    DIVIDE(DeliveredThisDate, Orderede)
+				
+				```
+			formatString: 0.00\ %;-0.00\ %;0.00\ %
+			lineageTag: b057ebae-dcfb-4269-aad5-f4c6bbe3e7f0
+			summarizeBy: sum
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'Time to order confirmation new test' = DATEDIFF('FACT_SALES_DELIVERY'[ORDER_DATE], 'FACT_SALES_DELIVERY'[FIRST_CONFIRMED_DELIVERY_DATE],DAY)
+			formatString: 0
+			lineageTag: c2728d1a-07cd-4443-b826-060e886776bb
+			summarizeBy: sum
+
+			annotation SummarizationSetBy = Automatic
+
+		column 'Sort Order cust req' = ```
+				
+				SWITCH(
+				    TRUE(),
+				    FACT_SALES_DELIVERY[Order Range Spalte cust req] = "less -50", 1,
+				    FACT_SALES_DELIVERY[Order Range Spalte cust req] = "-50 to -21", 2,
+				    FACT_SALES_DELIVERY[Order Range Spalte cust req] = "-20 to -11", 3,
+				    FACT_SALES_DELIVERY[Order Range Spalte cust req] = "-10 to -6", 4,
+				    FACT_SALES_DELIVERY[Order Range Spalte cust req] = "-5 to 2", 5,
+				    FACT_SALES_DELIVERY[Order Range Spalte cust req] = "3 to 10", 6,
+				    FACT_SALES_DELIVERY[Order Range Spalte cust req] = "11 to 20", 7,
+				    FACT_SALES_DELIVERY[Order Range Spalte cust req] = "21 to 50", 8,
+				    FACT_SALES_DELIVERY[Order Range Spalte cust req] = "50 up", 9
+				)
+				
+				```
+			formatString: 0
+			lineageTag: 2853aab7-1770-4c97-9779-b247506ad981
+			summarizeBy: none
+
+			annotation SummarizationSetBy = Automatic
+
+		column FLAG_INCONSISTENT_DATA_REQ
+			dataType: string
+			lineageTag: 84b10833-e7ea-40f5-8f5d-1d9cd9eb0691
+			summarizeBy: none
+			sourceColumn: FLAG_INCONSISTENT_DATA_REQ
+
+			annotation SummarizationSetBy = Automatic
+
+		partition FACT_SALES_DELIVERY = m
+			mode: import
+			source =
+					let
+					    Source = Snowflake.Databases("zr99360.west-europe.azure.snowflakecomputing.com","DBT_WH_M_TEST"),
+					    SF_DWH_TEST_Database = Source{[Name="SF_DWH_TEST",Kind="Database"]}[Data],
+					    DWH_MART_OTD_Schema = SF_DWH_TEST_Database{[Name="DWH_MART_OTD",Kind="Schema"]}[Data],
+					    FACT_SALES_DELIVERY_View = DWH_MART_OTD_Schema{[Name="FACT_SALES_DELIVERY",Kind="View"]}[Data],
+					    #"Umbenannte Spalten1" = Table.RenameColumns(FACT_SALES_DELIVERY_View,{{"FLAG_REQUESTED_DATE", "FLAG_REQUESTED_DATE_old"}}),
+					    #"Hinzugefügte benutzerdefinierte Spalte2" = Table.AddColumn(#"Umbenannte Spalten1", "FLAG_REQUESTED_DATE", each if [FIRST_CONFIRMED_DELIVERY_DATE]<=[REQUESTED_DELIVERY_DATE] then "Yes" else "No"),
+					    #"Hinzugefügte benutzerdefinierte Spalte4" = Table.AddColumn(#"Hinzugefügte benutzerdefinierte Spalte2", "FLAG_INCONSISTENT_DATA_REQ", each if [REQUESTED_DELIVERY_DATE] is null then "YES" else "NO"),
+					    #"Angefügte Abfrage" = Table.Combine({#"Hinzugefügte benutzerdefinierte Spalte4", #"Blending_QANDOTD (2)"}),
+					    #"Geänderter Typ1" = Table.TransformColumnTypes(#"Angefügte Abfrage",{{"REQUESTED_DELIVERY_DATE", type datetime}}),
+					    #"Geänderter Typ" = Table.TransformColumnTypes(#"Geänderter Typ1",{{"ACTUAL_GOODS_ISSUE_DATE_2", type date}, {"FIRST_CONFIRMED_DELIVERY_DATE", type date}, {"REQUESTED_DELIVERY_DATE", type date}}),
+					    #"Hinzugefügte benutzerdefinierte Spalte" = Table.AddColumn(#"Geänderter Typ", "SITECODE", each if [SITE]="2101" then "BAA" else if [SITE]="6650" then "CAR" else if [SITE]="IT01" then "CAR" else if [SITE]="2104" then "COR" else if [SITE]="FKB" then "FKB" else if [SITE]="GRO" then "GRO" else if [SITE]="6500" then "KIL" else if [SITE]="2100" then "KIR" else if [SITE]="6200" then "LAT" else if [SITE]="7010" then "MRB" else if [SITE]="3000" then "MST" else if [SITE]="4400" then "RGB" else if [SITE]="4499" then "RGB" else if [SITE]="SIS" then "SIS" else if [SITE]="0050" then "TIM" else 0),
+					    #"Geänderter Typ2" = Table.TransformColumnTypes(#"Hinzugefügte benutzerdefinierte Spalte",{{"ORDER_DATE", type date}}),
+					    #"Hinzugefügte benutzerdefinierte Spalte1" = Table.AddColumn(#"Geänderter Typ2", "Quantity new", each if [SITECODE] = "FKB" then [QUANTITY_STATUS_IN_PERCENT] else if [SITECODE] = "SIS" then [QUANTITY_STATUS_IN_PERCENT]  else if [SITECODE] = "GRO" then [QUANTITY_STATUS_IN_PERCENT] else [QUANTITY_STATUS_IN_PERCENT]/100),
+					    #"Geänderter Typ3" = Table.TransformColumnTypes(#"Hinzugefügte benutzerdefinierte Spalte1",{{"Quantity new", Percentage.Type}}),
+					    #"Entfernte Spalten" = Table.RemoveColumns(#"Geänderter Typ3",{"ORDER_NO"}),
+					    #"Ersetzter Wert" = Table.ReplaceValue(#"Entfernte Spalten","",null,Replacer.ReplaceValue,{"REASON_CODE"}),
+					    #"Umbenannte Spalten" = Table.RenameColumns(#"Ersetzter Wert",{{"FLAG_ALREADY_DELIVERED", "FLAG_ALREADY_DELIVERED_old"}}),
+					    #"Ersetzter Wert1" = Table.ReplaceValue(#"Umbenannte Spalten","RGB","RBGnew",Replacer.ReplaceText,{"SITECODE"}),
+					    #"Hinzugefügte benutzerdefinierte Spalte3" = Table.AddColumn(#"Ersetzter Wert1", "DIM_PLANT", each [SITECODE]&"/"&[SITE]),
+					    #"Geänderter Typ4" = Table.TransformColumnTypes(#"Hinzugefügte benutzerdefinierte Spalte3",{{"DOCUMENTDATE_DELIVERY", type date}}),
+					    #"Umbenannte Spalten2" = Table.RenameColumns(#"Geänderter Typ4",{{"FLAG_INCONSITENT_DATA", "FLAG_INCONSISTENT_DATA"}, {"FLAG_REQUESTED_DATE", "FLAG_EARLY_1ST_CONF"}})
+					in
+					    #"Umbenannte Spalten2"
+
+		annotation PBI_NavigationStepName = Navigation
+
+		annotation PBI_ResultType = Table
+

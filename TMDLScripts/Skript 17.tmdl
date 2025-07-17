@@ -1,0 +1,9 @@
+createOrReplace
+
+	role Test
+		modelPermission: read
+
+		tablePermission DIM_PLANT = [SITECODE] == "COR"
+
+		annotation PBI_Id = a3fb8e431bd14421bb796c450f3ded41
+

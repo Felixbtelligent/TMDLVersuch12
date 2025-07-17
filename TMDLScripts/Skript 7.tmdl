@@ -1,0 +1,253 @@
+createOrReplace
+
+	table DIM_CUSTOMER
+		lineageTag: 780218a0-a6d1-445c-aa95-eb4760545c3a
+
+		column HUB_DEBITOR_HKEY
+			dataType: string
+			lineageTag: 7b683575-4a99-43c7-a7d8-ce6242b9ab7d
+			summarizeBy: none
+			sourceColumn: HUB_DEBITOR_HKEY
+
+			annotation SummarizationSetBy = Automatic
+
+		column CLIENT_CODE
+			dataType: string
+			lineageTag: 9e7fb910-32b0-401d-9f18-062e49cca756
+			summarizeBy: none
+			sourceColumn: CLIENT_CODE
+
+			annotation SummarizationSetBy = Automatic
+
+		column DEBITOR_NR
+			dataType: string
+			lineageTag: 8b84dbc3-e8f2-4fb6-96c6-ccd7ee263577
+			summarizeBy: none
+			sourceColumn: DEBITOR_NR
+
+			annotation SummarizationSetBy = Automatic
+
+		column CRM_DEBITOR_NR
+			dataType: string
+			lineageTag: 4a674c48-e6f6-4fa1-b0e3-58ce80e140d1
+			summarizeBy: none
+			sourceColumn: CRM_DEBITOR_NR
+
+			annotation SummarizationSetBy = Automatic
+
+		column DEBITOR_GROUP_NR
+			dataType: string
+			lineageTag: d50db9b5-23e9-4b81-9af5-571637931e2b
+			summarizeBy: none
+			sourceColumn: DEBITOR_GROUP_NR
+
+			annotation SummarizationSetBy = Automatic
+
+		column DEBITOR_GROUP_NAME
+			dataType: string
+			lineageTag: 5e4f5a34-b14d-417e-a55e-f27c1c4f662b
+			summarizeBy: none
+			sourceColumn: DEBITOR_GROUP_NAME
+
+			annotation SummarizationSetBy = Automatic
+
+		column DEBITOR_GROUP_ACCOUNT_MANAGER
+			dataType: string
+			lineageTag: e4d0b59c-902c-463c-8f2c-bd747a3cf003
+			summarizeBy: none
+			sourceColumn: DEBITOR_GROUP_ACCOUNT_MANAGER
+
+			annotation SummarizationSetBy = Automatic
+
+		column DEBITOR_NAME
+			dataType: string
+			lineageTag: 3beabfa8-9163-4f31-bbb2-b0fe76f0004b
+			summarizeBy: none
+			sourceColumn: DEBITOR_NAME
+
+			annotation SummarizationSetBy = Automatic
+
+		column CRM_DEBITOR_NAME
+			dataType: string
+			lineageTag: 064ed060-b302-4aac-8985-adb2345f7a64
+			summarizeBy: none
+			sourceColumn: CRM_DEBITOR_NAME
+
+			annotation SummarizationSetBy = Automatic
+
+		column NAME_2
+			dataType: string
+			lineageTag: a3d4a60b-2fa0-4c75-8244-32e5fb5efdfc
+			summarizeBy: none
+			sourceColumn: NAME_2
+
+			annotation SummarizationSetBy = Automatic
+
+		column TITLE
+			dataType: string
+			lineageTag: 0ec1e114-3176-4757-b913-0a3eb22ead50
+			summarizeBy: none
+			sourceColumn: TITLE
+
+			annotation SummarizationSetBy = Automatic
+
+		column STREET_NR
+			dataType: string
+			lineageTag: 58e90a78-9033-446c-80ec-043ff6c662c1
+			summarizeBy: none
+			sourceColumn: STREET_NR
+
+			annotation SummarizationSetBy = Automatic
+
+		column CRM_STREET_NR
+			dataType: string
+			lineageTag: d4c2e46e-8808-4a47-a6db-ee78436a81ad
+			summarizeBy: none
+			sourceColumn: CRM_STREET_NR
+
+			annotation SummarizationSetBy = Automatic
+
+		column CITY
+			dataType: string
+			lineageTag: b8665050-9d81-4581-b4f7-c5fd02c7633e
+			summarizeBy: none
+			sourceColumn: CITY
+
+			annotation SummarizationSetBy = Automatic
+
+		column CRM_CITY
+			dataType: string
+			lineageTag: be4b7ee3-63b9-41fe-86a4-0739e2d4547c
+			summarizeBy: none
+			sourceColumn: CRM_CITY
+
+			annotation SummarizationSetBy = Automatic
+
+		column ZIPCODE
+			dataType: string
+			lineageTag: e42eb065-1bfe-4fdb-b3ee-1a381152a993
+			summarizeBy: none
+			sourceColumn: ZIPCODE
+
+			annotation SummarizationSetBy = Automatic
+
+		column CRM_ZIPCODE
+			dataType: string
+			lineageTag: 1997d66f-7725-4a16-925f-906b481f3a12
+			summarizeBy: none
+			sourceColumn: CRM_ZIPCODE
+
+			annotation SummarizationSetBy = Automatic
+
+		column CRM_CUSTOMER_COUNTRY
+			dataType: string
+			lineageTag: ce4c12fd-40e4-4d11-9d8b-757ad0b0af82
+			summarizeBy: none
+			sourceColumn: CRM_CUSTOMER_COUNTRY
+
+			annotation SummarizationSetBy = Automatic
+
+		column COUNTRY_NAME
+			dataType: string
+			lineageTag: c4f71143-a3d7-4274-ba89-cdcf5907af54
+			summarizeBy: none
+			sourceColumn: COUNTRY_NAME
+
+			annotation SummarizationSetBy = Automatic
+
+		column COUNTRY_CODE
+			dataType: string
+			lineageTag: c75aaddf-0868-4a21-b0f4-c9024071ce45
+			summarizeBy: none
+			sourceColumn: COUNTRY_CODE
+
+			annotation SummarizationSetBy = Automatic
+
+		column ACCOUNT_MANAGER
+			dataType: string
+			lineageTag: 3290f55f-341f-4224-a589-6cb6ce205fc4
+			summarizeBy: none
+			sourceColumn: ACCOUNT_MANAGER
+
+			annotation SummarizationSetBy = Automatic
+
+		column SALES_UNIT
+			dataType: string
+			lineageTag: 0f9cea68-3e78-4196-845d-7bc6d96838c2
+			summarizeBy: none
+			sourceColumn: SALES_UNIT
+
+			annotation SummarizationSetBy = Automatic
+
+		column INTERCOMPANYFLAG
+			dataType: string
+			lineageTag: f241cb37-0b3e-4a45-a46c-959099f69285
+			summarizeBy: none
+			sourceColumn: INTERCOMPANYFLAG
+
+			annotation SummarizationSetBy = Automatic
+
+		column CRM_CUSTOMER_LIFECYCLE
+			dataType: string
+			lineageTag: c99b8f6a-14cc-426d-90a2-df7d128cf96c
+			summarizeBy: none
+			sourceColumn: CRM_CUSTOMER_LIFECYCLE
+
+			annotation SummarizationSetBy = Automatic
+
+		column CRM_CUSTOMER_SEGMENTATION
+			dataType: string
+			lineageTag: 021290db-8bb0-4a1a-b01d-87760b1f7ae3
+			summarizeBy: none
+			sourceColumn: CRM_CUSTOMER_SEGMENTATION
+
+			annotation SummarizationSetBy = Automatic
+
+		column CRM_CUSTOMER_CAGR_CLASSIFICATION
+			dataType: string
+			lineageTag: 5cb4dbba-a128-4e50-92f6-94a5e3439f8b
+			summarizeBy: none
+			sourceColumn: CRM_CUSTOMER_CAGR_CLASSIFICATION
+
+			annotation SummarizationSetBy = Automatic
+
+		column RSRC
+			dataType: string
+			lineageTag: 49037474-3fcc-4073-9af1-8220b079b35b
+			summarizeBy: none
+			sourceColumn: RSRC
+
+			annotation SummarizationSetBy = Automatic
+
+		column RSRC_ENTITY
+			dataType: string
+			lineageTag: 87619338-9e1a-4a42-98bd-10dad9e3d48d
+			summarizeBy: none
+			sourceColumn: RSRC_ENTITY
+
+			annotation SummarizationSetBy = Automatic
+
+		column CUSTOMER_KEY
+			dataType: string
+			lineageTag: 0416d71e-b7cc-4113-8f68-27461f26eef2
+			summarizeBy: none
+			sourceColumn: CUSTOMER_KEY
+
+			annotation SummarizationSetBy = Automatic
+
+		partition DIM_CUSTOMER = m
+			mode: directQuery
+			source =
+					let
+					    Source = Snowflake.Databases("zr99360.west-europe.azure.snowflakecomputing.com","DBT_WH_M_TEST"),
+					    SF_DWH_SII_Database = Source{[Name="SF_DWH_SII",Kind="Database"]}[Data],
+					    DWH_MART_SD03SD05_Schema = SF_DWH_SII_Database{[Name="DWH_MART_SD03SD05",Kind="Schema"]}[Data],
+					    DIM_CUSTOMER_View = DWH_MART_SD03SD05_Schema{[Name="DIM_CUSTOMER",Kind="View"]}[Data],
+					    #"Removed Duplicates" = Table.Distinct(DIM_CUSTOMER_View, {"CUSTOMER_KEY"})
+					in
+					    #"Removed Duplicates"
+
+		annotation PBI_NavigationStepName = Navigation
+
+		annotation PBI_ResultType = Table
+

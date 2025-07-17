@@ -1,0 +1,151 @@
+table HolidayTable
+	lineageTag: 9756a924-95c4-430a-ae38-ccb260800786
+
+	column HolidayDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: ec8a217e-6871-4269-bd87-be7f0d3b7fb9
+		summarizeBy: none
+		sourceColumn: HolidayDate
+
+		variation Variation
+			isDefault
+			relationship: 4fbb3b92-21a3-4cd0-9344-29bc9fdfa0c3
+			defaultHierarchy: LocalDateTable_d5e47eb2-26a1-4c49-91d6-c662ee034043.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column RSRC
+		dataType: string
+		lineageTag: d60f6040-b566-4747-b1be-18a60cf426dc
+		summarizeBy: none
+		sourceColumn: RSRC
+
+		annotation SummarizationSetBy = Automatic
+
+	column RSRC_ENTITY
+		dataType: string
+		lineageTag: 240d5e45-fba5-4061-9297-57c1d8752024
+		summarizeBy: none
+		sourceColumn: RSRC_ENTITY
+
+		annotation SummarizationSetBy = Automatic
+
+	column FILE_TS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ea8123d9-2d34-4238-8cdc-898bbc1ef456
+		summarizeBy: none
+		sourceColumn: FILE_TS
+
+		variation Variation
+			isDefault
+			relationship: 0d1ef152-1496-4c3b-a57e-3c83ed70be14
+			defaultHierarchy: LocalDateTable_4470e98c-1d7a-4128-8c57-3be61f7b9487.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+	column METADATA_DATE
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 367b72c9-d3a7-4260-9be0-8351550254fc
+		summarizeBy: none
+		sourceColumn: METADATA_DATE
+
+		variation Variation
+			isDefault
+			relationship: fc205093-cdbf-4379-b9e5-e8be2215e6d6
+			defaultHierarchy: LocalDateTable_f7ff3216-bfc9-4daa-a7ba-4ab71b4276d8.Datumshierarchie
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column METADATA_YEAR
+		dataType: string
+		lineageTag: 0cf93191-6cbe-4240-822f-c6a86c48e6cc
+		summarizeBy: none
+		sourceColumn: METADATA_YEAR
+
+		annotation SummarizationSetBy = Automatic
+
+	column METADATA_MONTH
+		dataType: string
+		lineageTag: 45b56e99-493e-4f6e-bfca-aee4cb1264ff
+		summarizeBy: none
+		sourceColumn: METADATA_MONTH
+
+		annotation SummarizationSetBy = Automatic
+
+	column METADATA_DAY
+		dataType: string
+		lineageTag: 21089e49-0802-4144-9b63-4b2c580aad52
+		summarizeBy: none
+		sourceColumn: METADATA_DAY
+
+		annotation SummarizationSetBy = Automatic
+
+	column METADATA_HOUR
+		dataType: string
+		lineageTag: a12adc8f-4841-4433-84be-6025bcca9f88
+		summarizeBy: none
+		sourceColumn: METADATA_HOUR
+
+		annotation SummarizationSetBy = Automatic
+
+	column METADATA_MINUTE
+		dataType: double
+		lineageTag: dcd530c0-8551-429d-8cfb-feba911797aa
+		summarizeBy: sum
+		sourceColumn: METADATA_MINUTE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column METADATA_SECOND
+		dataType: double
+		lineageTag: 6f4c07f5-573c-487a-ad15-1078bc0a5734
+		summarizeBy: sum
+		sourceColumn: METADATA_SECOND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column METADATA_MILLISECOND
+		dataType: string
+		lineageTag: e34d66c8-e151-4b58-badc-39fb5064bdc3
+		summarizeBy: none
+		sourceColumn: METADATA_MILLISECOND
+
+		annotation SummarizationSetBy = Automatic
+
+	column FILENAME
+		dataType: string
+		lineageTag: 04cb732c-94ee-46d8-82e9-45418cdb5dab
+		summarizeBy: none
+		sourceColumn: FILENAME
+
+		annotation SummarizationSetBy = Automatic
+
+	partition HolidayTable = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("zr99360.west-europe.azure.snowflakecomputing.com","DBT_WH_M_TEST"),
+				    SF_DWH_TEST_Database = Source{[Name="SF_DWH_TEST",Kind="Database"]}[Data],
+				    DWH_EXTERNAL_Schema = SF_DWH_TEST_Database{[Name="DWH_EXTERNAL",Kind="Schema"]}[Data],
+				    EXT_SPO_CALENDAR_PUBLIC_HOLIDAYS_TO_2030_DATA_View = DWH_EXTERNAL_Schema{[Name="EXT_SPO_CALENDAR_PUBLIC_HOLIDAYS_TO_2030_DATA",Kind="View"]}[Data],
+				    #"Gefilterte Zeilen" = Table.SelectRows(EXT_SPO_CALENDAR_PUBLIC_HOLIDAYS_TO_2030_DATA_View, let latest = List.Max(EXT_SPO_CALENDAR_PUBLIC_HOLIDAYS_TO_2030_DATA_View[METADATA_DATE]) in each [METADATA_DATE] = latest),
+				    #"Umbenannte Spalten" = Table.RenameColumns(#"Gefilterte Zeilen",{{"HOLIDAY_DATE", "HolidayDate"}}),
+				    #"Geänderter Typ" = Table.TransformColumnTypes(#"Umbenannte Spalten",{{"HolidayDate", type date}})
+				in
+				    #"Geänderter Typ"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
